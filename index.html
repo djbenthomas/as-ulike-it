@@ -61,6 +61,8 @@
   .btn-ghost:hover { background: rgba(255,255,255,.12); transform: translateY(-2px); }
   .btn-ink { background: var(--ink); color: #fff; }
   .btn-ink:hover { background: #3d362f; transform: translateY(-2px); }
+  .btn-white { background: #fff; color: var(--ink); }
+  .btn-white:hover { background: #F3EDE4; transform: translateY(-2px); }
 
   /* ---------- Nav ---------- */
   nav {
@@ -220,6 +222,10 @@
   .contact p { color: rgba(255,255,255,.8); max-width: 560px; margin: 0 auto 34px; }
   .contact .areas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 36px; }
   .contact .areas span { border: 1px solid rgba(255,255,255,.25); border-radius: 999px; padding: 8px 18px; font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,.85); }
+  .contact-ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px; }
+  .contact-links { font-size: 14.5px; letter-spacing: .5px; }
+  .contact-links a { color: rgba(255,255,255,.85); text-decoration: none; border-bottom: 1px dotted rgba(255,255,255,.4); }
+  .contact-links a:hover { color: var(--gold); border-bottom-color: var(--gold); }
   footer { background: #211D19; color: rgba(255,255,255,.55); text-align: center; padding: 30px 20px; font-size: 13.5px; letter-spacing: 1px; }
   footer .co { color: var(--gold); font-family: 'Cormorant Garamond', serif; font-size: 17px; letter-spacing: 1px; }
   footer a { color: rgba(255,255,255,.7); text-decoration: none; }
@@ -371,15 +377,20 @@
     <div class="areas">
       <span>Hendersonville</span><span>Gallatin</span><span>Goodlettsville</span><span>Sumner County</span><span>Nashville</span><span>Middle TN</span>
     </div>
-    <a class="btn btn-gold" id="contactBtn" href="#">Call to Book</a>
-    <p style="margin-top:26px; font-size:14px; opacity:.75;">Text or call &mdash; we reply fast, usually within the hour.</p>
+    <div class="contact-ctas">
+      <a class="btn btn-gold" href="sms:6615330100">📱 Text Us</a>
+      <a class="btn btn-white" href="mailto:djbenthomas@gmail.com?subject=Booking%20Inquiry%20%E2%80%94%20AS%C2%B7U%C2%B7LIKE%C2%B7IT%20Entertainment">✉️ Email Us</a>
+      <a class="btn btn-ghost" href="tel:6615330100">Call</a>
+    </div>
+    <p class="contact-links"><a href="sms:6615330100">661-533-0100</a> &nbsp;&bull;&nbsp; <a href="mailto:djbenthomas@gmail.com">djbenthomas@gmail.com</a></p>
+    <p style="margin-top:18px; font-size:14px; opacity:.75;">Text or email us &mdash; we reply fast, usually within the hour.</p>
   </div>
 </section>
 
 <footer>
   <div class="co">AS·U·LIKE·IT Entertainment</div>
   <div style="margin: 8px 0 4px;">Wedding DJ &bull; MC &bull; Photo Booth &mdash; Hendersonville, TN</div>
-  <div><a href="https://as-ulikeit.com">as-ulikeit.com</a></div>
+  <div><a href="https://as-ulikeit.com">as-ulikeit.com</a> &nbsp;&bull;&nbsp; <a href="sms:6615330100">661-533-0100</a> &nbsp;&bull;&nbsp; <a href="mailto:djbenthomas@gmail.com">djbenthomas@gmail.com</a></div>
 </footer>
 
 <script>
