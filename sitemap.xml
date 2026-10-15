@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- AS·U·LIKE·IT Entertainment — canonical host: djbenthomas.github.io/as-ulike-it
+     NOTE: rewrite <loc> values to https://as-ulikeit.com/ after the DNS switch. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://djbenthomas.github.io/as-ulike-it/</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://djbenthomas.github.io/as-ulike-it/wedding-dj-hendersonville-tn.html</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://djbenthomas.github.io/as-ulike-it/wedding-dj-gallatin-tn.html</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://djbenthomas.github.io/as-ulike-it/wedding-dj-sumner-county-tn.html</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://djbenthomas.github.io/as-ulike-it/wedding-dj-goodlettsville-tn.html</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://djbenthomas.github.io/as-ulike-it/wedding-dj-nashville-tn.html</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+</urlset>
