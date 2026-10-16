@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# AS·U·LIKE·IT Entertainment — djbenthomas.github.io/as-ulike-it
+# NOTE: after the as-ulikeit.com DNS switch, update the Sitemap URL below
+# to https://as-ulikeit.com/sitemap.xml
+Sitemap: https://djbenthomas.github.io/as-ulike-it/sitemap.xml
