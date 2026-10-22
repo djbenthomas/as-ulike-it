@@ -12,6 +12,7 @@ const LASTMOD = process.env.LASTMOD || new Date().toISOString().slice(0, 10);
 const rows = [
   { loc: HOST, priority: '1.0' },
   ...ALL_CITIES.map((c) => ({ loc: HOST + c.file, priority: c.priority.toFixed(2) })),
+  { loc: HOST + 'photo-booth.html', priority: '0.95' },
 ];
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>

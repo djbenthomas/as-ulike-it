@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photo Booth Rental in Hendersonville, TN | AS·U·LIKE·IT Entertainment</title>
+<meta name="description" content="Photo booth rental in Hendersonville, Gallatin, and the Nashville area — $300 flat, setup and teardown included, printed strips, props, attendant, and a digital gallery.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF6F0;
+    --cream-2: #F3ECE1;
+    --ink: #2A2520;
+    --ink-soft: #6E635A;
+    --gold: #B98A3E;
+    --gold-soft: #E8D5AE;
+    --white: #FFFFFF;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.65;
+    font-weight: 300;
+  }
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+  .serif { font-family: 'Cormorant Garamond', serif; }
+  .gold { color: var(--gold); }
+  .divider {
+    width: 64px; height: 2px; background: var(--gold);
+    margin: 22px auto; border: none; opacity: .8;
+  }
+  .eyebrow {
+    letter-spacing: 4px; text-transform: uppercase;
+    font-size: 12.5px; font-weight: 500; color: var(--gold);
+    text-align: center;
+  }
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 5vw, 52px);
+    font-weight: 500;
+    text-align: center;
+    line-height: 1.15;
+  }
+  .lead { text-align: center; color: var(--ink-soft); max-width: 640px; margin: 0 auto; font-size: 17px; }
+  .btn {
+    display: inline-block; padding: 14px 34px; border-radius: 999px;
+    text-decoration: none; font-weight: 500; letter-spacing: 1.5px;
+    font-size: 13.5px; text-transform: uppercase; transition: all .25s;
+  }
+  .btn-gold { background: var(--gold); color: #fff; box-shadow: 0 8px 22px rgba(185,138,62,.35); }
+  .btn-gold:hover { background: #A5782F; transform: translateY(-2px); }
+  .btn-ghost { border: 1.5px solid rgba(255,255,255,.6); color: #fff; }
+  .btn-ghost:hover { background: rgba(255,255,255,.12); transform: translateY(-2px); }
+  .btn-ink { background: var(--ink); color: #fff; }
+  .btn-ink:hover { background: #3d362f; transform: translateY(-2px); }
+  .btn-white { background: #fff; color: var(--ink); }
+  .btn-white:hover { background: #F3EDE4; transform: translateY(-2px); }
+
+  /* ---------- Nav ---------- */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+    background: rgba(250,246,240,.92); backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(185,138,62,.2);
+  }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--ink); text-decoration: none; letter-spacing: .5px; }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 28px; align-items: center; }
+  .nav-links a { color: var(--ink-soft); text-decoration: none; font-size: 13px; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta { padding: 9px 20px !important; border-radius: 999px; background: var(--gold); color: #fff !important; }
+  @media (max-width: 760px) { .nav-links a:not(.nav-cta) { display: none; } }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    min-height: 92vh;
+    display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 140px 24px 80px;
+    background:
+      radial-gradient(ellipse at 20% 10%, rgba(185,138,62,.12), transparent 50%),
+      radial-gradient(ellipse at 80% 90%, rgba(185,138,62,.10), transparent 50%),
+      var(--ink);
+    color: #fff; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: "♫"; position: absolute; top: 22%; left: 8%;
+    font-size: 120px; color: rgba(185,138,62,.12); transform: rotate(-12deg);
+  }
+  .hero::after {
+    content: "♪"; position: absolute; bottom: 18%; right: 8%;
+    font-size: 100px; color: rgba(185,138,62,.10); transform: rotate(10deg);
+  }
+  .hero .eyebrow { color: var(--gold-soft); }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 8vw, 92px);
+    font-weight: 500; line-height: 1.05; margin: 18px 0 6px;
+  }
+  .hero h1 .amp { color: var(--gold); font-style: italic; }
+  .hero .tagline { font-size: clamp(16px, 2.4vw, 20px); color: rgba(255,255,255,.85); font-weight: 300; letter-spacing: .5px; }
+  .hero .stats { display: flex; gap: 44px; justify-content: center; margin: 40px 0 44px; flex-wrap: wrap; }
+  .hero .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 40px; color: var(--gold); line-height: 1; }
+  .hero .stat-label { font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase; color: rgba(255,255,255,.7); margin-top: 8px; }
+  .hero .ctas { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .scroll-hint { position: absolute; bottom: 26px; left: 0; right: 0; text-align: center; color: rgba(255,255,255,.5); font-size: 12px; letter-spacing: 3px; text-transform: uppercase; }
+
+  /* ---------- Sections ---------- */
+  section { padding: 90px 0; }
+  .about { background: var(--cream); }
+  .about-grid { display: grid; grid-template-columns: 340px 1fr; gap: 56px; align-items: center; margin-top: 44px; }
+  @media (max-width: 860px) { .about-grid { grid-template-columns: 1fr; } }
+  .about-img {
+    width: 100%; border-radius: 6px; box-shadow: 0 24px 60px rgba(42,37,32,.18);
+    border: 8px solid #fff; outline: 1px solid var(--gold-soft);
+  }
+  .about-text p { color: var(--ink-soft); margin-bottom: 16px; font-size: 16.5px; }
+  .about-text .sig { font-family: 'Cormorant Garamond', serif; font-size: 26px; color: var(--gold); margin-top: 10px; font-style: italic; }
+
+  /* Services */
+  .services { background: var(--cream-2); }
+  .svc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-top: 44px; }
+  .svc-card {
+    background: var(--white); border-radius: 10px; padding: 28px 24px;
+    border: 1px solid rgba(185,138,62,.18); text-align: center;
+    transition: transform .25s, box-shadow .25s;
+  }
+  .svc-card:hover { transform: translateY(-4px); box-shadow: 0 16px 36px rgba(42,37,32,.10); }
+  .svc-icon { font-size: 30px; }
+  .svc-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 21px; font-weight: 600; margin: 12px 0 6px; }
+  .svc-card p { font-size: 14.5px; color: var(--ink-soft); }
+
+  /* Photo booth band */
+  .booth { background: var(--ink); color: #fff; position: relative; overflow: hidden; }
+  .booth .wrap { display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; align-items: center; }
+  @media (max-width: 860px) { .booth .wrap { grid-template-columns: 1fr; } }
+  .booth h2 { text-align: left; }
+  .booth .divider { margin: 22px 0; }
+  .booth p { color: rgba(255,255,255,.8); margin-bottom: 14px; }
+  .booth .perks { list-style: none; margin: 22px 0 30px; }
+  .booth .perks li { padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,.12); font-size: 15.5px; }
+  .booth .perks li::before { content: "✦ "; color: var(--gold); }
+  .booth-strip {
+    background: #fff; padding: 12px 12px 42px; border-radius: 8px;
+    box-shadow: 0 30px 70px rgba(0,0,0,.4); transform: rotate(2deg);
+    text-align: center;
+  }
+  .booth-strip img { width: 100%; border-radius: 4px; display: block; }
+  .booth-strip .cap { font-size: 11px; color: var(--ink-soft); letter-spacing: 2px; margin-top: 10px; text-transform: uppercase; }
+
+  /* ---------- Videos ---------- */
+  .videos { background: var(--cream-2); }
+  .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 22px; margin-top: 44px; }
+  .vcard {
+    background: var(--white); border-radius: 12px; overflow: hidden; text-decoration: none;
+    border: 1px solid rgba(185,138,62,.18); box-shadow: 0 8px 24px rgba(42,37,32,.07);
+    transition: transform .25s, box-shadow .25s; display: block;
+  }
+  .vcard:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(42,37,32,.14); }
+  .vthumb {
+    aspect-ratio: 16/9; background-size: cover; background-position: center;
+    display: flex; align-items: center; justify-content: center; position: relative;
+  }
+  .vthumb::after { content: ""; position: absolute; inset: 0; background: rgba(42,37,32,.15); transition: background .25s; }
+  .vcard:hover .vthumb::after { background: rgba(42,37,32,.05); }
+  .vplay {
+    width: 58px; height: 58px; border-radius: 50%; background: rgba(255,255,255,.92);
+    color: var(--gold); display: flex; align-items: center; justify-content: center;
+    font-size: 20px; padding-left: 4px; box-shadow: 0 8px 24px rgba(0,0,0,.3);
+    position: relative; z-index: 2; transition: transform .2s;
+  }
+  .vcard:hover .vplay { transform: scale(1.08); }
+  .vmeta { padding: 16px 18px 18px; }
+  .vtitle { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; color: var(--ink); line-height: 1.3; }
+  .vchannel { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-top: 6px; }
+  .nav-mark { width: 30px; height: 30px; border-radius: 8px; margin-right: 10px; vertical-align: -7px; }
+
+  /* ---------- Testimonials ---------- */
+  .reviews { background: var(--cream); }
+  .featured-wrap { margin: 46px auto 0; max-width: 860px; position: relative; }
+  .featured {
+    background: var(--white); border-radius: 14px; padding: 56px 48px;
+    text-align: center; border: 1px solid rgba(185,138,62,.22);
+    box-shadow: 0 20px 50px rgba(42,37,32,.08);
+    position: relative;
+  }
+  @media (max-width: 640px) { .featured { padding: 40px 24px; } }
+  .featured .big-quote { font-family: 'Cormorant Garamond', serif; font-size: 64px; color: var(--gold); line-height: .6; margin-bottom: 18px; }
+  .featured .stars { color: var(--gold); letter-spacing: 4px; font-size: 18px; margin-bottom: 16px; }
+  .featured .qtext { font-family: 'Cormorant Garamond', serif; font-size: clamp(20px, 2.6vw, 26px); font-style: italic; line-height: 1.5; color: var(--ink); }
+  .featured .who { margin-top: 20px; color: var(--ink-soft); font-size: 14px; letter-spacing: 2px; text-transform: uppercase; }
+  .featured .who strong { color: var(--gold); font-weight: 600; }
+  .fade { animation: fadeIn .6s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  .f-ctrl { display: flex; justify-content: center; gap: 14px; margin-top: 22px; align-items: center; }
+  .f-btn {
+    width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--gold);
+    background: transparent; color: var(--gold); font-size: 20px; cursor: pointer;
+    transition: all .2s; display: flex; align-items: center; justify-content: center; line-height: 1;
+  }
+  .f-btn:hover { background: var(--gold); color: #fff; }
+  .f-dots { display: flex; gap: 8px; }
+  .f-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold-soft); border: none; cursor: pointer; padding: 0; }
+  .f-dot.active { background: var(--gold); }
+
+  .wall-intro { text-align: center; margin: 70px 0 34px; }
+  .wall-intro h3 { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 500; }
+  .wall { columns: 3; column-gap: 18px; }
+  @media (max-width: 980px) { .wall { columns: 2; } }
+  @media (max-width: 620px) { .wall { columns: 1; } }
+  .tcard {
+    break-inside: avoid; margin-bottom: 18px; background: var(--white);
+    border-radius: 10px; padding: 26px; border: 1px solid rgba(185,138,62,.16);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .tcard:hover { transform: translateY(-3px); box-shadow: 0 14px 32px rgba(42,37,32,.09); }
+  .tcard .stars { color: var(--gold); font-size: 14px; letter-spacing: 2px; margin-bottom: 10px; }
+  .tcard .q { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-style: italic; line-height: 1.55; color: var(--ink); }
+  .tcard .who { margin-top: 14px; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--ink-soft); }
+  .tcard .who strong { color: var(--gold); font-weight: 600; }
+  .review-cta { text-align: center; margin-top: 56px; }
+  .review-cta p { color: var(--ink-soft); margin-bottom: 22px; }
+
+  /* ---------- FAQ ---------- */
+  .faq { background: var(--cream-2); }
+  .faq-list { max-width: 760px; margin: 44px auto 0; }
+  .faq-item { background: var(--white); border-radius: 10px; margin-bottom: 12px; border: 1px solid rgba(185,138,62,.16); overflow: hidden; }
+  .faq-q {
+    width: 100%; text-align: left; padding: 20px 26px; background: none; border: none;
+    font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 600; color: var(--ink);
+    cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 14px;
+  }
+  .faq-q .plus { color: var(--gold); font-size: 22px; font-weight: 400; transition: transform .25s; }
+  .faq-item.open .plus { transform: rotate(45deg); }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height .3s ease; }
+  .faq-a p { padding: 0 26px 22px; color: var(--ink-soft); font-size: 15.5px; }
+
+  /* ---------- Contact / Footer ---------- */
+  .contact { background: var(--ink); color: #fff; text-align: center; position: relative; overflow: hidden; }
+  .contact h2 { color: #fff; }
+  .contact .divider { background: var(--gold); }
+  .contact p { color: rgba(255,255,255,.8); max-width: 560px; margin: 0 auto 34px; }
+  .contact .areas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 36px; }
+  .contact .areas span { border: 1px solid rgba(255,255,255,.25); border-radius: 999px; padding: 8px 18px; font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(255,255,255,.85); }
+  .contact-ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 24px; }
+  .contact-links { font-size: 14.5px; letter-spacing: .5px; }
+  .contact-links a { color: rgba(255,255,255,.85); text-decoration: none; border-bottom: 1px dotted rgba(255,255,255,.4); }
+  .contact-links a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+  footer { background: #211D19; color: rgba(255,255,255,.55); text-align: center; padding: 30px 20px; font-size: 13.5px; letter-spacing: 1px; }
+  footer .co { color: var(--gold); font-family: 'Cormorant Garamond', serif; font-size: 17px; letter-spacing: 1px; }
+  footer a { color: rgba(255,255,255,.7); text-decoration: none; }
+  footer a:hover { color: var(--gold); }
+  footer .areas { margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.12); font-size: 12.5px; letter-spacing: .5px; }
+</style>
+<style>
+  /* ---------- Photo booth page ---------- */
+  .hero.pb { background-image: linear-gradient(rgba(42,37,32,.62), rgba(42,37,32,.78)), url('assets/booth/booth-01.jpg'); background-position: center 40%; }
+  .price-card { background: var(--white); border: 1px solid rgba(185,138,62,.25); border-radius: 14px; padding: 40px 32px; text-align: center; box-shadow: 0 18px 44px rgba(42,37,32,.08); max-width: 420px; margin: 0 auto; }
+  .price-card .amt { font-family: 'Cormorant Garamond', serif; font-size: 66px; line-height: 1; color: var(--gold); }
+  .price-card .amt small { font-size: 16px; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-soft); display: block; margin-top: 8px; font-family: 'Jost', sans-serif; }
+  .price-card ul { list-style: none; margin: 26px 0 30px; text-align: left; }
+  .price-card li { padding: 9px 0; border-bottom: 1px solid rgba(185,138,62,.16); font-size: 15.5px; color: var(--ink-soft); }
+  .price-card li::before { content: "✦ "; color: var(--gold); }
+  .pb-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; margin-top: 40px; }
+  .pbc { margin: 0; border-radius: 10px; overflow: hidden; background: var(--cream-2); border: 1px solid rgba(185,138,62,.18); aspect-ratio: 4/3; }
+  .pbc img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .35s ease; }
+  .pbc:hover img { transform: scale(1.04); }
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 22px; margin-top: 44px; counter-reset: step; }
+  .step { background: var(--white); border-radius: 12px; padding: 30px 26px; border: 1px solid rgba(185,138,62,.18); position: relative; }
+  .step::before { counter-increment: step; content: counter(step); font-family: 'Cormorant Garamond', serif; font-size: 46px; color: var(--gold-soft); position: absolute; top: 10px; right: 20px; line-height: 1; }
+  .step h3 { font-family: 'Cormorant Garamond', serif; font-size: 21px; margin-bottom: 8px; }
+  .step p { color: var(--ink-soft); font-size: 15px; }
+  .note { max-width: 720px; margin: 34px auto 0; text-align: center; font-size: 13.5px; color: var(--ink-soft); letter-spacing: .3px; }
+</style>
+<!-- seo:head:start (generated by tools/add-seo-head.mjs) -->
+<link rel="canonical" href="https://djbenthomas.github.io/as-ulike-it/photo-booth.html">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="author" content="Ben Thomas — AS·U·LIKE·IT Entertainment">
+<meta name="keywords" content="photo booth rental hendersonville tn, photo booth rental nashville, photo booth rental gallatin tn, photo booth rental near me, photo booth rental sumner county, photo booth rental goodlettsville tn, photo booth rental mt juliet tn, wedding photo booth nashville, affordable photo booth rental nashville, photo booth rental price nashville, photo booth with props, photo booth with attendant, dj and photo booth combo, photo booth for grad party, photo booth for corporate event nashville, photo booth rental springfield tn, photo booth rental lebanon tn, photo booth rental portland tn">
+<meta name="geo.region" content="US-TN">
+<meta name="geo.placename" content="Hendersonville, Tennessee">
+<meta name="geo.position" content="36.3048;-86.6200">
+<meta name="ICBM" content="36.3048, -86.6200">
+<meta name="theme-color" content="#B98A3E">
+<link rel="icon" type="image/png" href="assets/canva-logo.png">
+<link rel="apple-touch-icon" href="assets/canva-logo.png">
+<meta property="og:site_name" content="AS·U·LIKE·IT Entertainment">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://djbenthomas.github.io/as-ulike-it/photo-booth.html">
+<meta property="og:title" content="Photo Booth Rental in Hendersonville, TN | AS·U·LIKE·IT Entertainment">
+<meta property="og:description" content="Photo booth rental in Hendersonville, Gallatin, and the Nashville area — $300 flat, setup and teardown included, printed strips, props, attendant, and a digital gallery.">
+<meta property="og:image" content="https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-01.jpg">
+<meta property="og:image:alt" content="AS·U·LIKE·IT Entertainment — wedding DJ and photo booth in Hendersonville, TN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Photo Booth Rental in Hendersonville, TN | AS·U·LIKE·IT Entertainment">
+<meta name="twitter:description" content="Photo booth rental in Hendersonville, Gallatin, and the Nashville area — $300 flat, setup and teardown included, printed strips, props, attendant, and a digital gallery.">
+<meta name="twitter:image" content="https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-01.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@id": "https://djbenthomas.github.io/as-ulike-it/#business",
+      "@type": [
+        "LocalBusiness",
+        "EntertainmentBusiness"
+      ],
+      "name": "AS·U·LIKE·IT Entertainment",
+      "alternateName": [
+        "As You Like It Entertainment",
+        "DJ Ben Thomas",
+        "AS U LIKE IT"
+      ],
+      "description": "Wedding and event DJ in Hendersonville, TN. 15+ years and 900+ events. Professional MC, custom playlists, sound and lighting, plus photo booth rentals. Serving Sumner County, Wilson County, Robertson County, Davidson County, and all of Middle Tennessee.",
+      "telephone": "+1-661-533-0100",
+      "email": "djbenthomas@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Hendersonville",
+        "addressRegion": "TN",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 36.3048,
+        "longitude": -86.62
+      },
+      "image": "https://djbenthomas.github.io/as-ulike-it/assets/canva-hero.jpg",
+      "logo": "https://djbenthomas.github.io/as-ulike-it/assets/canva-logo.png",
+      "priceRange": "$$",
+      "currenciesAccepted": "USD",
+      "paymentAccepted": "Cash, Check, Credit Card",
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Hendersonville"
+        },
+        {
+          "@type": "City",
+          "name": "Gallatin"
+        },
+        {
+          "@type": "City",
+          "name": "Goodlettsville"
+        },
+        {
+          "@type": "City",
+          "name": "Nashville"
+        },
+        {
+          "@type": "City",
+          "name": "Sumner County"
+        },
+        {
+          "@type": "City",
+          "name": "White House"
+        },
+        {
+          "@type": "City",
+          "name": "Millersville"
+        },
+        {
+          "@type": "City",
+          "name": "Greenbrier"
+        },
+        {
+          "@type": "City",
+          "name": "Cross Plains"
+        },
+        {
+          "@type": "City",
+          "name": "Portland"
+        },
+        {
+          "@type": "City",
+          "name": "Westmoreland"
+        },
+        {
+          "@type": "City",
+          "name": "Mt. Juliet"
+        },
+        {
+          "@type": "City",
+          "name": "Lebanon"
+        },
+        {
+          "@type": "City",
+          "name": "Old Hickory"
+        },
+        {
+          "@type": "City",
+          "name": "Madison"
+        },
+        {
+          "@type": "City",
+          "name": "Hermitage"
+        },
+        {
+          "@type": "City",
+          "name": "Springfield"
+        },
+        {
+          "@type": "City",
+          "name": "Middle Tennessee"
+        }
+      ],
+      "sameAs": [
+        "https://www.facebook.com/asyoulikeitentertainment",
+        "https://www.thebash.com/dj/as-you-like-it-dj",
+        "https://www.theknot.com/marketplace/as-you-like-it-entertainment-hendersonville-tn-578924"
+      ],
+      "makesOffer": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Wedding DJ & MC Services"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Event DJ Services"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Photo Booth Rental"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "name": "Photo Booth Rental",
+      "serviceType": "Photo Booth Rental",
+      "description": "Photo booth rental with printed strips, props, backdrop, an on-site attendant, and a digital gallery. $300 flat rate in the Hendersonville and Nashville area.",
+      "provider": {
+        "@type": "LocalBusiness",
+        "name": "AS·U·LIKE·IT Entertainment"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Hendersonville"
+        },
+        {
+          "@type": "City",
+          "name": "Gallatin"
+        },
+        {
+          "@type": "City",
+          "name": "Goodlettsville"
+        },
+        {
+          "@type": "City",
+          "name": "Nashville"
+        },
+        {
+          "@type": "City",
+          "name": "Sumner County"
+        },
+        {
+          "@type": "City",
+          "name": "White House"
+        },
+        {
+          "@type": "City",
+          "name": "Millersville"
+        },
+        {
+          "@type": "City",
+          "name": "Greenbrier"
+        },
+        {
+          "@type": "City",
+          "name": "Cross Plains"
+        },
+        {
+          "@type": "City",
+          "name": "Portland"
+        },
+        {
+          "@type": "City",
+          "name": "Westmoreland"
+        },
+        {
+          "@type": "City",
+          "name": "Mt. Juliet"
+        },
+        {
+          "@type": "City",
+          "name": "Lebanon"
+        },
+        {
+          "@type": "City",
+          "name": "Old Hickory"
+        },
+        {
+          "@type": "City",
+          "name": "Madison"
+        },
+        {
+          "@type": "City",
+          "name": "Hermitage"
+        },
+        {
+          "@type": "City",
+          "name": "Springfield"
+        }
+      ],
+      "offers": {
+        "@type": "Offer",
+        "price": "300",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      },
+      "url": "https://djbenthomas.github.io/as-ulike-it/photo-booth.html",
+      "image": [
+        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-01.jpg",
+        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-02.jpg",
+        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-03.jpg",
+        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-04.jpg",
+        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-05.jpg",
+        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-06.jpg",
+        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-07.jpg",
+        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-08.jpg",
+        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-09.jpg",
+        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-10.jpg",
+        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-11.jpg",
+        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-12.jpg"
+      ]
+    },
+    {
+      "@type": "ImageGallery",
+      "name": "AS·U·LIKE·IT Entertainment photo booth gallery",
+      "image": [
+        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-01.jpg",
+        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-02.jpg",
+        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-03.jpg",
+        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-04.jpg",
+        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-05.jpg",
+        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-06.jpg",
+        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-07.jpg",
+        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-08.jpg",
+        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-09.jpg",
+        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-10.jpg",
+        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-11.jpg",
+        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-12.jpg"
+      ],
+      "url": "https://djbenthomas.github.io/as-ulike-it/photo-booth.html"
+    }
+  ]
+}
+</script>
+<!-- seo:head:end -->
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="nav-logo" href="index.html"><img class="nav-mark" src="assets/canva-logo.png" alt="AS·U·LIKE·IT Entertainment logo">AS·U·LIKE·IT <span>Entertainment</span></a>
+    <div class="nav-links">
+      <a href="index.html#about">About</a>
+      <a href="index.html#services">Services</a>
+      <a href="photo-booth.html">Photo Booth</a>
+      <a href="index.html#reviews">Reviews</a>
+      <a href="index.html#faq">FAQ</a>
+      <a class="nav-cta" href="#contact">Book Your Date</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero pb">
+  <div class="wrap">
+    <div class="eyebrow">Photo Booth Rental &bull; Hendersonville, TN</div>
+    <h1>The Photo <span class="amp">Booth</span></h1>
+    <p class="tagline">Printed strips in minutes, props people actually use, and a digital gallery of every shot &mdash; $300 flat, setup included.</p>
+    <div class="stats">
+      <div><div class="stat-num">$300</div><div class="stat-label">Flat Rate</div></div>
+      <div><div class="stat-num">3+</div><div class="stat-label">Hours</div></div>
+      <div><div class="stat-num">Unlimited</div><div class="stat-label">Prints</div></div>
+    </div>
+    <div class="ctas">
+      <a class="btn btn-gold" href="#contact">Check Your Date</a>
+      <a class="btn btn-ghost" href="#gallery">See the Booth</a>
+    </div>
+  </div>
+  <div class="scroll-hint">Scroll</div>
+</header>
+
+<section class="about" id="what">
+  <div class="wrap">
+    <div class="eyebrow">What You Get</div>
+    <h2>Everything's <span class="gold">Included</span></h2>
+    <div class="divider"></div>
+    <p class="lead">No add-ons, no surprise line items. The price on this page is the price.</p>
+    <div class="svc-grid">
+      <div class="svc-card"><div class="svc-icon">🖨️</div><h3>Prints in Minutes</h3><p>Photo strips print on the spot &mdash; your guests walk away with one.</p></div>
+      <div class="svc-card"><div class="svc-icon">🎭</div><h3>Props &amp; Backdrop</h3><p>A full prop box plus a backdrop that fits your theme.</p></div>
+      <div class="svc-card"><div class="svc-icon">🙋</div><h3>Booth Attendant</h3><p>Someone runs the booth all night, so nothing jams and nobody waits.</p></div>
+      <div class="svc-card"><div class="svc-icon">📱</div><h3>Digital Gallery</h3><p>Every photo delivered digitally, so you keep the whole night.</p></div>
+      <div class="svc-card"><div class="svc-icon">🚚</div><h3>Setup &amp; Teardown</h3><p>We deliver, set up, and take it down. You don't lift a finger.</p></div>
+      <div class="svc-card"><div class="svc-icon">🎧</div><h3>DJ Combo</h3><p>Bundle the booth with your DJ package and save &mdash; one team, one timeline.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="gallery">
+  <div class="wrap">
+    <div class="eyebrow">Real Events</div>
+    <h2>Inside the <span class="gold">Booth</span></h2>
+    <div class="divider"></div>
+    <p class="lead">Actual strips and shots from recent weddings and parties around Middle Tennessee.</p>
+    <div class="pb-gallery">
+      <figure class="pbc"><img src="assets/booth/booth-01.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="eager"></figure>
+      <figure class="pbc"><img src="assets/booth/booth-02.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="eager"></figure>
+      <figure class="pbc"><img src="assets/booth/booth-03.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="eager"></figure>
+      <figure class="pbc"><img src="assets/booth/booth-04.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="eager"></figure>
+      <figure class="pbc"><img src="assets/booth/booth-05.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
+      <figure class="pbc"><img src="assets/booth/booth-06.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
+      <figure class="pbc"><img src="assets/booth/booth-07.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
+      <figure class="pbc"><img src="assets/booth/booth-08.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
+      <figure class="pbc"><img src="assets/booth/booth-09.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
+      <figure class="pbc"><img src="assets/booth/booth-10.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
+      <figure class="pbc"><img src="assets/booth/booth-11.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
+      <figure class="pbc"><img src="assets/booth/booth-12.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
+      <figure class="pbc"><img src="assets/booth/booth-13.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
+      <figure class="pbc"><img src="assets/booth/booth-14.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
+      <figure class="pbc"><img src="assets/booth/booth-15.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
+      <figure class="pbc"><img src="assets/booth/booth-16.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
+      <figure class="pbc"><img src="assets/booth/booth-17.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
+      <figure class="pbc"><img src="assets/booth/booth-18.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
+      <figure class="pbc"><img src="assets/booth/booth-19.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
+      <figure class="pbc"><img src="assets/booth/booth-20.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
+      <figure class="pbc"><img src="assets/booth/booth-21.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
+      <figure class="pbc"><img src="assets/booth/booth-22.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
+      <figure class="pbc"><img src="assets/booth/booth-23.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
+      <figure class="pbc"><img src="assets/booth/booth-24.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
+      <figure class="pbc"><img src="assets/booth/booth-25.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
+      <figure class="pbc"><img src="assets/booth/booth-26.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
+      <figure class="pbc"><img src="assets/booth/booth-27.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
+      <figure class="pbc"><img src="assets/booth/booth-28.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
+      <figure class="pbc"><img src="assets/booth/booth-29.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
+      <figure class="pbc"><img src="assets/booth/booth-30.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
+      <figure class="pbc"><img src="assets/booth/booth-31.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
+      <figure class="pbc"><img src="assets/booth/booth-32.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
+    </div>
+    <p class="note">Photos shared with permission from hosts. Guests who'd rather not appear can ask us to pull any shot &mdash; just say the word.</p>
+  </div>
+</section>
+
+<section class="about" id="how">
+  <div class="wrap">
+    <div class="eyebrow">How It Works</div>
+    <h2>Three Steps, <span class="gold">Done</span></h2>
+    <div class="divider"></div>
+    <div class="steps">
+      <div class="step"><h3>Pick Your Date</h3><p>Text or email us the date, venue, and hours. We confirm availability and hold it with a deposit.</p></div>
+      <div class="step"><h3>We Build It Your Way</h3><p>Choose your backdrop and props. Want your names, monogram, or wedding date printed on the strip? We'll do the design.</p></div>
+      <div class="step"><h3>We Run the Night</h3><p>We arrive early, set up, keep the booth running, and hand you the digital gallery afterward.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="pricing">
+  <div class="wrap">
+    <div class="eyebrow">Simple Pricing</div>
+    <h2>$300, <span class="gold">All In</span></h2>
+    <div class="divider"></div>
+    <div class="price-card">
+      <div class="amt">$300<small>Flat Rate &bull; Local</small></div>
+      <ul>
+        <li>Setup, operation &amp; teardown</li>
+        <li>Unlimited printed strips</li>
+        <li>Props &amp; backdrop included</li>
+        <li>Booth attendant on site</li>
+        <li>Digital gallery after the event</li>
+        <li>Hendersonville, Gallatin, Goodlettsville &amp; Nashville area</li>
+      </ul>
+      <a class="btn btn-gold" href="#contact">Book the Booth</a>
+    </div>
+    <p class="note">Outside the local area? We still travel &mdash; ask for a quote. Booking the DJ too? Ask about the combo price; it's cheaper than both separately.</p>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="eyebrow">Good to Know</div>
+    <h2>Booth <span class="gold">Questions</span></h2>
+    <div class="divider"></div>
+    <div class="faq-list" id="faqList"></div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="eyebrow" style="color: var(--gold-soft);">Let's Talk</div>
+    <h2>Book the <span class="gold">Booth</span></h2>
+    <div class="divider"></div>
+    <p>Tell us the date, venue, and how many hours you need. We'll confirm availability and send a quote &mdash; usually within the hour.</p>
+    <div class="areas">
+      <span>Hendersonville</span><span>Gallatin</span><span>Goodlettsville</span><span>Nashville</span><span>Sumner County</span><span>Middle TN</span>
+    </div>
+    <div class="contact-ctas">
+      <a class="btn btn-gold" href="sms:6615330100">📱 Text Us</a>
+      <a class="btn btn-white" href="mailto:djbenthomas@gmail.com?subject=Photo%20Booth%20Inquiry%20%E2%80%94%20AS%C2%B7U%C2%B7LIKE%C2%B7IT%20Entertainment">✉️ Email Us</a>
+      <a class="btn btn-ghost" href="tel:6615330100">Call</a>
+    </div>
+    <p class="contact-links"><a href="sms:6615330100">661-533-0100</a> &nbsp;&bull;&nbsp; <a href="mailto:djbenthomas@gmail.com">djbenthomas@gmail.com</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="co">AS·U·LIKE·IT Entertainment</div>
+  <div style="margin: 8px 0 4px;">Wedding DJ &bull; MC &bull; Photo Booth &mdash; Serving Hendersonville &amp; all of Middle Tennessee</div>
+  <div style="margin: 0 0 8px;"><a href="index.html">Home</a> &nbsp;&bull;&nbsp; <a href="photo-booth.html">Photo Booth</a> &nbsp;&bull;&nbsp; <a href="wedding-dj-hendersonville-tn.html">Hendersonville, TN</a> &nbsp;&bull;&nbsp; <a href="wedding-dj-gallatin-tn.html">Gallatin, TN</a> &nbsp;&bull;&nbsp; <a href="wedding-dj-goodlettsville-tn.html">Goodlettsville, TN</a> &nbsp;&bull;&nbsp; <a href="wedding-dj-nashville-tn.html">Nashville, TN</a> &nbsp;&bull;&nbsp; <a href="wedding-dj-sumner-county-tn.html">Sumner County, TN</a> &nbsp;&bull;&nbsp; <a href="wedding-dj-white-house-tn.html">White House, TN</a> &nbsp;&bull;&nbsp; <a href="wedding-dj-millersville-tn.html">Millersville, TN</a> &nbsp;&bull;&nbsp; <a href="wedding-dj-greenbrier-tn.html">Greenbrier, TN</a> &nbsp;&bull;&nbsp; <a href="wedding-dj-cross-plains-tn.html">Cross Plains, TN</a> &nbsp;&bull;&nbsp; <a href="wedding-dj-portland-tn.html">Portland, TN</a> &nbsp;&bull;&nbsp; <a href="wedding-dj-westmoreland-tn.html">Westmoreland, TN</a> &nbsp;&bull;&nbsp; <a href="wedding-dj-mt-juliet-tn.html">Mt. Juliet, TN</a> &nbsp;&bull;&nbsp; <a href="wedding-dj-lebanon-tn.html">Lebanon, TN</a> &nbsp;&bull;&nbsp; <a href="wedding-dj-old-hickory-tn.html">Old Hickory, TN</a> &nbsp;&bull;&nbsp; <a href="wedding-dj-madison-tn.html">Madison, TN</a> &nbsp;&bull;&nbsp; <a href="wedding-dj-hermitage-tn.html">Hermitage, TN</a> &nbsp;&bull;&nbsp; <a href="wedding-dj-springfield-tn.html">Springfield, TN</a></div>
+  <div><a href="https://as-ulikeit.com">as-ulikeit.com</a> &nbsp;&bull;&nbsp; <a href="sms:6615330100">661-533-0100</a> &nbsp;&bull;&nbsp; <a href="mailto:djbenthomas@gmail.com">djbenthomas@gmail.com</a></div>
+</footer>
+
+<script>
+var faqs = [
+  ["How much does the photo booth cost?", "$300 flat for the local area — that covers setup, the attendant, unlimited printed strips, props, the backdrop, teardown, and your digital gallery. No hidden add-ons."],
+  ["How many hours do we get?", "The standard booking runs three hours of booth time. Need longer? Add hours when you book and we'll quote it upfront."],
+  ["What kind of photos do we get?", "Printed strips in minutes, plus a digital copy of every shot delivered after the event so you can share and reprint them."],
+  ["Can we customize the strip?", "Yes. Names, wedding date, monogram, or your event logo printed on the strip — just tell us what you want and we'll design it."],
+  ["Do you bring props?", "A full prop box and a backdrop come with every booking. If you have a theme, we'll match it."],
+  ["How much space does it need?", "About a 10x10 foot footprint with access to a standard outlet. We'll confirm the layout with your venue ahead of time."],
+  ["Do you travel outside Hendersonville?", "We serve Hendersonville, Gallatin, Goodlettsville, Nashville, and the surrounding Middle Tennessee area. Further out is doable — ask for a travel quote."],
+  ["Can we book the DJ and the booth together?", "Yes, and it's the better deal. One team, one timeline, one point of contact — ask about the combo price."],
+  ["Does the booth work outdoors?", "It does. We'll plan for power, shade, and a weather backup with your venue."],
+  ["How do we reserve a date?", "Text or email us the date and venue. A deposit holds it — details come with your quote."]
+];
+var faqList = document.getElementById('faqList');
+faqs.forEach(function (f) {
+  var item = document.createElement('div');
+  item.className = 'faq-item';
+  item.innerHTML = '<button class="faq-q">' + f[0] + '<span class="plus">+</span></button>' +
+    '<div class="faq-a"><p>' + f[1] + '</p></div>';
+  var q = item.querySelector('.faq-q');
+  var a = item.querySelector('.faq-a');
+  q.addEventListener('click', function () {
+    var open = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(function (o) {
+      o.classList.remove('open'); o.querySelector('.faq-a').style.maxHeight = '0';
+    });
+    if (!open) { item.classList.add('open'); a.style.maxHeight = a.scrollHeight + 'px'; }
+  });
+  faqList.appendChild(item);
+});
+</script>
+</body>
+</html>

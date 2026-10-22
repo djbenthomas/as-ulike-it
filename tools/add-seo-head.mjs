@@ -1,15 +1,17 @@
 #!/usr/bin/env node
 /**
- * add-seo-head.mjs — inject rel=canonical + JSON-LD structured data into the
- * AS·U·LIKE·IT site pages. Idempotent: re-running replaces existing blocks.
+ * add-seo-head.mjs — inject the full SEO head block into every page.
+ * Idempotent: re-running replaces the generated block and de-dupes any
+ * hand-written og/twitter/geo meta tags that predate this script.
  *
- * Host note: canonical/sitemap currently point at the live host
- * (djbenthomas.github.io/as-ulike-it). After the as-ulikeit.com DNS switch,
- * re-run with HOST=https://as-ulikeit.com/ .
+ * Blocks generated per page:
+ *   canonical, robots, author, keywords, geo.*, ICBM, theme-color, favicon,
+ *   Open Graph (site_name/locale/url/type/title/description/image),
+ *   Twitter card, JSON-LD @graph (LocalBusiness + page-specific node)
  *
  * Usage: node tools/add-seo-head.mjs [--host https://djbenthomas.github.io/as-ulike-it/]
  */
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { ALL_CITIES } from './cities.mjs';
@@ -19,19 +21,26 @@ const argHost = process.argv.indexOf('--host');
 const HOST = (argHost > -1 ? process.argv[argHost + 1]
   : 'https://djbenthomas.github.io/as-ulike-it/').replace(/\/?$/, '/');
 
+const BRAND = 'AS·U·LIKE·IT Entertainment';
+const PHONE = '+1-661-533-0100';
+const EMAIL = 'djbenthomas@gmail.com';
+const CITY = 'Hendersonville';
+
 const BIZ = {
   '@type': ['LocalBusiness', 'EntertainmentBusiness'],
-  name: 'AS·U·LIKE·IT Entertainment',
+  name: BRAND,
   alternateName: ['As You Like It Entertainment', 'DJ Ben Thomas', 'AS U LIKE IT'],
   description: 'Wedding and event DJ in Hendersonville, TN. 15+ years and 900+ events. Professional MC, custom playlists, sound and lighting, plus photo booth rentals. Serving Sumner County, Wilson County, Robertson County, Davidson County, and all of Middle Tennessee.',
-  telephone: '+1-661-533-0100',
-  email: 'djbenthomas@gmail.com',
-  address: { '@type': 'PostalAddress', addressLocality: 'Hendersonville', addressRegion: 'TN', addressCountry: 'US' },
+  telephone: PHONE,
+  email: EMAIL,
+  address: { '@type': 'PostalAddress', addressLocality: CITY, addressRegion: 'TN', addressCountry: 'US' },
+  geo: { '@type': 'GeoCoordinates', latitude: 36.3048, longitude: -86.62 },
   image: HOST + 'assets/canva-hero.jpg',
   logo: HOST + 'assets/canva-logo.png',
   priceRange: '$$',
-  areaServed: [...ALL_CITIES.map((c) => c.name), 'Middle Tennessee'].map(
-    (n) => ({ '@type': 'City', name: n })),
+  currenciesAccepted: 'USD',
+  paymentAccepted: 'Cash, Check, Credit Card',
+  areaServed: [...ALL_CITIES.map((c) => c.name), 'Middle Tennessee'].map((n) => ({ '@type': 'City', name: n })),
   sameAs: [
     'https://www.facebook.com/asyoulikeitentertainment',
     'https://www.thebash.com/dj/as-you-like-it-dj',
@@ -44,11 +53,6 @@ const BIZ = {
   ],
 };
 
-const CITY = Object.fromEntries(
-  ALL_CITIES.map((c) => [c.file, { name: c.name, title: `Wedding DJ in ${c.name}, TN` }]),
-);
-
-// FAQPage data mirrors the on-page FAQ list in index.html (Q/A pairs, in order).
 const FAQ = [
   ['What areas do you serve?', "We're based in Hendersonville, TN and serve the whole Nashville-area ring: Gallatin, Goodlettsville, White House, Millersville, Greenbrier, Cross Plains, Portland, Westmoreland, Mt. Juliet, Lebanon, Old Hickory, Madison, Hermitage, Springfield, Sumner County, and all of Middle Tennessee. Most of those are a 10–25 minute drive for us, so there's no travel markup. We're happy to travel further for the right event."],
   ['How long have you been doing this?', "15+ years and 900+ events — weddings, corporate events, private parties, and more. We've seen it all and know how to keep any crowd dancing."],
@@ -66,80 +70,201 @@ const FAQ = [
   ['Can we meet before booking?', "Absolutely. We'll chat about your event, music style, and timeline before you book — so you know exactly who's running your night."],
 ];
 
+/* ---------- per-page config ---------- */
+
+const BOOTH_KEYWORDS = [
+  'photo booth rental hendersonville tn', 'photo booth rental nashville', 'photo booth rental gallatin tn',
+  'photo booth rental near me', 'photo booth rental sumner county', 'photo booth rental goodlettsville tn',
+  'photo booth rental mt juliet tn', 'wedding photo booth nashville', 'affordable photo booth rental nashville',
+  'photo booth rental price nashville', 'photo booth with props', 'photo booth with attendant',
+  'dj and photo booth combo', 'photo booth for grad party', 'photo booth for corporate event nashville',
+  'photo booth rental springfield tn', 'photo booth rental lebanon tn', 'photo booth rental portland tn',
+];
+
+const HOME_KEYWORDS = [
+  'wedding dj hendersonville tn', 'wedding dj nashville', 'wedding dj near me', 'hendersonville tn dj',
+  'wedding mc nashville', 'wedding reception dj', 'sumner county wedding dj', 'dj and photo booth combo',
+  'affordable wedding dj nashville', 'wedding dj gallatin tn', 'wedding dj goodlettsville tn',
+  'corporate event dj nashville', 'party dj hendersonville tn', 'school dance dj nashville',
+  'wedding dj mt juliet tn', 'wedding dj lebanon tn', 'nashville wedding entertainment',
+  'ceremony music dj nashville', 'uplighting rental nashville wedding', '15 years 900 events dj',
+];
+
+function keywordsFor(file) {
+  if (file === 'index.html') return HOME_KEYWORDS;
+  if (file === 'photo-booth.html') return BOOTH_KEYWORDS;
+  const c = ALL_CITIES.find((x) => x.file === file);
+  if (!c) return HOME_KEYWORDS;
+  const n = c.name;
+  const county = (c.county || 'Sumner County').replace(' & ', ' ');
+  const nearby = ALL_CITIES.filter((x) => x.file !== file).slice(0, 5).map((x) => x.name);
+  return [
+    `wedding dj ${n} tn`, `${n} wedding dj`, `wedding dj near ${n} tn`, `dj for wedding ${n} tn`,
+    `wedding mc ${n} tn`, `wedding reception dj ${n} tn`, `photo booth rental ${n} tn`,
+    `affordable wedding dj ${n} tn`, `wedding dj ${county}`, `${n} tn dj`,
+    `ceremony music ${n} tn`, `uplighting ${n} wedding`,
+    ...nearby.map((x) => `wedding dj ${x} tn`),
+  ];
+}
+
+const SITE_IMAGE = {
+  'index.html': 'assets/canva-hero.jpg',
+  'photo-booth.html': 'assets/booth/booth-01.jpg',
+};
+
 const MARK_START = '<!-- seo:head:start (generated by tools/add-seo-head.mjs) -->';
 const MARK_END = '<!-- seo:head:end -->';
 
-function block(host, canonicalRel, graph) {
-  return [
-    MARK_START,
-    `<link rel="canonical" href="${canonicalRel}">`,
-    `<script type="application/ld+json">`,
-    JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }, null, 2),
-    `</script>`,
-    MARK_END,
-  ].join('\n');
+/* ---------- helpers ---------- */
+
+function stripBlock(html, file) {
+  let out = html;
+  for (;;) {
+    const s = out.indexOf(MARK_START);
+    if (s === -1) break;
+    const e = out.indexOf(MARK_END, s);
+    if (e === -1) throw new Error(`${file}: malformed existing SEO block`);
+    let end = e + MARK_END.length;
+    if (out[end] === '\n') end += 1;
+    out = out.slice(0, s) + out.slice(end);
+  }
+  return out;
 }
 
-function serviceNode(city, url) {
+// Remove hand-written meta tags this script now owns, so nothing is duplicated.
+function stripLegacyMeta(html) {
+  return html
+    .replace(/^[ \t]*<meta (?:property="og:[^"]*"|name="twitter:[^"]*"|name="keywords"|name="robots"|name="author"|name="geo\.[^"]*"|name="ICBM"|name="theme-color")[^>]*>\s*$\n?/gim, '');
+}
+
+function pageMeta(html, file) {
+  const title = (html.match(/<title>([\s\S]*?)<\/title>/) || [])[1];
+  const desc = (html.match(/<meta name="description" content="([\s\S]*?)">/) || [])[1];
+  if (!title || !desc) throw new Error(`${file}: missing title or description`);
+  return { title, desc };
+}
+
+function headBlock({ title, desc, file, image, graph, keywords }) {
+  const url = HOST + (file === 'index.html' ? '' : file);
+  const img = HOST + (image || 'assets/canva-hero.jpg');
+  const L = [];
+  L.push(MARK_START);
+  L.push(`<link rel="canonical" href="${url}">`);
+  L.push(`<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">`);
+  L.push(`<meta name="author" content="Ben Thomas — ${BRAND}">`);
+  L.push(`<meta name="keywords" content="${keywords.join(', ')}">`);
+  L.push(`<meta name="geo.region" content="US-TN">`);
+  L.push(`<meta name="geo.placename" content="${CITY}, Tennessee">`);
+  L.push(`<meta name="geo.position" content="36.3048;-86.6200">`);
+  L.push(`<meta name="ICBM" content="36.3048, -86.6200">`);
+  L.push(`<meta name="theme-color" content="#B98A3E">`);
+  L.push(`<link rel="icon" type="image/png" href="assets/canva-logo.png">`);
+  L.push(`<link rel="apple-touch-icon" href="assets/canva-logo.png">`);
+  L.push(`<meta property="og:site_name" content="${BRAND}">`);
+  L.push(`<meta property="og:locale" content="en_US">`);
+  L.push(`<meta property="og:type" content="website">`);
+  L.push(`<meta property="og:url" content="${url}">`);
+  L.push(`<meta property="og:title" content="${title}">`);
+  L.push(`<meta property="og:description" content="${desc}">`);
+  L.push(`<meta property="og:image" content="${img}">`);
+  L.push(`<meta property="og:image:alt" content="${BRAND} — wedding DJ and photo booth in ${CITY}, TN">`);
+  L.push(`<meta name="twitter:card" content="summary_large_image">`);
+  L.push(`<meta name="twitter:title" content="${title}">`);
+  L.push(`<meta name="twitter:description" content="${desc}">`);
+  L.push(`<meta name="twitter:image" content="${img}">`);
+  L.push(`<script type="application/ld+json">`);
+  L.push(JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }, null, 2));
+  L.push(`</script>`);
+  L.push(MARK_END);
+  return L.join('\n');
+}
+
+function serviceNode(name, serviceType, url, cityName) {
   return {
     '@type': 'Service',
-    name: `Wedding DJ Services in ${city}, TN`,
-    serviceType: 'Wedding DJ',
-    provider: { '@type': 'LocalBusiness', name: 'AS·U·LIKE·IT Entertainment' },
-    areaServed: { '@type': 'City', name: city },
+    name,
+    serviceType,
+    provider: { '@type': 'LocalBusiness', name: BRAND },
+    areaServed: { '@type': 'City', name: cityName },
     url,
   };
 }
 
-function stripBlock(html, file) {
-  let stripped = html;
-  for (;;) {
-    const s = stripped.indexOf(MARK_START);
-    if (s === -1) break;
-    const e = stripped.indexOf(MARK_END, s);
-    if (e === -1) throw new Error(`${file}: malformed existing SEO block (no end marker)`);
-    let end = e + MARK_END.length;
-    if (stripped[end] === '\n') end += 1;
-    stripped = stripped.slice(0, s) + stripped.slice(end);
+function pageGraph(file, title) {
+  const url = HOST + (file === 'index.html' ? '' : file);
+  const biz = Object.assign({ '@id': HOST + '#business' }, BIZ);
+
+  if (file === 'index.html') {
+    return [
+      biz,
+      { '@type': 'WebSite', name: BRAND, url: HOST },
+      {
+        '@type': 'FAQPage',
+        mainEntity: FAQ.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+      },
+    ];
   }
-  return stripped;
+
+  if (file === 'photo-booth.html') {
+    const images = existsSync(join(ROOT, 'assets/booth'))
+      ? readdirSync(join(ROOT, 'assets/booth')).filter((f) => f.endsWith('.jpg')).sort().map((f) => HOST + 'assets/booth/' + f)
+      : [];
+    return [
+      biz,
+      {
+        '@type': 'Service',
+        name: 'Photo Booth Rental',
+        serviceType: 'Photo Booth Rental',
+        description: 'Photo booth rental with printed strips, props, backdrop, an on-site attendant, and a digital gallery. $300 flat rate in the Hendersonville and Nashville area.',
+        provider: { '@type': 'LocalBusiness', name: BRAND },
+        areaServed: ALL_CITIES.map((c) => ({ '@type': 'City', name: c.name })),
+        offers: { '@type': 'Offer', price: '300', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },
+        url,
+        image: images.slice(0, 12),
+      },
+      { '@type': 'ImageGallery', name: `${BRAND} photo booth gallery`, image: images.slice(0, 12), url },
+    ];
+  }
+
+  const c = ALL_CITIES.find((x) => x.file === file);
+  return [
+    biz,
+    serviceNode(`Wedding DJ Services in ${c.name}, TN`, 'Wedding DJ', url, c.name),
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: HOST },
+        { '@type': 'ListItem', position: 2, name: `Wedding DJ in ${c.name}, TN`, item: url },
+      ],
+    },
+  ];
 }
 
-function inject(file, canonicalRel, graph) {
-  const path = join(ROOT, file);
-  const html = readFileSync(path, 'utf8');
-  const stripped = stripBlock(html, file);
+/* ---------- run ---------- */
+
+const pages = readdirSync(ROOT).filter((f) => (f === 'index.html' || f.endsWith('.html')) && f !== 'index-offline.html');
+const results = [];
+
+for (const file of pages) {
+  const raw = readFileSync(join(ROOT, file), 'utf8');
+  const stripped = stripLegacyMeta(stripBlock(raw, file));
+  const { title, desc } = pageMeta(stripped, file);
+  const block = headBlock({
+    title,
+    desc,
+    file,
+    image: SITE_IMAGE[file],
+    graph: pageGraph(file, title),
+    keywords: keywordsFor(file),
+  });
   const headAt = stripped.indexOf('</head>');
   if (headAt === -1) throw new Error(`${file}: no </head>`);
-  const out = stripped.slice(0, headAt) + block(HOST, canonicalRel, graph) + '\n' + stripped.slice(headAt);
-  const changed = out !== html;
-  if (changed) writeFileSync(path, out);
-  return { file, canonical: canonicalRel, graphNodes: graph.length, changed };
+  const out = stripped.slice(0, headAt) + block + '\n' + stripped.slice(headAt);
+  if (out !== raw) writeFileSync(join(ROOT, file), out);
+  results.push({ file, changed: out !== raw, keywords: keywordsFor(file).length, nodes: pageGraph(file, title).length });
 }
 
-const results = [];
-// Home page: LocalBusiness + WebSite + FAQPage
-results.push(inject('index.html', HOST, [
-  Object.assign({ '@id': HOST + '#business' }, BIZ),
-  { '@type': 'WebSite', name: 'AS·U·LIKE·IT Entertainment', url: HOST },
-  {
-    '@type': 'FAQPage',
-    mainEntity: FAQ.map(([q, a]) => ({
-      '@type': 'Question',
-      name: q,
-      acceptedAnswer: { '@type': 'Answer', text: a },
-    })),
-  },
-]));
-
-// City landing pages: LocalBusiness + Service focused on that city
-for (const [file, city] of Object.entries(CITY)) {
-  const url = HOST + file;
-  results.push(inject(file, url, [
-    Object.assign({ '@id': HOST + '#business' }, BIZ),
-    serviceNode(city.name, url),
-  ]));
+for (const r of results) {
+  console.log(`${r.changed ? 'ok  ' : 'same'} ${r.file.padEnd(36)} ${String(r.keywords).padStart(2)} keywords  ${r.nodes} schema nodes`);
 }
-
-for (const r of results) console.log(`${r.changed ? 'ok  ' : 'same'} ${r.file.padEnd(36)} ${r.graphNodes} nodes  ${r.canonical}`);
-console.log(`host: ${HOST}`);
+console.log(`${results.length} pages | host: ${HOST}`);

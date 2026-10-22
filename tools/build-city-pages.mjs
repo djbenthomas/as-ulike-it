@@ -26,7 +26,7 @@ function must(html, needle, file) {
 /* ---------- shared chrome ---------- */
 
 const footerLinks = () =>
-  ['<div style="margin: 0 0 8px;"><a href="index.html">Home</a> &nbsp;&bull;&nbsp; ' +
+  ['<div style="margin: 0 0 8px;"><a href="index.html">Home</a> &nbsp;&bull;&nbsp; <a href="photo-booth.html">Photo Booth</a> &nbsp;&bull;&nbsp; ' +
     ALL_CITIES.map((c) => `<a href="${c.file}">${c.name}, TN</a>`).join(' &nbsp;&bull;&nbsp; ') +
     '</div>'];
 
@@ -90,10 +90,6 @@ for (const c of NEW_CITIES) {
     `<title>Wedding DJ in ${c.name}, TN | AS·U·LIKE·IT Entertainment</title>`, 'title');
   replaceOnce('content="Gallatin\'s trusted wedding DJ — 15+ years, 900+ events. MC, custom playlists, lighting &amp; photo booth. DJ Ben Thomas serves Gallatin, Hendersonville, Sumner County &amp; all of Middle Tennessee."',
     `content="${c.desc}"`, 'meta description');
-  replaceOnce('content="Wedding DJ in Gallatin, TN — AS·U·LIKE·IT Entertainment"',
-    `content="Wedding DJ in ${c.name}, TN — AS·U·LIKE·IT Entertainment"`, 'og:title');
-  replaceOnce('content="15+ years, 900+ events. Gallatin\'s own wedding DJ, MC, and photo booth. Your dance floor, full — your timeline, on track."',
-    `content="${c.ogDesc}"`, 'og:description');
 
   // Hero
   replaceOnce('<div class="eyebrow">Wedding DJ &amp; Photo Booth &bull; Gallatin, TN</div>',

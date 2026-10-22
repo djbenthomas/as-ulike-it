@@ -10,11 +10,11 @@ export const HOST = 'https://djbenthomas.github.io/as-ulike-it/';
 
 // Existing hand-written city pages (not generated).
 export const EXISTING = [
-  { slug: 'hendersonville-tn', name: 'Hendersonville', file: 'wedding-dj-hendersonville-tn.html', priority: 1.0 },
-  { slug: 'gallatin-tn',       name: 'Gallatin',       file: 'wedding-dj-gallatin-tn.html',       priority: 0.95 },
-  { slug: 'goodlettsville-tn', name: 'Goodlettsville', file: 'wedding-dj-goodlettsville-tn.html', priority: 0.9 },
-  { slug: 'nashville-tn',      name: 'Nashville',      file: 'wedding-dj-nashville-tn.html',      priority: 0.9 },
-  { slug: 'sumner-county-tn',  name: 'Sumner County',  file: 'wedding-dj-sumner-county-tn.html',  priority: 0.9 },
+  { slug: 'hendersonville-tn', name: 'Hendersonville', file: 'wedding-dj-hendersonville-tn.html', priority: 1.0, county: 'Sumner County', miles: 0 },
+  { slug: 'gallatin-tn',       name: 'Gallatin',       file: 'wedding-dj-gallatin-tn.html',       priority: 0.95, county: 'Sumner County', miles: 8 },
+  { slug: 'goodlettsville-tn', name: 'Goodlettsville', file: 'wedding-dj-goodlettsville-tn.html', priority: 0.9, county: 'Davidson County', miles: 7 },
+  { slug: 'nashville-tn',      name: 'Nashville',      file: 'wedding-dj-nashville-tn.html',      priority: 0.9, county: 'Davidson County', miles: 22 },
+  { slug: 'sumner-county-tn',  name: 'Sumner County',  file: 'wedding-dj-sumner-county-tn.html',  priority: 0.9, county: 'Sumner County', miles: 0 },
 ];
 
 // New generated pages — towns/cities within ~25 miles of Hendersonville.
