@@ -24,7 +24,7 @@ const footerLinks = ['<div style="margin: 0 0 8px;"><a href="index.html">Home</a
   ALL_CITIES.map((c) => `<a href="${c.file}">${c.name}, TN</a>`).join(' &nbsp;&bull;&nbsp; ') + '</div>'][0];
 
 const title = 'Photo Booth Rental in Hendersonville, TN | AS·U·LIKE·IT Entertainment';
-const desc = 'Photo booth rental in Hendersonville, Gallatin, and the Nashville area — $300 flat, setup and teardown included, printed strips, props, attendant, and a digital gallery.';
+const desc = 'Photo booth rental in Hendersonville, Gallatin, and the Nashville area — $300 flat. Inflatable backdrop, props, printed strips, self-serve, plus your own photo website with every digital image.';
 
 const html = `<!DOCTYPE html>
 <html lang="en">
@@ -34,7 +34,7 @@ const html = `<!DOCTYPE html>
 <title>${title}</title>
 <meta name="description" content="${desc}">
 <meta property="og:title" content="Photo Booth Rental — AS·U·LIKE·IT Entertainment">
-<meta property="og:description" content="Printed strips in minutes, props, an attendant, and a digital gallery. $300 flat in the Hendersonville / Nashville area.">
+<meta property="og:description" content="Inflatable backdrop booth, printed strips in minutes, self-serve, and a personal photo website with every digital image. $300 flat.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://djbenthomas.github.io/as-ulike-it/assets/booth/${shots[0]}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -104,12 +104,45 @@ ${css}
     <p class="lead">No add-ons, no surprise line items. The price on this page is the price.</p>
     <div class="svc-grid">
       <div class="svc-card"><div class="svc-icon">🖨️</div><h3>Prints in Minutes</h3><p>Photo strips print on the spot &mdash; your guests walk away with one.</p></div>
-      <div class="svc-card"><div class="svc-icon">🎭</div><h3>Props &amp; Backdrop</h3><p>A full prop box plus a backdrop that fits your theme.</p></div>
-      <div class="svc-card"><div class="svc-icon">🙋</div><h3>Booth Attendant</h3><p>Someone runs the booth all night, so nothing jams and nobody waits.</p></div>
-      <div class="svc-card"><div class="svc-icon">📱</div><h3>Digital Gallery</h3><p>Every photo delivered digitally, so you keep the whole night.</p></div>
+      <div class="svc-card"><div class="svc-icon">🎈</div><h3>Inflatable Backdrop</h3><p>A full enclosed backdrop booth &mdash; clean, evenly lit shots every time, in any room.</p></div>
+      <div class="svc-card"><div class="svc-icon">🎭</div><h3>Props Included</h3><p>A full prop box your guests actually dig through.</p></div>
+      <div class="svc-card"><div class="svc-icon">🙌</div><h3>Self-Serve</h3><p>Nobody hovering, nobody rushing you. Your guests run it themselves &mdash; that&rsquo;s what makes it fun.</p></div>
+      <div class="svc-card"><div class="svc-icon">🌐</div><h3>Your Own Photo Site</h3><p>A personalized website with every single photo from the night, in digital &mdash; yours to keep and share.</p></div>
       <div class="svc-card"><div class="svc-icon">🚚</div><h3>Setup &amp; Teardown</h3><p>We deliver, set up, and take it down. You don't lift a finger.</p></div>
       <div class="svc-card"><div class="svc-icon">🎧</div><h3>DJ Combo</h3><p>Bundle the booth with your DJ package and save &mdash; one team, one timeline.</p></div>
     </div>
+  </div>
+</section>
+
+<section class="about" id="backdrop">
+  <div class="wrap">
+    <div class="eyebrow">The Setup</div>
+    <h2>The Inflatable <span class="gold">Backdrop</span></h2>
+    <div class="divider"></div>
+    <div class="about-grid">
+      <img class="about-img" src="assets/booth/booth-05.jpg" alt="Inflatable photo booth backdrop at a Middle Tennessee wedding">
+      <div class="about-text">
+        <p>This isn&rsquo;t a curtain on a flimsy frame. It&rsquo;s a <strong>full inflatable backdrop booth</strong> &mdash; a soft, enclosed shell that your guests step into. It inflates into shape and holds itself up, which is why it works in places a traditional booth can&rsquo;t go.</p>
+        <p>What that means for your photos: the background is <strong>clean and identical in every single shot</strong>. No cluttered wall behind it, no ceiling lights blowing out half the frame, no shadows from somebody&rsquo;s phone. The booth lights the shot the same way at 6 PM and at midnight, so the photos from the first hour and the last hour actually look like they belong together.</p>
+        <p>It also sets up almost anywhere &mdash; tight banquet rooms, barns, tents, a driveway, out on the lawn &mdash; because it doesn&rsquo;t need a wall to hang anything on and there&rsquo;s no rig to trip over. And because the walls are inflated, it&rsquo;s forgiving in a crowded room.</p>
+        <div class="sig">&mdash; and no attendant hovering</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="website">
+  <div class="wrap">
+    <div class="eyebrow">Yours to Keep</div>
+    <h2>Your Own <span class="gold">Photo Website</span></h2>
+    <div class="divider"></div>
+    <p class="lead">Every photo taken in the booth &mdash; all of them, in digital &mdash; goes onto a personalized website built for your event.</p>
+    <div class="svc-grid">
+      <div class="svc-card"><div class="svc-icon">🌐</div><h3>One Link for Everyone</h3><p>Send it to your guests. No app, no download, no logins to fight with.</p></div>
+      <div class="svc-card"><div class="svc-icon">🖼️</div><h3>Every Single Photo</h3><p>Not a highlight reel &mdash; the whole night, every shot the booth took.</p></div>
+      <div class="svc-card"><div class="svc-icon">⬇️</div><h3>Download &amp; Reprint</h3><p>Full-resolution files, yours to save, print, post, or frame.</p></div>
+    </div>
+    <p class="note">Your site, your photos. We don&rsquo;t watermark them and we don&rsquo;t hold them hostage.</p>
   </div>
 </section>
 
@@ -149,8 +182,10 @@ ${gallery}
       <ul>
         <li>Setup, operation &amp; teardown</li>
         <li>Unlimited printed strips</li>
-        <li>Props &amp; backdrop included</li>
-        <li>Booth attendant on site</li>
+        <li>Inflatable backdrop booth</li>
+        <li>Props included</li>
+        <li>Self-serve &mdash; no attendant hovering</li>
+        <li>Personalized photo website with every digital image</li>
         <li>Digital gallery after the event</li>
         <li>Hendersonville, Gallatin, Goodlettsville &amp; Nashville area</li>
       </ul>
@@ -196,11 +231,13 @@ ${gallery}
 
 <script>
 var faqs = [
-  ["How much does the photo booth cost?", "$300 flat for the local area — that covers setup, the attendant, unlimited printed strips, props, the backdrop, teardown, and your digital gallery. No hidden add-ons."],
+  ["How much does the photo booth cost?", "$300 flat for the local area — that covers setup, the inflatable backdrop booth, props, unlimited printed strips, teardown, and your own photo website with every digital image. No hidden add-ons."],
   ["How many hours do we get?", "The standard booking runs three hours of booth time. Need longer? Add hours when you book and we'll quote it upfront."],
-  ["What kind of photos do we get?", "Printed strips in minutes, plus a digital copy of every shot delivered after the event so you can share and reprint them."],
+  ["What kind of photos do we get?", "Printed strips in minutes at the booth — plus every single photo in digital form on your own personalized photo website afterward. You keep all of them, share the link with guests, download, and reprint anything you want."],
   ["Can we customize the strip?", "Yes. Names, wedding date, monogram, or your event logo printed on the strip — just tell us what you want and we'll design it."],
-  ["Do you bring props?", "A full prop box and a backdrop come with every booking. If you have a theme, we'll match it."],
+  ["Is anyone running the booth?", "No &mdash; and that's on purpose. The booth is self-serve, so your guests walk up and use it whenever they want, however many times they want. No one standing there watching, no one telling anybody to hurry up. Guests tell us that's exactly what makes it fun &mdash; and the photos come out looser and more personal because of it. We set it up, test it, and it runs itself all night."],
+  ["How do we get our photos?", "Every photo lands on a personalized photo website built for your event &mdash; one link you can share with guests. All the images, in digital, full resolution, no watermark. Download, reprint, or post whatever you want."],
+  ["Do you bring props?", "A full prop box comes with every booking. If you have a theme, we'll match it."],
   ["How much space does it need?", "About a 10x10 foot footprint with access to a standard outlet. We'll confirm the layout with your venue ahead of time."],
   ["Do you travel outside Hendersonville?", "We serve Hendersonville, Gallatin, Goodlettsville, Nashville, and the surrounding Middle Tennessee area. Further out is doable — ask for a travel quote."],
   ["Can we book the DJ and the booth together?", "Yes, and it's the better deal. One team, one timeline, one point of contact — ask about the combo price."],
