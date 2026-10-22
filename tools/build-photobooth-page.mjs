@@ -17,7 +17,7 @@ const shots = readdirSync(join(ROOT, 'assets/booth')).filter((f) => f.endsWith('
 if (shots.length < 1) throw new Error('no booth photo found in assets/booth');
 
 const gallery = shots.map((f, i) =>
-  `      <figure class="pb-single"><img src="assets/booth/${f}" alt="The AS·U·LIKE·IT inflatable photo booth backdrop set up at an event" loading="eager"></figure>`
+  `      <figure class="pb-single"><picture><source srcset="assets/booth/${f.replace(/\.jpg$/, '.webp')}" type="image/webp"><img src="assets/booth/${f}" alt="The AS·U·LIKE·IT inflatable photo booth backdrop set up at an event" width="1322" height="1400" loading="eager" decoding="async"></picture></figure>`
 ).join('\n');
 
 const footerLinks = ['<div style="margin: 0 0 8px;"><a href="index.html">Home</a> &nbsp;&bull;&nbsp; <a href="photo-booth.html">Photo Booth</a> &nbsp;&bull;&nbsp; ' +
@@ -63,6 +63,28 @@ ${css}
   .step h3 { font-family: 'Cormorant Garamond', serif; font-size: 21px; margin-bottom: 8px; }
   .step p { color: var(--ink-soft); font-size: 15px; }
   .note { max-width: 720px; margin: 34px auto 0; text-align: center; font-size: 13.5px; color: var(--ink-soft); letter-spacing: .3px; }
+/* ---------- Inquiry form ---------- */
+  .inq { max-width: 760px; margin: 38px auto 8px; text-align: left; }
+  .inq-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  @media (max-width: 640px) { .inq-grid { grid-template-columns: 1fr; } }
+  .inq label { display: block; font-size: 11.5px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,.62); margin-bottom: 6px; }
+  .inq input, .inq select, .inq textarea {
+    width: 100%; padding: 13px 15px; border-radius: 8px; font-family: 'Jost', sans-serif;
+    font-size: 15px; color: #fff; background: rgba(255,255,255,.07);
+    border: 1px solid rgba(255,255,255,.22); outline: none;
+  }
+  .inq input:focus, .inq select:focus, .inq textarea:focus { border-color: var(--gold); background: rgba(255,255,255,.1); }
+  .inq input::placeholder, .inq textarea::placeholder { color: rgba(255,255,255,.38); }
+  .inq select option { color: #2A2520; }
+  .inq .full { grid-column: 1 / -1; }
+  .inq button {
+    margin-top: 6px; width: 100%; padding: 15px 30px; border: 0; border-radius: 999px;
+    background: var(--gold); color: #fff; font-family: 'Jost', sans-serif; font-weight: 500;
+    letter-spacing: 2px; font-size: 13.5px; text-transform: uppercase; cursor: pointer; transition: background .2s;
+  }
+  .inq button:hover { background: #A5782F; }
+  .inq-note { font-size: 12.5px; color: rgba(255,255,255,.55); margin-top: 12px; text-align: center; }
+  .inq-or { text-align:center; color: rgba(255,255,255,.5); font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase; margin: 34px 0 20px; }
 </style>
 </head>
 <body>
@@ -85,7 +107,8 @@ ${css}
   <div class="wrap">
     <div class="eyebrow">Photo Booth Rental &bull; Hendersonville, TN</div>
     <h1>The Photo <span class="amp">Booth</span></h1>
-    <p class="tagline">Printed strips in minutes, props people actually use, and a digital gallery of every shot &mdash; $300 flat, setup included.</p>
+    <p class="tagline" style="font-size:clamp(18px,2.8vw,24px); color:#fff; max-width:760px; margin:0 auto;"><strong>Your party doesn&rsquo;t end at 8 &mdash; and neither does your photo booth.</strong></p>
+    <p class="tagline" style="margin-top:10px;">Ours stays through the end of your event, with nobody hovering over you.</p>
     <div class="stats">
       <div><div class="stat-num">$300</div><div class="stat-label">Flat Rate</div></div>
       <div><div class="stat-num">3+</div><div class="stat-label">Hours</div></div>
@@ -98,6 +121,20 @@ ${css}
   </div>
   <div class="scroll-hint">Scroll</div>
 </header>
+
+<section class="services" id="included" style="padding:64px 0 56px;">
+  <div class="wrap">
+    <div class="eyebrow">In Every Booking</div>
+    <h2>Instant Prints, <span class="gold">Custom Everything</span></h2>
+    <div class="divider"></div>
+    <div class="svc-grid">
+      <div class="svc-card"><div class="svc-icon">🖨️</div><h3>Instant Prints</h3><p>Strips in your hands in seconds &mdash; not a link to check later.</p></div>
+      <div class="svc-card"><div class="svc-icon">✒️</div><h3>Customized Designs</h3><p>Your names, date, or monogram printed on every strip.</p></div>
+      <div class="svc-card"><div class="svc-icon">🎭</div><h3>Props Included</h3><p>A full prop box your guests actually dig through.</p></div>
+      <div class="svc-card"><div class="svc-icon">🌐</div><h3>Online Photo Gallery</h3><p>Every shot in digital on your own personal photo website.</p></div>
+    </div>
+  </div>
+</section>
 
 <section class="about" id="what">
   <div class="wrap">
@@ -123,7 +160,7 @@ ${css}
     <h2>The Inflatable <span class="gold">Backdrop</span></h2>
     <div class="divider"></div>
     <div class="about-grid">
-      <img class="about-img" src="assets/booth/${shots[0]}" alt="Inflatable photo booth backdrop at a Middle Tennessee wedding">
+      <picture><source srcset="assets/booth/${shots[0].replace(/\.jpg$/, '.webp')}" type="image/webp"><img class="about-img" src="assets/booth/${shots[0]}" alt="Inflatable photo booth backdrop at a Middle Tennessee wedding" width="1322" height="1400" loading="lazy" decoding="async"></picture>
       <div class="about-text">
         <p>This isn&rsquo;t a curtain on a flimsy frame. It&rsquo;s a <strong>full inflatable backdrop booth</strong> &mdash; a soft, enclosed shell that your guests step into. It inflates into shape and holds itself up, which is why it works in places a traditional booth can&rsquo;t go.</p>
         <p>What that means for your photos: the background is <strong>clean and identical in every single shot</strong>. No cluttered wall behind it, no ceiling lights blowing out half the frame, no shadows from somebody&rsquo;s phone. The booth lights the shot the same way at 6 PM and at midnight, so the photos from the first hour and the last hour actually look like they belong together.</p>
@@ -192,6 +229,7 @@ ${gallery}
         <li>Digital gallery after the event</li>
         <li>Hendersonville, Gallatin, Goodlettsville &amp; Nashville area</li>
       </ul>
+      <p style="font-family:'Cormorant Garamond',serif; font-size:20px; font-style:italic; color:var(--ink); margin:0 0 20px;">Your party doesn&rsquo;t end at 8 &mdash; and neither does your photo booth. Ours stays through the end of your event, with nobody hovering over you.</p>
       <a class="btn btn-gold" href="#contact">Book the Booth</a>
     </div>
     <p class="note">Outside the local area? We still travel &mdash; ask for a quote. Booking the DJ too? Ask about the combo price; it's cheaper than both separately.</p>
@@ -216,6 +254,34 @@ ${gallery}
     <div class="areas">
       <span>Hendersonville</span><span>Gallatin</span><span>Goodlettsville</span><span>Nashville</span><span>Sumner County</span><span>Middle TN</span>
     </div>
+    <div class="inq-or">Or reach us directly</div>
+<form class="inq" action="https://formsubmit.co/djbenthomas@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="New booking inquiry — as-ulikeit.com">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="_honey" style="display:none">
+      <div class="inq-grid">
+        <div><label for="inq-name">Your name</label><input id="inq-name" type="text" name="name" required placeholder="First and last"></div>
+        <div><label for="inq-email">Email</label><input id="inq-email" type="email" name="email" required placeholder="you@email.com"></div>
+        <div><label for="inq-phone">Phone</label><input id="inq-phone" type="tel" name="phone" placeholder="(615) 555-0123"></div>
+        <div><label for="inq-date">Event date</label><input id="inq-date" type="date" name="event_date" required></div>
+        <div><label for="inq-venue">Venue / location</label><input id="inq-venue" type="text" name="venue" placeholder="Venue name or city"></div>
+        <div><label for="inq-guests">Guest count</label><input id="inq-guests" type="text" name="guests" placeholder="Approximate"></div>
+        <div class="full"><label for="inq-services">Services needed</label>
+          <select id="inq-services" name="services" multiple size="5" style="height:auto;">
+            <option value="Wedding DJ & MC">Wedding DJ &amp; MC</option>
+            <option value="Ceremony sound">Ceremony sound</option>
+            <option value="Reception DJ + MC">Reception DJ + MC</option>
+            <option value="Photo booth">Photo booth</option>
+            <option value="Lighting / uplighting">Lighting / uplighting</option>
+            <option value="Corporate or private party">Corporate or private party</option>
+          </select>
+        </div>
+        <div class="full"><label for="inq-msg">Anything else?</label><textarea id="inq-msg" name="message" rows="3" placeholder="Tell us about your day"></textarea></div>
+      </div>
+      <button type="submit">Send Inquiry</button>
+      <p class="inq-note">We reply fast &mdash; usually within the hour. No spam, ever.</p>
+    </form>
     <div class="contact-ctas">
       <a class="btn btn-gold" href="sms:6615330100">📱 Text Us</a>
       <a class="btn btn-white" href="mailto:djbenthomas@gmail.com?subject=Photo%20Booth%20Inquiry%20%E2%80%94%20AS%C2%B7U%C2%B7LIKE%C2%B7IT%20Entertainment">✉️ Email Us</a>
