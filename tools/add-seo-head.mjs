@@ -12,6 +12,7 @@
 import { readFileSync, writeFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { ALL_CITIES } from './cities.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const argHost = process.argv.indexOf('--host');
@@ -22,14 +23,14 @@ const BIZ = {
   '@type': ['LocalBusiness', 'EntertainmentBusiness'],
   name: 'AS·U·LIKE·IT Entertainment',
   alternateName: ['As You Like It Entertainment', 'DJ Ben Thomas', 'AS U LIKE IT'],
-  description: 'Wedding and event DJ in Hendersonville, TN. 15+ years and 900+ events. Professional MC, custom playlists, sound and lighting, plus photo booth rentals. Serving Sumner County and all of Middle Tennessee.',
+  description: 'Wedding and event DJ in Hendersonville, TN. 15+ years and 900+ events. Professional MC, custom playlists, sound and lighting, plus photo booth rentals. Serving Sumner County, Wilson County, Robertson County, Davidson County, and all of Middle Tennessee.',
   telephone: '+1-661-533-0100',
   email: 'djbenthomas@gmail.com',
   address: { '@type': 'PostalAddress', addressLocality: 'Hendersonville', addressRegion: 'TN', addressCountry: 'US' },
   image: HOST + 'assets/canva-hero.jpg',
   logo: HOST + 'assets/canva-logo.png',
   priceRange: '$$',
-  areaServed: ['Hendersonville','Gallatin','Goodlettsville','Sumner County','Nashville','Middle Tennessee'].map(
+  areaServed: [...ALL_CITIES.map((c) => c.name), 'Middle Tennessee'].map(
     (n) => ({ '@type': 'City', name: n })),
   sameAs: [
     'https://www.facebook.com/asyoulikeitentertainment',
@@ -43,17 +44,13 @@ const BIZ = {
   ],
 };
 
-const CITY = {
-  'wedding-dj-hendersonville-tn.html': { name: 'Hendersonville', title: 'Wedding DJ in Hendersonville, TN' },
-  'wedding-dj-gallatin-tn.html':       { name: 'Gallatin',      title: 'Wedding DJ in Gallatin, TN' },
-  'wedding-dj-sumner-county-tn.html':  { name: 'Sumner County', title: 'Wedding DJ in Sumner County, TN' },
-  'wedding-dj-goodlettsville-tn.html': { name: 'Goodlettsville',title: 'Wedding DJ in Goodlettsville, TN' },
-  'wedding-dj-nashville-tn.html':      { name: 'Nashville',     title: 'Wedding DJ in Nashville, TN' },
-};
+const CITY = Object.fromEntries(
+  ALL_CITIES.map((c) => [c.file, { name: c.name, title: `Wedding DJ in ${c.name}, TN` }]),
+);
 
 // FAQPage data mirrors the on-page FAQ list in index.html (Q/A pairs, in order).
 const FAQ = [
-  ['What areas do you serve?', "We're based in Hendersonville, TN and serve Gallatin, Goodlettsville, Sumner County, Nashville, and all of Middle Tennessee. We're happy to travel for the right event."],
+  ['What areas do you serve?', "We're based in Hendersonville, TN and serve the whole Nashville-area ring: Gallatin, Goodlettsville, White House, Millersville, Greenbrier, Cross Plains, Portland, Westmoreland, Mt. Juliet, Lebanon, Old Hickory, Madison, Hermitage, Springfield, Sumner County, and all of Middle Tennessee. Most of those are a 10–25 minute drive for us, so there's no travel markup. We're happy to travel further for the right event."],
   ['How long have you been doing this?', "15+ years and 900+ events — weddings, corporate events, private parties, and more. We've seen it all and know how to keep any crowd dancing."],
   ['Do you provide ceremony music too?', 'Absolutely. Ceremony sound, processional and candle lighting cues, and reception — one DJ for your whole day, so nothing falls through the cracks.'],
   ['Do you act as MC?', 'Yes. Ben is an experienced MC who handles announcements, toasts, introductions, and keeping the timeline moving — so you and your guests just enjoy the night.'],
