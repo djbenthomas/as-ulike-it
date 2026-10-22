@@ -14,10 +14,10 @@ const css = (readFileSync(join(ROOT, 'index.html'), 'utf8').match(/<style>[\s\S]
 if (!css) throw new Error('could not extract <style> from index.html');
 
 const shots = readdirSync(join(ROOT, 'assets/booth')).filter((f) => f.endsWith('.jpg')).sort();
-if (shots.length < 8) throw new Error('need at least 8 booth photos in assets/booth');
+if (shots.length < 1) throw new Error('no booth photo found in assets/booth');
 
 const gallery = shots.map((f, i) =>
-  `      <figure class="pbc"><img src="assets/booth/${f}" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="${i < 4 ? 'eager' : 'lazy'}"></figure>`
+  `      <figure class="pb-single"><img src="assets/booth/${f}" alt="The AS·U·LIKE·IT inflatable photo booth backdrop set up at an event" loading="eager"></figure>`
 ).join('\n');
 
 const footerLinks = ['<div style="margin: 0 0 8px;"><a href="index.html">Home</a> &nbsp;&bull;&nbsp; <a href="photo-booth.html">Photo Booth</a> &nbsp;&bull;&nbsp; ' +
@@ -50,6 +50,9 @@ ${css}
   .price-card ul { list-style: none; margin: 26px 0 30px; text-align: left; }
   .price-card li { padding: 9px 0; border-bottom: 1px solid rgba(185,138,62,.16); font-size: 15.5px; color: var(--ink-soft); }
   .price-card li::before { content: "✦ "; color: var(--gold); }
+  .pb-single { margin: 0; border-radius: 14px; overflow: hidden; border: 1px solid rgba(185,138,62,.22); box-shadow: 0 24px 60px rgba(42,37,32,.14); background: var(--cream-2); }
+  .pb-single img { width: 100%; height: auto; display: block; }
+  .pb-single { max-width: 720px; margin-left: auto; margin-right: auto; }
   .pb-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; margin-top: 40px; }
   .pbc { margin: 0; border-radius: 10px; overflow: hidden; background: var(--cream-2); border: 1px solid rgba(185,138,62,.18); aspect-ratio: 4/3; }
   .pbc img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .35s ease; }
@@ -120,7 +123,7 @@ ${css}
     <h2>The Inflatable <span class="gold">Backdrop</span></h2>
     <div class="divider"></div>
     <div class="about-grid">
-      <img class="about-img" src="assets/booth/booth-05.jpg" alt="Inflatable photo booth backdrop at a Middle Tennessee wedding">
+      <img class="about-img" src="assets/booth/${shots[0]}" alt="Inflatable photo booth backdrop at a Middle Tennessee wedding">
       <div class="about-text">
         <p>This isn&rsquo;t a curtain on a flimsy frame. It&rsquo;s a <strong>full inflatable backdrop booth</strong> &mdash; a soft, enclosed shell that your guests step into. It inflates into shape and holds itself up, which is why it works in places a traditional booth can&rsquo;t go.</p>
         <p>What that means for your photos: the background is <strong>clean and identical in every single shot</strong>. No cluttered wall behind it, no ceiling lights blowing out half the frame, no shadows from somebody&rsquo;s phone. The booth lights the shot the same way at 6 PM and at midnight, so the photos from the first hour and the last hour actually look like they belong together.</p>
@@ -149,13 +152,13 @@ ${css}
 <section class="services" id="gallery">
   <div class="wrap">
     <div class="eyebrow">Real Events</div>
-    <h2>Inside the <span class="gold">Booth</span></h2>
+    <h2>The Booth, <span class="gold">Set Up</span></h2>
     <div class="divider"></div>
-    <p class="lead">Actual strips and shots from recent weddings and parties around Middle Tennessee.</p>
+    <p class="lead">What shows up at your venue &mdash; the full inflatable backdrop, lit and ready.</p>
     <div class="pb-gallery">
 ${gallery}
     </div>
-    <p class="note">Photos shared with permission from hosts. Guests who'd rather not appear can ask us to pull any shot &mdash; just say the word.</p>
+    <p class="note">The inflatable photo booth backdrop &mdash; set up, lit, and ready for your guests.</p>
   </div>
 </section>
 

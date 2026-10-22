@@ -258,13 +258,16 @@
 </style>
 <style>
   /* ---------- Photo booth page ---------- */
-  .hero.pb { background-image: linear-gradient(rgba(42,37,32,.62), rgba(42,37,32,.78)), url('assets/booth/booth-01.jpg'); background-position: center 40%; }
+  .hero.pb { background-image: linear-gradient(rgba(42,37,32,.62), rgba(42,37,32,.78)), url('assets/booth/backdrop.jpg'); background-position: center 40%; }
   .price-card { background: var(--white); border: 1px solid rgba(185,138,62,.25); border-radius: 14px; padding: 40px 32px; text-align: center; box-shadow: 0 18px 44px rgba(42,37,32,.08); max-width: 420px; margin: 0 auto; }
   .price-card .amt { font-family: 'Cormorant Garamond', serif; font-size: 66px; line-height: 1; color: var(--gold); }
   .price-card .amt small { font-size: 16px; letter-spacing: 2px; text-transform: uppercase; color: var(--ink-soft); display: block; margin-top: 8px; font-family: 'Jost', sans-serif; }
   .price-card ul { list-style: none; margin: 26px 0 30px; text-align: left; }
   .price-card li { padding: 9px 0; border-bottom: 1px solid rgba(185,138,62,.16); font-size: 15.5px; color: var(--ink-soft); }
   .price-card li::before { content: "✦ "; color: var(--gold); }
+  .pb-single { margin: 0; border-radius: 14px; overflow: hidden; border: 1px solid rgba(185,138,62,.22); box-shadow: 0 24px 60px rgba(42,37,32,.14); background: var(--cream-2); }
+  .pb-single img { width: 100%; height: auto; display: block; }
+  .pb-single { max-width: 720px; margin-left: auto; margin-right: auto; }
   .pb-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; margin-top: 40px; }
   .pbc { margin: 0; border-radius: 10px; overflow: hidden; background: var(--cream-2); border: 1px solid rgba(185,138,62,.18); aspect-ratio: 4/3; }
   .pbc img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .35s ease; }
@@ -525,36 +528,14 @@
       },
       "url": "https://djbenthomas.github.io/as-ulike-it/photo-booth.html",
       "image": [
-        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-01.jpg",
-        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-02.jpg",
-        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-03.jpg",
-        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-04.jpg",
-        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-05.jpg",
-        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-06.jpg",
-        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-07.jpg",
-        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-08.jpg",
-        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-09.jpg",
-        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-10.jpg",
-        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-11.jpg",
-        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-12.jpg"
+        "https://djbenthomas.github.io/as-ulike-it/assets/booth/backdrop.jpg"
       ]
     },
     {
       "@type": "ImageGallery",
       "name": "AS·U·LIKE·IT Entertainment photo booth gallery",
       "image": [
-        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-01.jpg",
-        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-02.jpg",
-        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-03.jpg",
-        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-04.jpg",
-        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-05.jpg",
-        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-06.jpg",
-        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-07.jpg",
-        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-08.jpg",
-        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-09.jpg",
-        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-10.jpg",
-        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-11.jpg",
-        "https://djbenthomas.github.io/as-ulike-it/assets/booth/booth-12.jpg"
+        "https://djbenthomas.github.io/as-ulike-it/assets/booth/backdrop.jpg"
       ],
       "url": "https://djbenthomas.github.io/as-ulike-it/photo-booth.html"
     }
@@ -621,7 +602,7 @@
     <h2>The Inflatable <span class="gold">Backdrop</span></h2>
     <div class="divider"></div>
     <div class="about-grid">
-      <img class="about-img" src="assets/booth/booth-05.jpg" alt="Inflatable photo booth backdrop at a Middle Tennessee wedding">
+      <img class="about-img" src="assets/booth/backdrop.jpg" alt="Inflatable photo booth backdrop at a Middle Tennessee wedding">
       <div class="about-text">
         <p>This isn&rsquo;t a curtain on a flimsy frame. It&rsquo;s a <strong>full inflatable backdrop booth</strong> &mdash; a soft, enclosed shell that your guests step into. It inflates into shape and holds itself up, which is why it works in places a traditional booth can&rsquo;t go.</p>
         <p>What that means for your photos: the background is <strong>clean and identical in every single shot</strong>. No cluttered wall behind it, no ceiling lights blowing out half the frame, no shadows from somebody&rsquo;s phone. The booth lights the shot the same way at 6 PM and at midnight, so the photos from the first hour and the last hour actually look like they belong together.</p>
@@ -650,44 +631,13 @@
 <section class="services" id="gallery">
   <div class="wrap">
     <div class="eyebrow">Real Events</div>
-    <h2>Inside the <span class="gold">Booth</span></h2>
+    <h2>The Booth, <span class="gold">Set Up</span></h2>
     <div class="divider"></div>
-    <p class="lead">Actual strips and shots from recent weddings and parties around Middle Tennessee.</p>
+    <p class="lead">What shows up at your venue &mdash; the full inflatable backdrop, lit and ready.</p>
     <div class="pb-gallery">
-      <figure class="pbc"><img src="assets/booth/booth-01.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="eager"></figure>
-      <figure class="pbc"><img src="assets/booth/booth-02.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="eager"></figure>
-      <figure class="pbc"><img src="assets/booth/booth-03.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="eager"></figure>
-      <figure class="pbc"><img src="assets/booth/booth-04.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="eager"></figure>
-      <figure class="pbc"><img src="assets/booth/booth-05.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
-      <figure class="pbc"><img src="assets/booth/booth-06.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
-      <figure class="pbc"><img src="assets/booth/booth-07.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
-      <figure class="pbc"><img src="assets/booth/booth-08.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
-      <figure class="pbc"><img src="assets/booth/booth-09.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
-      <figure class="pbc"><img src="assets/booth/booth-10.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
-      <figure class="pbc"><img src="assets/booth/booth-11.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
-      <figure class="pbc"><img src="assets/booth/booth-12.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
-      <figure class="pbc"><img src="assets/booth/booth-13.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
-      <figure class="pbc"><img src="assets/booth/booth-14.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
-      <figure class="pbc"><img src="assets/booth/booth-15.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
-      <figure class="pbc"><img src="assets/booth/booth-16.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
-      <figure class="pbc"><img src="assets/booth/booth-17.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
-      <figure class="pbc"><img src="assets/booth/booth-18.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
-      <figure class="pbc"><img src="assets/booth/booth-19.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
-      <figure class="pbc"><img src="assets/booth/booth-20.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
-      <figure class="pbc"><img src="assets/booth/booth-21.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
-      <figure class="pbc"><img src="assets/booth/booth-22.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
-      <figure class="pbc"><img src="assets/booth/booth-23.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
-      <figure class="pbc"><img src="assets/booth/booth-24.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
-      <figure class="pbc"><img src="assets/booth/booth-25.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
-      <figure class="pbc"><img src="assets/booth/booth-26.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
-      <figure class="pbc"><img src="assets/booth/booth-27.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
-      <figure class="pbc"><img src="assets/booth/booth-28.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
-      <figure class="pbc"><img src="assets/booth/booth-29.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
-      <figure class="pbc"><img src="assets/booth/booth-30.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
-      <figure class="pbc"><img src="assets/booth/booth-31.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
-      <figure class="pbc"><img src="assets/booth/booth-32.jpg" alt="Guests in the AS·U·LIKE·IT photo booth at a Nashville-area event" loading="lazy"></figure>
+      <figure class="pb-single"><img src="assets/booth/backdrop.jpg" alt="The AS·U·LIKE·IT inflatable photo booth backdrop set up at an event" loading="eager"></figure>
     </div>
-    <p class="note">Photos shared with permission from hosts. Guests who'd rather not appear can ask us to pull any shot &mdash; just say the word.</p>
+    <p class="note">The inflatable photo booth backdrop &mdash; set up, lit, and ready for your guests.</p>
   </div>
 </section>
 

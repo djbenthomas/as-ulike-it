@@ -69,7 +69,7 @@ for (const l of locs) {
 const booth = readdirSync(join(ROOT, 'assets/booth')).filter((f) => f.endsWith('.jpg'));
 const pb = readFileSync(join(ROOT, 'photo-booth.html'), 'utf8');
 const used = (pb.match(/assets\/booth\/[^"]+\.jpg/g) || []).length;
-if (booth.length < 20) bad(`booth: only ${booth.length} photos`);
+if (booth.length < 1) bad('booth: no photos found');
 if (used < booth.length) bad(`photo-booth.html shows ${used} of ${booth.length} photos`);
 if (!pb.includes('"@type": "ImageGallery"')) bad('photo-booth.html: no ImageGallery schema');
 
