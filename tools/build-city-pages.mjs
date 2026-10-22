@@ -57,16 +57,20 @@ const template = read(TEMPLATE);
 
 function localSection(c) {
   const chips = c.venues.map((v) => `<span>${v}</span>`).join('');
+  const notes = (c.venueNotes || []).map(([n, d]) =>
+    `<li><strong>${n}</strong> &mdash; ${d}</li>`).join('');
   return `<section class="about" id="${c.slug.replace(/-tn$/, '')}">
   <div class="wrap">
     <div class="eyebrow">Local &amp; Trusted</div>
     <h2>${c.name} Couples, <span class="gold">We Know the Roads In</span></h2>
     <div class="divider"></div>
     <p>${c.intro}</p>
-    <p style="margin-top:18px;"><strong>${c.venueLabel}:</strong></p>
+    ${c.intro2 ? `<p style="margin-top:16px;">${c.intro2}</p>` : ''}
+    <p style="margin-top:26px;"><strong>${c.venueLabel}:</strong></p>
     <div class="areas" style="margin-top:10px;">
       ${chips}
     </div>
+    ${notes ? `<ul class="venue-notes" style="list-style:none; margin-top:22px; padding:0;">${notes}</ul>` : ''}
     <p style="margin-top:22px;"><strong>What ${c.name} couples get:</strong> ${c.what}</p>
     <div class="ctas" style="margin-top:24px;">
       <a class="btn btn-gold" href="#contact">Check ${c.name} Availability</a>
@@ -104,6 +108,13 @@ for (const c of NEW_CITIES) {
     () => localSection(c));
   if (html.includes('id="gallatin"')) throw new Error(`${c.file}: local section not replaced`);
 
+  if (!html.includes('.venue-notes li')) {
+    html = html.replace('</style>', '  .venue-notes li { padding: 12px 16px; margin-bottom: 10px; background: #fff; border-left: 3px solid #B98A3E; border-radius: 4px; font-size: 15px; color: #6E635A; }\n  .venue-notes li strong { color: #2A2520; }\n</style>');
+  }
+  if (c.localFaq && c.localFaq.length) {
+    const items = c.localFaq.map(([q, a]) => `  [${JSON.stringify(q)}, ${JSON.stringify(a)}],`).join('\n');
+    html = html.replace('var faqs = [\n', 'var faqs = [\n' + items + '\n');
+  }
   built.push([c.file, html]);
 }
 

@@ -34,6 +34,9 @@ export const NEW_CITIES = [
     venueLabel: 'Venues near White House we work with',
     venues: ['Rock Creek Farms', 'EPIC Event Centre', 'The Pick Inn', 'Goodlettsville Event Center', 'Long Hollow Gardens'],
     what: 'ceremony sound and cues, reception DJ, a real MC who keeps the timeline moving, custom playlists built around your taste, DJ lighting and uplighting, and photo booth combos your guests will talk about for years. One team, one point of contact, no surprises.',
+    intro2: "The Sumner&ndash;Robertson county line runs right through White House, and that matters for one practical reason: your guest list usually pulls from both sides. We plan the music for that &mdash; a set that works for a crowd who drove in from Gallatin and a crowd who came down from Springfield, without it feeling like two different parties.",
+    venueNotes: [["Rock Creek Farms","Barn venue with an open floor &mdash; we bring extra low-end so the room doesn&rsquo;t sound hollow."],["EPIC Event Centre","Big room in Gallatin. Plenty of floor, so we run the full rig and uplight the walls."],["The Pick Inn","Indoor/outdoor split, which means a ceremony system and a reception system on the same day."],["Goodlettsville Event Center","Clean, easy load-in and a flat floor &mdash; good for a crowd that wants to dance."]],
+    localFaq: [["How far are you from White House?","About 11 miles, straight down I-65. That's a normal drive for us, so there's no travel fee for a standard White House event."],["Do you play to a mixed Sumner and Robertson County crowd?","All the time — that's a White House wedding in a nutshell. We read the room early and build the first hour so both sides of the family are up and dancing."]],
   },
   {
     slug: 'millersville-tn',
@@ -50,6 +53,9 @@ export const NEW_CITIES = [
     venueLabel: 'Venues near Millersville we work with',
     venues: ['Goodlettsville Event Center', 'Delmas Long Community Center', 'Long Hollow Gardens &amp; Vineyards', 'Humbol Company', 'Sumner County &amp; Middle TN'],
     what: 'ceremony sound and cues, reception DJ, a real MC who keeps the timeline moving, custom playlists built around your taste, DJ lighting and uplighting, and photo booth combos your guests will talk about for years. One team, one point of contact, no surprises.',
+    intro2: "Millersville is the kind of town where the reception is full of people who have known each other for thirty years &mdash; which changes what a DJ should do. Less filler, more floor fillers. We open with the songs the whole room already knows, then use the games to break the ice between the family sides before we go anywhere near a slow song.",
+    venueNotes: [["Goodlettsville Event Center","Closest full-size room to Millersville, and an easy drive from our side of the line."],["Delmas Long Community Center","Community-hall feel — we scale the rig to the room so it fills without rattling the walls."],["Long Hollow Gardens &amp; Vineyards","Outdoor ceremony plus indoor reception; we run both systems and handle the switch."],["Humbol Company","Modern industrial space in Hendersonville — great with uplighting after dark."]],
+    localFaq: [["Do you charge extra for Millersville?","No. It's nine miles up US-31W from our base, so a standard Millersville booking has no travel markup."],["Can you handle a small reception?","Yes — and small rooms are where a good DJ matters most. We size the sound to the space instead of drowning it."]],
   },
   {
     slug: 'greenbrier-tn',
@@ -66,6 +72,9 @@ export const NEW_CITIES = [
     venueLabel: 'Venues near Greenbrier we work with',
     venues: ['The Pick Inn', 'Rock Creek Farms', 'EPIC Event Centre', 'Madison Creek Farms', 'Robertson County &amp; Middle TN'],
     what: 'ceremony sound and cues, reception DJ, a real MC who keeps the timeline moving, custom playlists built around your taste, DJ lighting and uplighting, and photo booth combos your guests will talk about for years. One team, one point of contact, no surprises.',
+    intro2: "Greenbrier weddings are usually built from scratch on family land, which means nobody hands you a house sound system or a lighting plot. Everything the room needs, we bring: PA sized for open air, wireless mics for the officiant and the toasts, and lighting that actually shows up once the sun goes down and the photos start.",
+    venueNotes: [["The Pick Inn","Indoor/outdoor venue in Gallatin — a solid rain-plan option for Greenbrier couples."],["Rock Creek Farms","Barn setting; we bring enough rig to fill it without bouncing off the tin."],["EPIC Event Centre","The big-room option when the guest list outgrows a backyard."],["Madison Creek Farms","Outdoor ceremony space — wind and sun are the two things we plan around."]],
+    localFaq: [["Can you DJ a wedding on private property in Greenbrier?","Yes — that's most of what we do out here. We plan power, cable runs, and a weather backup with you ahead of time, and we bring everything the site doesn't have."],["What happens if it rains?","We build a weather plan into the timeline before the day arrives, and coordinate the pivot with your venue or your tent crew. It's not our first outdoor wedding."]],
   },
   {
     slug: 'cross-plains-tn',
@@ -82,6 +91,9 @@ export const NEW_CITIES = [
     venueLabel: 'Venues near Cross Plains we work with',
     venues: ['EPIC Event Centre', 'The Pick Inn', 'Rock Creek Farms', 'Madison Creek Farms', 'Robertson County &amp; Middle TN'],
     what: 'ceremony sound and cues, reception DJ, a real MC who keeps the timeline moving, custom playlists built around your taste, DJ lighting and uplighting, and photo booth combos your guests will talk about for years. One team, one point of contact, no surprises.',
+    intro2: "Cross Plains is quiet, rural Robertson County, and the weddings out here tend to be genuinely personal &mdash; family property, a tent, a guest list of people who all know the couple. That setting rewards a DJ who can host without taking over. We keep the mic work warm and short, let the room breathe, and save the big production moments for the ones that actually matter.",
+    venueNotes: [["EPIC Event Centre","Nearest large ballroom when a Cross Plains couple wants an indoor plan B."],["The Pick Inn","Indoor/outdoor flexibility within a reasonable drive of Cross Plains."],["Rock Creek Farms","Barn venue — good match for the rural feel without the logistics of a field."],["Madison Creek Farms","Outdoor-friendly, with the covered options we plan around."]],
+    localFaq: [["Do you travel to rural Robertson County?","Yes — Cross Plains is 15 miles from us. Rural sites usually mean generator power and long cable runs, and we plan both before the day."],["Can you work without venue staff?","That's normal out here. On a DIY site we effectively run the timeline ourselves, so nothing gets missed between ceremony and dinner."]],
   },
   {
     slug: 'portland-tn',
@@ -98,6 +110,9 @@ export const NEW_CITIES = [
     venueLabel: 'Venues near Portland we work with',
     venues: ['EPIC Event Centre', 'Rock Creek Farms', 'Madison Creek Farms', 'The Pick Inn', 'Northern Sumner County venues'],
     what: 'ceremony sound and cues, reception DJ, a real MC who keeps the timeline moving, custom playlists built around your taste, DJ lighting and uplighting, and photo booth combos your guests will talk about for years. One team, one point of contact, no surprises.',
+    intro2: "Portland shows up to dance. It's a town with a festival culture &mdash; the Strawberry Festival every spring, everybody in the same few square miles &mdash; and that carries into receptions. Crowds here don&rsquo;t need to be coaxed onto the floor, so we spend our energy on sequencing: keeping the energy climbing instead of peaking at 8:15 and dying at 9:30.",
+    venueNotes: [["EPIC Event Centre","The largest room within easy range of Portland — plenty of floor to work with."],["Rock Creek Farms","Barn venue, good for a Portland crowd that wants a party rather than a program."],["Madison Creek Farms","Outdoor ceremony and reception space, with room for a real dance floor."],["The Pick Inn","Indoor/outdoor in Gallatin, roughly twenty minutes from Portland."]],
+    localFaq: [["Do you charge travel to Portland?","No travel markup — it's 19 miles north of us and a normal drive."],["Can you handle a big dancing crowd?","It's the best-case scenario. Portland crowds dance, so we lean into it with games and crowd participation early, then ride the energy through the last song."]],
   },
   {
     slug: 'westmoreland-tn',
@@ -114,6 +129,9 @@ export const NEW_CITIES = [
     venueLabel: 'Venues near Westmoreland we work with',
     venues: ['EPIC Event Centre', 'Rock Creek Farms', 'The Pick Inn', 'Madison Creek Farms', 'Sumner County &amp; Middle TN'],
     what: 'ceremony sound and cues, reception DJ, a real MC who keeps the timeline moving, custom playlists built around your taste, DJ lighting and uplighting, and photo booth combos your guests will talk about for years. One team, one point of contact, no surprises.',
+    intro2: "Westmoreland is up on the Highland Rim, and almost every wedding here is DIY &mdash; a church hall, a family barn, a tent in a field. That puts more responsibility on the DJ than a hotel ballroom ever does, because there&rsquo;s no in-house AV, no house lighting, and usually nobody whose job is the timeline. We arrive with all of it and run the night so the family can actually enjoy it.",
+    venueNotes: [["EPIC Event Centre","The nearest full ballroom if a Westmoreland couple wants an indoor venue."],["Rock Creek Farms","Barn option in Gallatin, about half an hour from Westmoreland."],["The Pick Inn","Indoor/outdoor venue with a workable rain plan."],["Madison Creek Farms","Outdoor setting that suits the Highland Rim feel of a Westmoreland wedding."]],
+    localFaq: [["Can you run a wedding with no venue coordinator?","Yes — on DIY sites we take the timeline on ourselves. That's a big part of what you're hiring: someone whose job is making sure the next thing happens on time."],["How far is the drive?","22 miles northeast of Hendersonville. No travel markup for a standard Westmoreland booking."]],
   },
   {
     slug: 'mt-juliet-tn',
@@ -130,6 +148,9 @@ export const NEW_CITIES = [
     venueLabel: 'Venues near Mt. Juliet we work with',
     venues: ['Long Hollow Gardens &amp; Vineyards', 'Rock Creek Farms', 'Madison Creek Farms', 'Humbol Company', 'Wilson County &amp; Middle TN'],
     what: 'ceremony sound and cues, reception DJ, a real MC who keeps the timeline moving, custom playlists built around your taste, DJ lighting and uplighting, and photo booth combos your guests will talk about for years. One team, one point of contact, no surprises.',
+    intro2: "Mt. Juliet has grown fast, and the weddings reflect it: lakefront property near Percy Priest, newer barn venues on the edges, and banquet rooms that came with the growth. That range is useful when you&rsquo;re booking &mdash; whatever room you picked, we&rsquo;ve worked something like it, and we know how it will sound empty at 4 PM versus full at 9.",
+    venueNotes: [["Long Hollow Gardens &amp; Vineyards","One of the closest full-service venues to Mt. Juliet — outdoor ceremony, indoor reception."],["Rock Creek Farms","Barn venue with a big floor; we bring the low-end to match."],["Madison Creek Farms","Outdoor-friendly, with the covered backup we plan around."],["Humbol Company","Modern industrial room that photographs beautifully with uplighting."]],
+    localFaq: [["Do you serve Wilson County?","Yes — Mt. Juliet is 18 miles southeast of us, just across Old Hickory Lake. Wilson County is a regular part of our calendar."],["Can you handle a lakefront wedding?","Yes. Water carries sound, so we aim the rig at the dance floor and keep it neighborly off-property. It's a detail that matters at lakeside venues."]],
   },
   {
     slug: 'lebanon-tn',
@@ -146,6 +167,9 @@ export const NEW_CITIES = [
     venueLabel: 'Venues near Lebanon we work with',
     venues: ['Rock Creek Farms', 'EPIC Event Centre', 'Long Hollow Gardens &amp; Vineyards', 'Madison Creek Farms', 'Wilson County &amp; Middle TN'],
     what: 'ceremony sound and cues, reception DJ, a real MC who keeps the timeline moving, custom playlists built around your taste, DJ lighting and uplighting, and photo booth combos your guests will talk about for years. One team, one point of contact, no surprises.',
+    intro2: "Wilson County doesn&rsquo;t do anything small, and Lebanon weddings are no exception &mdash; big guest lists, big venues, and receptions that feel like a community event. Our job there is sequencing a long night: getting a large room moving early, holding the energy through dinner and toasts, and not letting the floor empty out between the speeches and the last dance.",
+    venueNotes: [["Rock Creek Farms","Barn venue within range of Lebanon — good for a big, loud crowd."],["EPIC Event Centre","Large ballroom in Gallatin; the closest thing to a Lebanon-scale room on our side."],["Long Hollow Gardens &amp; Vineyards","Outdoor ceremony and indoor reception, well suited to a long guest list."],["Madison Creek Farms","Outdoor venue with room for a full dance floor setup."]],
+    localFaq: [["Do you travel to Lebanon?","Yes — 26 miles east of us in Wilson County. No travel markup for a standard booking."],["Can you keep a big room engaged all night?","That's the job. With 200+ guests we front-load the group games and crowd participation so the room is already loose before the first slow song."]],
   },
   {
     slug: 'old-hickory-tn',
@@ -162,6 +186,9 @@ export const NEW_CITIES = [
     venueLabel: 'Venues near Old Hickory we work with',
     venues: ['Humbol Company', 'Long Hollow Gardens &amp; Vineyards', 'Madison Creek Farms', 'Delmas Long Community Center', 'Old Hickory Lake venues'],
     what: 'ceremony sound and cues, reception DJ, a real MC who keeps the timeline moving, custom playlists built around your taste, DJ lighting and uplighting, and photo booth combos your guests will talk about for years. One team, one point of contact, no surprises.',
+    intro2: "Old Hickory is a lake town with real history &mdash; the old mill village streets, the waterfront, the venues that grew up around them. Lakefront and near-lake weddings have their own physics: sound travels across water, so what sounds great at six o&rsquo;clock is a noise complaint by ten. We know how to keep the party loud where it matters and quiet where it doesn&rsquo;t.",
+    venueNotes: [["Humbol Company","Eleven miles from us, modern room, excellent with uplighting."],["Long Hollow Gardens &amp; Vineyards","Close by in Goodlettsville — outdoor ceremony and indoor reception."],["Madison Creek Farms","Outdoor venue that suits the lake-area feel."],["Delmas Long Community Center","Practical, affordable room with easy load-in."]],
+    localFaq: [["Do you have to worry about noise at lake venues?","Yes, and we plan for it. We aim the system at the dance floor, keep the low-end controlled, and coordinate with the venue on any cutoff time."],["How close are you?","Eleven miles, straight across the lake. Easy setup, no travel markup for a standard Old Hickory event."]],
   },
   {
     slug: 'madison-tn',
@@ -178,6 +205,9 @@ export const NEW_CITIES = [
     venueLabel: 'Venues near Madison we work with',
     venues: ['Goodlettsville Event Center', 'Delmas Long Community Center', 'Humbol Company', 'Long Hollow Gardens &amp; Vineyards', 'Davidson County &amp; Nashville'],
     what: 'ceremony sound and cues, reception DJ, a real MC who keeps the timeline moving, custom playlists built around your taste, DJ lighting and uplighting, and photo booth combos your guests will talk about for years. One team, one point of contact, no surprises.',
+    intro2: "Madison is close-in Davidson County, which means the events here are a real mix: church weddings and fellowship-hall receptions, banquet rooms along the Rivergate side, and a steady run of school formals and community events. That variety is familiar ground after 900+ events &mdash; we arrive knowing how to handle a room with a low ceiling, or a gym with terrible acoustics.",
+    venueNotes: [["Goodlettsville Event Center","Closest full-size banquet room to Madison, with easy load-in."],["Delmas Long Community Center","Good fit for community events and smaller receptions."],["Humbol Company","Modern industrial space, great for a younger crowd."],["Long Hollow Gardens &amp; Vineyards","Outdoor ceremony plus indoor reception within a short drive."]],
+    localFaq: [["Do you DJ school events in Madison?","Yes — prom, homecoming, and school fundraisers. Music is age-appropriate, the volume is managed with staff, and the games are built for that crowd."],["How far is Madison from you?","13 miles south, just inside Davidson County. No travel markup for a standard booking."]],
   },
   {
     slug: 'hermitage-tn',
@@ -194,6 +224,9 @@ export const NEW_CITIES = [
     venueLabel: 'Venues near Hermitage we work with',
     venues: ['Humbol Company', 'Long Hollow Gardens &amp; Vineyards', 'Madison Creek Farms', 'Rock Creek Farms', 'Davidson County &amp; Nashville'],
     what: 'ceremony sound and cues, reception DJ, a real MC who keeps the timeline moving, custom playlists built around your taste, DJ lighting and uplighting, and photo booth combos your guests will talk about for years. One team, one point of contact, no surprises.',
+    intro2: "Hermitage has some genuinely pretty venues &mdash; historic property, garden settings, rooms near Percy Priest &mdash; and those spaces reward a DJ who cares about more than volume. Lighting matters here. So does knowing when to let a room breathe during dinner and when to bring it back up. That&rsquo;s the craft part of the job, and it&rsquo;s the part we take seriously.",
+    venueNotes: [["Humbol Company","Modern industrial room — the uplighting does a lot of work here."],["Long Hollow Gardens &amp; Vineyards","Outdoor ceremony, indoor reception, both handled by one team."],["Madison Creek Farms","Garden-style outdoor setting that suits a Hermitage crowd."],["Rock Creek Farms","Barn venue within easy range when you want a different feel."]],
+    localFaq: [["Can you light an outdoor reception?","Yes. After-dark outdoor receptions need real lighting, not just a couple of uplights — we plan the plot with your venue and bring enough fixtures."],["Do you travel to Hermitage?","It's 16 miles southeast of us, out toward Percy Priest. No travel markup for a standard booking."]],
   },
   {
     slug: 'springfield-tn',
@@ -210,6 +243,9 @@ export const NEW_CITIES = [
     venueLabel: 'Venues near Springfield we work with',
     venues: ['EPIC Event Centre', 'The Pick Inn', 'Rock Creek Farms', 'Madison Creek Farms', 'Robertson County &amp; Middle TN'],
     what: 'ceremony sound and cues, reception DJ, a real MC who keeps the timeline moving, custom playlists built around your taste, DJ lighting and uplighting, and photo booth combos your guests will talk about for years. One team, one point of contact, no surprises.',
+    intro2: "Springfield is the Robertson County seat, and the weddings here have a straightforward, small-city confidence to them &mdash; the courthouse square, the venues around it, crowds who came to celebrate rather than sit on their hands. Real weddings and real budgets, and we quote them the same way we quote Hendersonville: no travel markup for a normal night&rsquo;s drive.",
+    venueNotes: [["EPIC Event Centre","The nearest large ballroom, about half an hour east of Springfield."],["The Pick Inn","Indoor/outdoor venue in Gallatin with a workable rain plan."],["Rock Creek Farms","Barn venue suited to a Springfield crowd that dances."],["Madison Creek Farms","Outdoor ceremony and reception space with room to spread out."]],
+    localFaq: [["Is there a travel fee to Springfield?","No — 24 miles northwest of us is a normal drive. Standard bookings don't carry a travel markup."],["Do you know Robertson County venues?","We work Robertson County regularly, including the drive times and load-ins. If your venue is new to us we do a site check before the day rather than guessing."]],
   },
 ];
 

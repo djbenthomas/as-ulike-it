@@ -227,7 +227,7 @@ function pageGraph(file, title) {
   }
 
   const c = ALL_CITIES.find((x) => x.file === file);
-  return [
+  const graph = [
     biz,
     serviceNode(`Wedding DJ Services in ${c.name}, TN`, 'Wedding DJ', url, c.name),
     {
@@ -238,6 +238,16 @@ function pageGraph(file, title) {
       ],
     },
   ];
+  if (c.localFaq && c.localFaq.length) {
+    graph.push({
+      '@type': 'FAQPage',
+      mainEntity: c.localFaq.map(([q, ans]) => ({
+        '@type': 'Question', name: q,
+        acceptedAnswer: { '@type': 'Answer', text: ans },
+      })),
+    });
+  }
+  return graph;
 }
 
 /* ---------- run ---------- */
