@@ -36,7 +36,8 @@ for (const f of pages) {
 
   const canonical = (h.match(/<link rel="canonical" href="([^"]+)">/) || [])[1];
   const want = `https://djbenthomas.github.io/as-ulike-it/${f === 'index.html' ? '' : f}`;
-  if (canonical !== want) bad(`${f}: canonical ${canonical} ≠ ${want}`);
+  const wantClean = want.replace(/\.html$/, ''); // GitHub Pages serves extensionless URLs
+  if (canonical !== want && canonical !== wantClean) bad(`${f}: canonical ${canonical} ≠ ${want}`);
 
   const blocks = [...h.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
   if (blocks.length !== 1) bad(`${f}: ${blocks.length} JSON-LD blocks (want 1)`);
@@ -45,7 +46,8 @@ for (const f of pages) {
   for (const m of h.matchAll(/(?:href|src)="((?!https?:|mailto:|sms:|tel:|#)[^"]+)"/g)) {
     const ref = m[1].split('#')[0];
     if (!ref) continue;
-    if (!existsSync(join(ROOT, ref))) bad(`${f}: dead local ref → ${ref}`);
+    const refHtml = /\.html$/.test(ref) ? ref : ref + '.html';
+    if (!existsSync(join(ROOT, ref)) && !existsSync(join(ROOT, refHtml))) bad(`${f}: dead local ref → ${ref}`);
   }
 
   if ((h.match(/<h1>/g) || []).length !== 1) bad(`${f}: H1 count ≠ 1`);
@@ -58,11 +60,11 @@ for (const f of pages) {
 const locs = [...readFileSync(join(ROOT, 'sitemap.xml'), 'utf8').matchAll(/<loc>(.*?)<\/loc>/g)].map((m) => m[1]);
 for (const f of pages) {
   const url = `https://djbenthomas.github.io/as-ulike-it/${f === 'index.html' ? '' : f}`;
-  if (!locs.includes(url)) bad(`sitemap: missing ${f}`);
+  if (!locs.includes(url) && !locs.includes(url.replace(/\.html$/, ''))) bad(`sitemap: missing ${f}`);
 }
 for (const l of locs) {
   const rel = l.replace('https://djbenthomas.github.io/as-ulike-it/', '');
-  if (rel && !existsSync(join(ROOT, rel))) bad(`sitemap: ghost entry ${rel}`);
+  if (rel && !existsSync(join(ROOT, rel)) && !existsSync(join(ROOT, rel + '.html'))) bad(`sitemap: ghost entry ${rel}`);
 }
 
 // booth gallery
