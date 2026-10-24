@@ -6,6 +6,11 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const pages = readdirSync(ROOT).filter((f) => f.endsWith('.html'));
+
+// Canonical host comes from the sitemap's first <loc>, so switching domains
+// (github.io -> as-ulikeit.com) doesn't require editing this file again.
+const SITEMAP = readFileSync(join(ROOT, 'sitemap.xml'), 'utf8');
+const SITE = (SITEMAP.match(/<loc>(.*?)<\/loc>/) || [])[1] || 'https://djbenthomas.github.io/as-ulike-it/';
 const titles = new Map(), descs = new Map();
 let fail = 0;
 const bad = (m) => { console.log('✗ ' + m); fail++; };
@@ -35,7 +40,7 @@ for (const f of pages) {
   }
 
   const canonical = (h.match(/<link rel="canonical" href="([^"]+)">/) || [])[1];
-  const want = `https://djbenthomas.github.io/as-ulike-it/${f === 'index.html' ? '' : f}`;
+  const want = `${SITE}${f === 'index.html' ? '' : f}`;
   const wantClean = want.replace(/\.html$/, ''); // GitHub Pages serves extensionless URLs
   if (canonical !== want && canonical !== wantClean) bad(`${f}: canonical ${canonical} ≠ ${want}`);
 
@@ -57,13 +62,13 @@ for (const f of pages) {
 }
 
 // sitemap ↔ disk
-const locs = [...readFileSync(join(ROOT, 'sitemap.xml'), 'utf8').matchAll(/<loc>(.*?)<\/loc>/g)].map((m) => m[1]);
+const locs = [...SITEMAP.matchAll(/<loc>(.*?)<\/loc>/g)].map((m) => m[1]);
 for (const f of pages) {
-  const url = `https://djbenthomas.github.io/as-ulike-it/${f === 'index.html' ? '' : f}`;
+  const url = `${SITE}${f === 'index.html' ? '' : f}`;
   if (!locs.includes(url) && !locs.includes(url.replace(/\.html$/, ''))) bad(`sitemap: missing ${f}`);
 }
 for (const l of locs) {
-  const rel = l.replace('https://djbenthomas.github.io/as-ulike-it/', '');
+  const rel = l.replace(SITE, '');
   if (rel && !existsSync(join(ROOT, rel)) && !existsSync(join(ROOT, rel + '.html'))) bad(`sitemap: ghost entry ${rel}`);
 }
 
