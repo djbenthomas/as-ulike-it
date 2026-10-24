@@ -15,6 +15,7 @@ const rows = [
   { loc: HOST + 'photo-booth.html', priority: '0.95' },
   // Seasonal / campaign pages. Extensionless to match their canonical URL.
   { loc: HOST + 'christmas-office-parties', priority: '0.95' },
+  { loc: HOST + 'christmas-story-builder', priority: '0.85' },
 ];
 
 const xml = `<?xml version="1.0" encoding="UTF-8"?>

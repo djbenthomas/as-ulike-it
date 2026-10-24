@@ -99,10 +99,19 @@ const CHRISTMAS_KEYWORDS = [
   'holiday team party entertainment', 'christmas mystery party middle tennessee',
 ];
 
+const STORY_KEYWORDS = [
+  'christmas story builder', 'personalized christmas story', 'left right christmas game',
+  'left right gift passing game', 'office christmas party game', 'corporate holiday party game',
+  'fill in the blanks christmas story', 'company christmas party activities',
+  'christmas party game nashville', 'office party icebreaker game',
+  'personalized office christmas story', 'christmas gift exchange game',
+];
+
 function keywordsFor(file) {
   if (file === 'index.html') return HOME_KEYWORDS;
   if (file === 'photo-booth.html') return BOOTH_KEYWORDS;
   if (file === 'christmas-office-parties.html') return CHRISTMAS_KEYWORDS;
+  if (file === 'christmas-story-builder.html') return STORY_KEYWORDS;
   const c = ALL_CITIES.find((x) => x.file === file);
   if (!c) return HOME_KEYWORDS;
   const n = c.name;
@@ -156,7 +165,7 @@ function pageMeta(html, file) {
 }
 
 /* Pages published at an extensionless address (GitHub Pages serves foo.html at /foo). */
-const CLEAN_URL_PAGES = new Set(['christmas-office-parties.html']);
+const CLEAN_URL_PAGES = new Set(['christmas-office-parties.html', 'christmas-story-builder.html']);
 
 function pageUrl(file) {
   if (file === 'index.html') return HOST;
@@ -276,6 +285,20 @@ function pageGraph(file, title) {
           ['Are you licensed and insured?', 'Yes. We are fully licensed and insured, and can provide a certificate of insurance for your venue or building management on request.'],
           ['Do you travel outside Nashville?', 'We are based in Hendersonville and cover Nashville, Hendersonville, Gallatin, Goodlettsville, and the rest of Middle Tennessee.'],
         ].map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+      },
+    ];
+  }
+
+  if (file === 'christmas-story-builder.html') {
+    return [
+      biz,
+      {
+        '@type': 'WebPage',
+        name: 'Christmas Story Builder',
+        description: 'A personalized Left-Right Christmas gift-passing story builder for company holiday parties. Cast your coworkers, add workplace details, and preview the story before booking.',
+        url,
+        isPartOf: { '@type': 'WebSite', name: BRAND, url: HOST },
+        about: { '@type': 'Service', name: 'Christmas Murder Mystery Party', provider: { '@id': HOST + '#business' } },
       },
     ];
   }

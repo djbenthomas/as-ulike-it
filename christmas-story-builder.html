@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Christmas Story Builder | Personalized Left-Right Game | As You Like It</title>
+<meta name="description" content="Cast your coworkers in a ridiculous Christmas adventure. Fill in a few blanks and we turn your office into a personalized Left-Right gift-passing story for your party.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FBF7EF; --cream-2:#F4ECDD; --ink:#23201C; --ink-soft:#6B6157;
+    --evergreen:#15352B; --evergreen-2:#1D4438; --burgundy:#6E1F2A; --burgundy-2:#8A2A36;
+    --gold:#B08D4A; --gold-soft:#E6D3A8; --white:#fff;
+    --cue-left:#1D6B3F; --cue-right:#8A2A36;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  img{max-width:100%;height:auto}
+  body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--ink);line-height:1.65;font-weight:300;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:940px;margin:0 auto;padding:0 22px}
+  h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:500;line-height:1.12}
+  h1{font-size:clamp(32px,5.6vw,54px)}
+  h2{font-size:clamp(25px,3.6vw,36px)}
+  h3{font-size:clamp(20px,2.4vw,24px)}
+
+  /* ---------- top bar ---------- */
+  .topbar{background:var(--burgundy);color:#fff;text-align:center;font-size:12px;letter-spacing:1.8px;
+    text-transform:uppercase;padding:9px 16px}
+  .topbar a{color:var(--gold-soft);text-decoration:none}
+  nav{position:sticky;top:0;z-index:60;background:rgba(251,247,239,.96);backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(21,53,43,.1)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+  .nav-logo{display:flex;align-items:center;gap:9px;font-family:'Cormorant Garamond',serif;font-size:18px;
+    font-weight:600;color:var(--evergreen);text-decoration:none;white-space:nowrap}
+  .nav-logo span{display:block;font-family:'Jost',sans-serif;font-size:9px;letter-spacing:2.4px;
+    text-transform:uppercase;color:var(--ink-soft);font-weight:400;margin-top:-3px}
+  .nav-mark{height:28px}
+  .nav-links{display:flex;align-items:center;gap:22px}
+  .nav-links a{color:var(--ink-soft);text-decoration:none;font-size:12px;letter-spacing:1.6px;
+    text-transform:uppercase;font-weight:500}
+  .nav-links a:hover{color:var(--evergreen)}
+  .nav-call{background:var(--evergreen);color:#fff!important;padding:9px 18px;border-radius:999px}
+  @media(max-width:840px){.nav-links a:not(.nav-call){display:none}}
+
+  /* ---------- hero ---------- */
+  .hero{background:linear-gradient(168deg,var(--evergreen) 0%,#112A22 100%);color:#fff;
+    padding:54px 0 46px;position:relative;overflow:hidden}
+  .hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
+    background:linear-gradient(90deg,transparent,rgba(176,141,74,.55),transparent)}
+  .eyebrow{font-size:10.5px;letter-spacing:3.2px;text-transform:uppercase;color:var(--gold-soft);font-weight:500}
+  .hero h1{margin:12px 0 14px;max-width:760px}
+  .hero p{color:rgba(255,255,255,.84);font-size:17px;max-width:680px}
+  .hero .included{display:inline-block;margin-top:20px;font-size:11.5px;letter-spacing:1.8px;
+    text-transform:uppercase;color:var(--gold-soft);border:1px solid rgba(230,211,168,.4);
+    border-radius:999px;padding:7px 16px}
+  .hero .skip{margin-top:18px;font-size:14px;color:rgba(255,255,255,.68)}
+  .hero .skip a{color:var(--gold-soft);text-decoration:none;border-bottom:1px dotted rgba(230,211,168,.5)}
+
+  /* ---------- stepper ---------- */
+  .stepper{background:var(--cream-2);border-bottom:1px solid rgba(21,53,43,.1);position:sticky;top:64px;z-index:40}
+  .stepper .wrap{display:flex;align-items:center;gap:8px;padding:12px 22px}
+  .step-pill{display:flex;align-items:center;gap:9px;flex:1;font-size:11.5px;letter-spacing:1.4px;
+    text-transform:uppercase;color:var(--ink-soft);font-weight:500;opacity:.55;transition:opacity .2s}
+  .step-pill .n{width:24px;height:24px;border-radius:50%;border:1px solid rgba(21,53,43,.3);
+    display:flex;align-items:center;justify-content:center;font-size:11px;flex:0 0 24px}
+  .step-pill.active{opacity:1;color:var(--evergreen)}
+  .step-pill.active .n{background:var(--evergreen);color:#fff;border-color:var(--evergreen)}
+  .step-pill.done{opacity:1;color:var(--gold)}
+  .step-pill.done .n{background:var(--gold);border-color:var(--gold);color:#fff}
+  @media(max-width:640px){.step-pill span.label{display:none}}
+  .progress{height:3px;background:rgba(21,53,43,.1)}
+  .progress .bar{height:100%;width:33.33%;background:var(--gold);transition:width .35s ease}
+
+  /* ---------- form ---------- */
+  main{padding:44px 0 80px}
+  .step{display:none}
+  .step.on{display:block;animation:fade .35s ease both}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .step-head{margin-bottom:26px}
+  .step-head h2{margin-bottom:6px}
+  .step-head p{color:var(--ink-soft);font-size:15.5px;max-width:660px}
+
+  .field{margin-bottom:20px}
+  .field label{display:block;font-size:12px;letter-spacing:1.6px;text-transform:uppercase;
+    color:var(--evergreen);font-weight:500;margin-bottom:6px}
+  .field .req{color:var(--burgundy)}
+  .field input[type=text],.field input[type=email],.field input[type=number],.field textarea{
+    width:100%;padding:12px 14px;border-radius:9px;border:1px solid rgba(21,53,43,.22);
+    background:#fff;font-family:'Jost',sans-serif;font-size:16px;color:var(--ink);outline:none;
+    transition:border-color .2s, box-shadow .2s}
+  .field input:focus,.field textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(176,141,74,.14)}
+  .field textarea{resize:vertical;min-height:64px}
+  .hint{font-size:13px;color:var(--ink-soft);margin-top:5px;font-style:italic}
+  .hint b{font-style:normal;font-weight:500;color:var(--evergreen)}
+  .pair{display:grid;grid-template-columns:1fr 220px;gap:10px;align-items:start}
+  @media(max-width:600px){.pair{grid-template-columns:1fr}}
+  .pair .pron input{font-size:14.5px;background:#FFFDF8}
+  .pair .pron label{font-size:10.5px;color:var(--ink-soft);letter-spacing:1.3px}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:600px){.two{grid-template-columns:1fr}}
+  .note{background:rgba(176,141,74,.1);border-left:3px solid var(--gold);border-radius:5px;
+    padding:13px 16px;font-size:14px;color:var(--ink-soft);margin:0 0 22px}
+  .note strong{color:var(--evergreen);font-weight:500}
+
+  .nav-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px;align-items:center}
+  .btn{display:inline-block;padding:14px 28px;border-radius:999px;border:0;cursor:pointer;
+    font-family:'Jost',sans-serif;font-size:12.5px;letter-spacing:1.7px;text-transform:uppercase;
+    font-weight:500;text-decoration:none;transition:all .2s;text-align:center}
+  .btn-gold{background:var(--gold);color:#fff;box-shadow:0 8px 20px rgba(176,141,74,.28)}
+  .btn-gold:hover{background:#9A7940;transform:translateY(-2px)}
+  .btn-ever{background:var(--evergreen);color:#fff}
+  .btn-ever:hover{background:var(--evergreen-2);transform:translateY(-2px)}
+  .btn-burg{background:var(--burgundy);color:#fff}
+  .btn-burg:hover{background:var(--burgundy-2);transform:translateY(-2px)}
+  .btn-line{background:transparent;border:1.5px solid rgba(21,53,43,.28);color:var(--evergreen)}
+  .btn-line:hover{border-color:var(--evergreen)}
+  .spacer{flex:1}
+
+  /* ---------- preview ---------- */
+  .friendly{background:rgba(110,31,42,.06);border:1px solid rgba(110,31,42,.22);border-radius:9px;
+    padding:14px 16px;font-size:14.5px;color:var(--burgundy);margin:24px 0 0}
+  .story-wrap{background:#fff;border:1px solid rgba(21,53,43,.14);border-radius:14px;
+    padding:38px 34px;box-shadow:0 12px 40px rgba(35,32,28,.07);margin-top:24px}
+  @media(max-width:600px){.story-wrap{padding:24px 18px}}
+  .story-title{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,3.6vw,34px);
+    line-height:1.2;margin-bottom:8px;color:var(--evergreen)}
+  .story-byline{font-size:11.5px;letter-spacing:2.2px;text-transform:uppercase;color:var(--ink-soft);
+    margin-bottom:24px;padding-bottom:18px;border-bottom:1px solid rgba(21,53,43,.12)}
+  .story p{font-size:17.5px;line-height:1.78;margin-bottom:16px;color:#2C2823}
+  .story .name{color:var(--burgundy);font-weight:500;background:rgba(110,31,42,.07);
+    padding:1px 4px;border-radius:3px}
+  .cue{font-weight:700;letter-spacing:.5px}
+  .cue-l{color:var(--cue-left)}
+  .cue-r{color:var(--cue-right)}
+  /* host copy */
+  .host .story p{font-size:22px;line-height:2.05}
+  .host .cue{font-size:1.28em;padding:1px 7px;border-radius:5px;background:rgba(29,107,63,.1)}
+  .host .cue-r{background:rgba(138,42,54,.1)}
+  .host-title{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--evergreen);margin-bottom:4px}
+
+  .tabs{display:flex;gap:8px;margin:26px 0 0;flex-wrap:wrap}
+  .tab{padding:11px 20px;border-radius:999px;border:1px solid rgba(21,53,43,.2);background:#fff;
+    font-family:'Jost',sans-serif;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;
+    cursor:pointer;color:var(--ink-soft);font-weight:500}
+  .tab.active{background:var(--evergreen);border-color:var(--evergreen);color:#fff}
+  .panel{display:none}
+  .panel.on{display:block}
+
+  .host-sheet{background:#fff;border:1px solid rgba(21,53,43,.14);border-radius:14px;padding:30px;
+    margin-top:24px}
+  .host-sheet h3{margin-bottom:12px;color:var(--evergreen)}
+  .host-sheet ol{margin:0 0 18px 20px}
+  .host-sheet li{margin-bottom:9px;color:var(--ink-soft);font-size:15px}
+  .host-sheet .practice{background:var(--cream-2);border-radius:9px;padding:14px 16px;font-size:15px;margin:14px 0}
+  .cast-list{list-style:none;margin:0;display:grid;gap:8px}
+  .cast-list li{display:flex;justify-content:space-between;gap:12px;font-size:14.5px;
+    padding:8px 0;border-bottom:1px solid rgba(21,53,43,.08);color:var(--ink-soft)}
+  .cast-list li b{color:var(--evergreen);font-weight:500}
+  .cast-list li .say{color:var(--gold);font-style:italic;font-size:13.5px}
+
+  .ref{display:inline-block;font-family:'Jost',monospace;letter-spacing:2px;font-size:13px;
+    background:var(--cream-2);border:1px dashed rgba(21,53,43,.3);border-radius:6px;padding:6px 12px;
+    color:var(--evergreen);font-weight:500}
+
+  /* ---------- print ---------- */
+  .print-only{display:none}
+  @media print{
+    .topbar,nav,.stepper,.hero,.nav-btns,.tabs,.friendly,.no-print{display:none!important}
+    body{background:#fff;color:#000}
+    main{padding:0}
+    .print-only{display:block}
+    .story-wrap,.host-sheet{box-shadow:none;border:0;padding:0;margin:0}
+    .story p{font-size:15pt;line-height:1.9;page-break-inside:avoid}
+    .host .story p{font-size:19pt;line-height:2.15}
+    .story-title{font-size:24pt}
+    .cue-l{color:#0B5A2E!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .cue-r{color:#8A2A36!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    .cue{font-weight:800}
+    .name{background:none;color:#000;font-weight:600;padding:0}
+    .pagebreak{page-break-before:always}
+  }
+</style>
+<!-- seo:head:start (generated by tools/add-seo-head.mjs) -->
+<link rel="canonical" href="https://djbenthomas.github.io/as-ulike-it/christmas-story-builder">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="author" content="Ben Thomas — AS·U·LIKE·IT Entertainment">
+<meta name="keywords" content="christmas story builder, personalized christmas story, left right christmas game, left right gift passing game, office christmas party game, corporate holiday party game, fill in the blanks christmas story, company christmas party activities, christmas party game nashville, office party icebreaker game, personalized office christmas story, christmas gift exchange game">
+<meta name="geo.region" content="US-TN">
+<meta name="geo.placename" content="Hendersonville, Tennessee">
+<meta name="geo.position" content="36.3048;-86.6200">
+<meta name="ICBM" content="36.3048, -86.6200">
+<meta name="theme-color" content="#B98A3E">
+<link rel="icon" type="image/png" href="assets/canva-logo.png">
+<link rel="apple-touch-icon" href="assets/canva-logo.png">
+<meta property="og:site_name" content="AS·U·LIKE·IT Entertainment">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://djbenthomas.github.io/as-ulike-it/christmas-story-builder">
+<meta property="og:title" content="Christmas Story Builder | Personalized Left-Right Game | As You Like It">
+<meta property="og:description" content="Cast your coworkers in a ridiculous Christmas adventure. Fill in a few blanks and we turn your office into a personalized Left-Right gift-passing story for your party.">
+<meta property="og:image" content="https://djbenthomas.github.io/as-ulike-it/assets/canva-hero.jpg">
+<meta property="og:image:alt" content="AS·U·LIKE·IT Entertainment — wedding DJ and photo booth in Hendersonville, TN">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Christmas Story Builder | Personalized Left-Right Game | As You Like It">
+<meta name="twitter:description" content="Cast your coworkers in a ridiculous Christmas adventure. Fill in a few blanks and we turn your office into a personalized Left-Right gift-passing story for your party.">
+<meta name="twitter:image" content="https://djbenthomas.github.io/as-ulike-it/assets/canva-hero.jpg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@id": "https://djbenthomas.github.io/as-ulike-it/#business",
+      "@type": [
+        "LocalBusiness",
+        "EntertainmentBusiness"
+      ],
+      "name": "AS·U·LIKE·IT Entertainment",
+      "alternateName": [
+        "As You Like It Entertainment",
+        "DJ Ben Thomas",
+        "AS U LIKE IT"
+      ],
+      "description": "Wedding and event DJ in Hendersonville, TN. 15+ years and 900+ events. Professional MC, custom playlists, sound and lighting, plus photo booth rentals. Serving Sumner County, Wilson County, Robertson County, Davidson County, and all of Middle Tennessee.",
+      "telephone": "+1-661-533-0100",
+      "email": "djbenthomas@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Hendersonville",
+        "addressRegion": "TN",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 36.3048,
+        "longitude": -86.62
+      },
+      "image": "https://djbenthomas.github.io/as-ulike-it/assets/canva-hero.jpg",
+      "logo": "https://djbenthomas.github.io/as-ulike-it/assets/canva-logo.png",
+      "priceRange": "$$",
+      "currenciesAccepted": "USD",
+      "paymentAccepted": "Cash, Check, Credit Card",
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Hendersonville"
+        },
+        {
+          "@type": "City",
+          "name": "Gallatin"
+        },
+        {
+          "@type": "City",
+          "name": "Goodlettsville"
+        },
+        {
+          "@type": "City",
+          "name": "Nashville"
+        },
+        {
+          "@type": "City",
+          "name": "Sumner County"
+        },
+        {
+          "@type": "City",
+          "name": "White House"
+        },
+        {
+          "@type": "City",
+          "name": "Millersville"
+        },
+        {
+          "@type": "City",
+          "name": "Greenbrier"
+        },
+        {
+          "@type": "City",
+          "name": "Cross Plains"
+        },
+        {
+          "@type": "City",
+          "name": "Portland"
+        },
+        {
+          "@type": "City",
+          "name": "Westmoreland"
+        },
+        {
+          "@type": "City",
+          "name": "Mt. Juliet"
+        },
+        {
+          "@type": "City",
+          "name": "Lebanon"
+        },
+        {
+          "@type": "City",
+          "name": "Old Hickory"
+        },
+        {
+          "@type": "City",
+          "name": "Madison"
+        },
+        {
+          "@type": "City",
+          "name": "Hermitage"
+        },
+        {
+          "@type": "City",
+          "name": "Springfield"
+        },
+        {
+          "@type": "City",
+          "name": "Middle Tennessee"
+        }
+      ],
+      "sameAs": [
+        "https://www.facebook.com/asyoulikeitentertainment",
+        "https://www.thebash.com/dj/as-you-like-it-dj",
+        "https://www.theknot.com/marketplace/as-you-like-it-entertainment-hendersonville-tn-578924"
+      ],
+      "makesOffer": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Wedding DJ & MC Services"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Event DJ Services"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Photo Booth Rental"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "name": "Christmas Story Builder",
+      "description": "A personalized Left-Right Christmas gift-passing story builder for company holiday parties. Cast your coworkers, add workplace details, and preview the story before booking.",
+      "url": "https://djbenthomas.github.io/as-ulike-it/christmas-story-builder",
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "AS·U·LIKE·IT Entertainment",
+        "url": "https://djbenthomas.github.io/as-ulike-it/"
+      },
+      "about": {
+        "@type": "Service",
+        "name": "Christmas Murder Mystery Party",
+        "provider": {
+          "@id": "https://djbenthomas.github.io/as-ulike-it/#business"
+        }
+      }
+    }
+  ]
+}
+</script>
+<!-- seo:head:end -->
+</head>
+<body>
+
+<div class="topbar">Included with your Christmas party package &bull; <a href="tel:6615330100">661-533-0100</a></div>
+
+<nav>
+  <div class="wrap">
+    <a class="nav-logo" href="index.html">
+      <img class="nav-mark" src="assets/canva-logo.png" alt="AS·U·LIKE·IT Entertainment logo">
+      <span style="line-height:1.05;">AS·U·LIKE·IT<span>Entertainment</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="christmas-office-parties.html">Christmas Parties</a>
+      <a href="photo-booth.html">Photo Booth</a>
+      <a href="christmas-office-parties.html#packages">Pricing</a>
+      <a class="nav-call" href="tel:6615330100">&#128222; 661-533-0100</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Christmas Story Builder</div>
+    <h1>Your Office. Your Characters.<br>One Ridiculous Christmas Story.</h1>
+    <p>Cast your coworkers in a Christmas adventure! Give us a few names, workplace quirks, and ridiculous details. We&rsquo;ll turn them into your personalized Left&ndash;Right Christmas gift-passing game.</p>
+    <div class="included">Included with the Christmas Murder Mystery &amp; Games and Ultimate packages</div>
+    <p class="skip">Just checking prices? You don&rsquo;t need this form &mdash; <a href="christmas-office-parties.html#packages">see packages and availability</a>.</p>
+  </div>
+</header>
+
+<div class="stepper">
+  <div class="wrap">
+    <div class="step-pill active" id="pill1"><span class="n">1</span><span class="label">Cast</span></div>
+    <div class="step-pill" id="pill2"><span class="n">2</span><span class="label">Workplace</span></div>
+    <div class="step-pill" id="pill3"><span class="n">3</span><span class="label">Ridiculous</span></div>
+  </div>
+  <div class="progress"><div class="bar" id="bar"></div></div>
+</div>
+
+<main class="wrap">
+
+  <!-- ================= STEP 1 ================= -->
+  <section class="step on" id="step1">
+    <div class="step-head">
+      <h2>Step 1: Cast your characters</h2>
+      <p>Assign the roles. These are playful parts you&rsquo;re picking for a story &mdash; not statements about anyone. One person can play several roles, and nicknames or fictional names are completely fine.</p>
+    </div>
+
+    <div class="field">
+      <label for="company">Company or group name <span class="req">*</span></label>
+      <input type="text" id="company" maxlength="60" placeholder="">
+      <div class="hint">Example: <b>Kestrel Heating &amp; Air</b></div>
+    </div>
+
+    <div class="field">
+      <label for="organizer">Organizer&rsquo;s name <span class="req">*</span></label>
+      <input type="text" id="organizer" maxlength="60" placeholder="">
+      <div class="hint">Example: <b>Dana Whitfield</b></div>
+    </div>
+
+    <div class="field">
+      <label for="email">Booking email <span class="req">*</span></label>
+      <input type="email" id="email" maxlength="80" placeholder="">
+      <div class="hint">So we can send your finished story and quote to the right place.</div>
+    </div>
+
+    <div class="field">
+      <label for="boss">Boss or team leader&rsquo;s first name <span class="req">*</span></label>
+      <div class="pair">
+        <div><input type="text" id="boss" maxlength="60" placeholder=""></div>
+        <div class="pron"><label for="boss_pron">How do you say it?</label><input type="text" id="boss_pron" maxlength="60" placeholder=""></div>
+      </div>
+      <div class="hint">Example: <b>Marcus</b> &mdash; said like <b>MAR-kus</b></div>
+    </div>
+
+    <div class="field">
+      <label for="knows">The person who always knows what&rsquo;s happening</label>
+      <div class="pair">
+        <div><input type="text" id="knows" maxlength="60" placeholder=""></div>
+        <div class="pron"><label for="knows_pron">How do you say it?</label><input type="text" id="knows_pron" maxlength="60" placeholder=""></div>
+      </div>
+      <div class="hint">Example: <b>Priya</b> &mdash; the one with the calendar.</div>
+    </div>
+
+    <div class="field">
+      <label for="late">The person most likely to arrive late</label>
+      <div class="pair">
+        <div><input type="text" id="late" maxlength="60" placeholder=""></div>
+        <div class="pron"><label for="late_pron">How do you say it?</label><input type="text" id="late_pron" maxlength="60" placeholder=""></div>
+      </div>
+      <div class="hint">Example: <b>Tony</b> &mdash; always five minutes behind.</div>
+    </div>
+
+    <div class="field">
+      <label for="comedian">The office comedian</label>
+      <div class="pair">
+        <div><input type="text" id="comedian" maxlength="60" placeholder=""></div>
+        <div class="pron"><label for="comedian_pron">How do you say it?</label><input type="text" id="comedian_pron" maxlength="60" placeholder=""></div>
+      </div>
+      <div class="hint">Example: <b>Big Rob</b> &mdash; no explanation needed.</div>
+    </div>
+
+    <div class="field">
+      <label for="saves">The person who saves the day</label>
+      <div class="pair">
+        <div><input type="text" id="saves" maxlength="60" placeholder=""></div>
+        <div class="pron"><label for="saves_pron">How do you say it?</label><input type="text" id="saves_pron" maxlength="60" placeholder=""></div>
+      </div>
+      <div class="hint">Example: <b>Yolanda</b> &mdash; fixes everything before anyone notices.</div>
+    </div>
+
+    <div class="field">
+      <label for="wildcard">Optional guest, spouse, or wildcard character</label>
+      <div class="pair">
+        <div><input type="text" id="wildcard" maxlength="60" placeholder=""></div>
+        <div class="pron"><label for="wildcard_pron">How do you say it?</label><input type="text" id="wildcard_pron" maxlength="60" placeholder=""></div>
+      </div>
+      <div class="hint">Example: <b>Uncle Dale</b> &mdash; showed up for the food.</div>
+    </div>
+
+    <div class="nav-btns">
+      <button class="btn btn-ever" data-next="2">Next: workplace flavor</button>
+    </div>
+  </section>
+
+  <!-- ================= STEP 2 ================= -->
+  <section class="step" id="step2">
+    <div class="step-head">
+      <h2>Step 2: Add your workplace flavor</h2>
+      <p>Short answers work best. The funnier and more specific, the better the story reads out loud.</p>
+    </div>
+
+    <div class="field">
+      <label for="work">What does your company do? <span class="req">*</span></label>
+      <input type="text" id="work" maxlength="60" placeholder="">
+      <div class="hint">Start with a verb. Example: <b>fix air conditioners</b> or <b>help people buy houses</b>.</div>
+    </div>
+
+    <div class="field">
+      <label for="group">What do you call your employees as a group?</label>
+      <input type="text" id="group" maxlength="60" placeholder="">
+      <div class="hint">Example: <b>the crew</b>, <b>the dental team</b>, <b>the sales squad</b>.</div>
+    </div>
+
+    <div class="field">
+      <label for="place">A familiar place in your workplace</label>
+      <input type="text" id="place" maxlength="60" placeholder="">
+      <div class="hint">Example: <b>the break room</b> or <b>the loading dock</b>.</div>
+    </div>
+
+    <div class="field">
+      <label for="missing">An object that always disappears</label>
+      <input type="text" id="missing" maxlength="60" placeholder="">
+      <div class="hint">Example: <b>the good stapler</b>.</div>
+    </div>
+
+    <div class="field">
+      <label for="equipment">A piece of equipment that causes trouble</label>
+      <input type="text" id="equipment" maxlength="60" placeholder="">
+      <div class="hint">Example: <b>the printer</b> or <b>the ice machine</b>.</div>
+    </div>
+
+    <div class="field">
+      <label for="catchphrase">A phrase someone always says</label>
+      <input type="text" id="catchphrase" maxlength="60" placeholder="">
+      <div class="hint">Example: <b>Did you put in a ticket?</b></div>
+    </div>
+
+    <div class="field">
+      <label for="snack">A favorite snack or drink</label>
+      <input type="text" id="snack" maxlength="60" placeholder="">
+      <div class="hint">Example: <b>cinnamon rolls</b> or <b>extra-strong coffee</b>.</div>
+    </div>
+
+    <div class="field">
+      <label for="accomplishment">Something the team accomplished this year</label>
+      <input type="text" id="accomplishment" maxlength="60" placeholder="">
+      <div class="hint">Example: <b>opened our second location</b>.</div>
+    </div>
+
+    <div class="field">
+      <label for="joke">Optional friendly inside joke</label>
+      <textarea id="joke" maxlength="200" placeholder=""></textarea>
+      <div class="hint">Example: <b>The great 2024 chili cook-off incident.</b> Leave it blank and we&rsquo;ll skip that line.</div>
+    </div>
+
+    <div class="field">
+      <label for="leaveout">Anything we should leave out?</label>
+      <textarea id="leaveout" maxlength="200" placeholder=""></textarea>
+      <div class="hint">Names, topics, or running jokes to avoid. We read this before we write anything.</div>
+    </div>
+
+    <div class="nav-btns">
+      <button class="btn btn-line" data-back="1">Back</button>
+      <button class="btn btn-ever" data-next="3">Next: make it ridiculous</button>
+    </div>
+  </section>
+
+  <!-- ================= STEP 3 ================= -->
+  <section class="step" id="step3">
+    <div class="step-head">
+      <h2>Step 3: Make it ridiculous</h2>
+      <p>This is the fun part. Absurd is good. Nonsense is better.</p>
+    </div>
+
+    <div class="two">
+      <div class="field">
+        <label for="adjective">A silly adjective</label>
+        <input type="text" id="adjective" maxlength="60" placeholder="">
+        <div class="hint">Example: <b>sparkly</b>.</div>
+      </div>
+      <div class="field">
+        <label for="animal">An unexpected animal, singular</label>
+        <input type="text" id="animal" maxlength="60" placeholder="">
+        <div class="hint">Example: <b>a llama</b>.</div>
+      </div>
+    </div>
+
+    <div class="two">
+      <div class="field">
+        <label for="jobtitle">A ridiculous holiday job title</label>
+        <input type="text" id="jobtitle" maxlength="60" placeholder="">
+        <div class="hint">Example: <b>Chief Tinsel Inspector</b>.</div>
+      </div>
+      <div class="field">
+        <label for="santaitem">A surprising item Santa might pull from his sack</label>
+        <input type="text" id="santaitem" maxlength="60" placeholder="">
+        <div class="hint">Example: <b>a leaf blower</b>.</div>
+      </div>
+    </div>
+
+    <div class="two">
+      <div class="field">
+        <label for="dance">An over-the-top dance move</label>
+        <input type="text" id="dance" maxlength="60" placeholder="">
+        <div class="hint">Example: <b>the Reindeer Wiggle</b>.</div>
+      </div>
+      <div class="field">
+        <label for="sound">A funny sound</label>
+        <input type="text" id="sound" maxlength="60" placeholder="">
+        <div class="hint">Example: <b>HONK HONK!</b></div>
+      </div>
+    </div>
+
+    <div class="two">
+      <div class="field">
+        <label for="gift">Gift or prize being passed</label>
+        <input type="text" id="gift" maxlength="60" placeholder="">
+        <div class="hint">Example: <b>a mystery box</b>.</div>
+      </div>
+      <div class="field">
+        <label for="players">Number of players</label>
+        <input type="number" id="players" min="4" max="300" value="40">
+        <div class="hint">Roughly how many people will be passing.</div>
+      </div>
+    </div>
+
+    <div class="field" style="max-width:280px">
+      <label for="circles">Number of passing circles</label>
+      <input type="number" id="circles" min="1" max="20" value="1">
+      <div class="hint">Bigger groups work better in several smaller circles.</div>
+    </div>
+
+    <div class="friendly">Please use friendly jokes your group will enjoy hearing aloud.</div>
+
+    <div class="nav-btns">
+      <button class="btn btn-line" data-back="2">Back</button>
+      <button class="btn btn-gold" id="buildBtn">Create My Story Preview</button>
+    </div>
+    <p style="margin-top:16px;font-size:13px;color:var(--ink-soft)">
+      Nothing you type here is sent anywhere until you choose to submit it. Your story is built in your own browser.
+    </p>
+  </section>
+
+  <!-- ================= PREVIEW ================= -->
+  <section class="step" id="preview">
+    <div class="step-head no-print">
+      <h2>Your story preview</h2>
+      <p>Read it through. If something sounds off, edit your answers and rebuild &mdash; as many times as you like.</p>
+    </div>
+
+    <div class="tabs no-print">
+      <button class="tab active" data-tab="organizer">Organizer preview</button>
+      <button class="tab" data-tab="host">Host reading copy</button>
+      <button class="tab" data-tab="print">Print / large text</button>
+    </div>
+
+    <div class="panel on" id="panel-organizer">
+      <div class="story-wrap">
+        <div class="story-title" id="o-title"></div>
+        <div class="story-byline" id="o-byline"></div>
+        <div class="story" id="o-story"></div>
+      </div>
+    </div>
+
+    <div class="panel" id="panel-host">
+      <div class="host-sheet">
+        <h3>Host instructions</h3>
+        <p style="color:var(--ink-soft);font-size:15px;margin-bottom:14px">Read this part to the room before you begin.</p>
+        <ol>
+          <li>When you hear <b>LEFT</b>, pass your gift one person to your left. When you hear <b>RIGHT</b>, pass it one person to your right. Wait for each cue, and pass gently!</li>
+          <li>Give one practice cue in each direction before starting.</li>
+          <li>The story title and these instructions are not part of the game. Only begin passing when you announce that the story has started.</li>
+          <li>Read slowly and pause after each bold direction. Don&rsquo;t count words such as &ldquo;alright&rdquo; or &ldquo;leftovers&rdquo; as cues.</li>
+          <li>After the final sentence, announce: <b>&ldquo;Stop passing!&rdquo;</b></li>
+          <li>Guests holding the designated gifts keep them. Confirm the number of gifts and any additional prizes with the organizer beforehand.</li>
+          <li>For a larger group, use several smaller circles so passing stays manageable. Seated participation is always an option.</li>
+        </ol>
+        <div class="practice">
+          <b>Practice cue:</b> &ldquo;Everybody pass <b>LEFT</b>&hellip; now pass <b>RIGHT</b>.&rdquo; Then start the story.
+        </div>
+        <div id="host-meta" style="font-size:14px;color:var(--ink-soft);margin-bottom:16px"></div>
+        <div class="pagebreak"></div>
+        <div class="story-title" id="h-title"></div>
+        <div class="story-byline" id="h-byline"></div>
+        <div class="story host" id="h-story"></div>
+      </div>
+      <div class="host-sheet" style="margin-top:20px">
+        <h3>Cast list &amp; pronunciation</h3>
+        <ul class="cast-list" id="cast-list"></ul>
+      </div>
+    </div>
+
+    <div class="panel" id="panel-print">
+      <div class="tabs no-print" style="margin-bottom:18px">
+        <button class="btn btn-ever no-print" onclick="window.print()">Print this page</button>
+      </div>
+      <div class="story-wrap">
+        <div class="story-title" id="p-title"></div>
+        <div class="story-byline" id="p-byline"></div>
+        <div class="story host" id="p-story"></div>
+      </div>
+    </div>
+
+    <div class="nav-btns no-print">
+      <button class="btn btn-line" data-back="3">Edit my answers</button>
+      <button class="btn btn-gold" id="rebuildBtn">Rebuild story</button>
+      <span class="spacer"></span>
+      <button class="btn btn-burg" id="submitBtn">Submit for my party</button>
+    </div>
+
+    <div class="no-print" style="margin-top:22px;background:#fff;border:1px solid rgba(21,53,43,.14);border-radius:12px;padding:20px 22px">
+      <div style="font-size:11.5px;letter-spacing:2px;text-transform:uppercase;color:var(--ink-soft);margin-bottom:8px">Your booking reference</div>
+      <div class="ref" id="ref">XM-000000</div>
+      <p style="font-size:14px;color:var(--ink-soft);margin-top:12px">
+        Submitting opens an email to us with your story and reference attached &mdash; nothing is stored on this website.
+        Your date isn&rsquo;t reserved until booking is completed.
+      </p>
+      <p id="submit-msg" style="font-size:14px;color:var(--evergreen);margin-top:10px;display:none">
+        Your email is ready &mdash; press send and we&rsquo;ll take it from there.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer style="background:#14231D;color:rgba(255,255,255,.55);text-align:center;padding:32px 20px;font-size:13px">
+  <div style="color:var(--gold);font-family:'Cormorant Garamond',serif;font-size:17px">AS&middot;U&middot;LIKE&middot;IT Entertainment</div>
+  <div style="margin-top:6px">Christmas Murder Mystery &bull; DJ &bull; Photo Booth &mdash; Hendersonville, TN</div>
+  <div style="margin-top:8px"><a href="https://as-ulikeit.com" style="color:rgba(255,255,255,.72);text-decoration:none">as-ulikeit.com</a> &nbsp;&bull;&nbsp;
+    <a href="tel:6615330100" style="color:rgba(255,255,255,.72);text-decoration:none">661-533-0100</a></div>
+</footer>
+
+<script>
+'use strict';
+
+/* ------------------------------------------------------------------
+   All fields: plain text, capped length, escaped on output.
+   Nothing is persisted or transmitted until the organizer emails it.
+   ------------------------------------------------------------------ */
+
+var MAX = 60, MAX_JOKE = 200;
+
+var F = {};
+['company','organizer','email','boss','boss_pron','knows','knows_pron','late','late_pron',
+ 'comedian','comedian_pron','saves','saves_pron','wildcard','wildcard_pron',
+ 'work','group','place','missing','equipment','catchphrase','snack','accomplishment','joke','leaveout',
+ 'adjective','animal','jobtitle','santaitem','dance','sound','gift'].forEach(function(id){
+  F[id] = document.getElementById(id);
+});
+
+function val(id){
+  var el = F[id];
+  if (!el) return '';
+  return String(el.value || '').trim().replace(/\s+/g, ' ');
+}
+
+function esc(s){
+  return String(s == null ? '' : s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+}
+
+/* ---------------- step navigation ---------------- */
+var current = 1;
+
+function showStep(n){
+  current = n;
+  var isPreview = n === 'preview';
+  ['step1','step2','step3'].forEach(function(id,i){
+    document.getElementById(id).classList.toggle('on', !isPreview && (i+1) === n);
+  });
+  document.getElementById('preview').classList.toggle('on', isPreview);
+
+  var pct = isPreview ? 100 : (n / 3) * 100;
+  document.getElementById('bar').style.width = pct + '%';
+
+  [1,2,3].forEach(function(i){
+    var pill = document.getElementById('pill' + i);
+    pill.classList.remove('active','done');
+    if (isPreview) pill.classList.add('done');
+    else if (i < n) pill.classList.add('done');
+    else if (i === n) pill.classList.add('active');
+  });
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+document.querySelectorAll('[data-next]').forEach(function(b){
+  b.addEventListener('click', function(){
+    var next = Number(b.dataset.next);
+    if (current === 1 && !validateStep1()) return;
+    if (current === 2 && !validateStep2()) return;
+    showStep(next);
+  });
+});
+
+document.querySelectorAll('[data-back]').forEach(function(b){
+  b.addEventListener('click', function(){ showStep(Number(b.dataset.back)); });
+});
+
+function requireField(id, label){
+  var el = F[id];
+  var v = val(id);
+  if (!v){
+    el.style.borderColor = 'var(--burgundy)';
+    el.focus();
+    el.scrollIntoView({ behavior:'smooth', block:'center' });
+    return false;
+  }
+  el.style.borderColor = '';
+  return true;
+}
+
+function validateStep1(){
+  if (!requireField('company','Company')) return false;
+  if (!requireField('organizer','Organizer')) return false;
+  var e = val('email');
+  if (!e || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e)){
+    F.email.style.borderColor = 'var(--burgundy)';
+    F.email.focus();
+    return false;
+  }
+  F.email.style.borderColor = '';
+  if (!requireField('boss','Boss')) return false;
+  return true;
+}
+
+function validateStep2(){
+  return requireField('work','Work description');
+}
+
+/* ---------------- story data with neutral fallbacks ---------------- */
+function storyData(){
+  var d = {
+    COMPANY: val('company') || 'your company',
+    BOSS: val('boss') || 'the boss',
+    KNOWS_EVERYTHING: val('knows') || 'the person who always knows what is happening',
+    COMEDIAN: val('comedian') || 'the office comedian',
+    LATE_PERSON: val('late') || 'the last one to arrive',
+    SAVES_DAY: val('saves') || 'the person who saves the day',
+    WILDCARD: val('wildcard'),
+    WORK_DESCRIPTION: val('work') || 'do what you do',
+    GROUP_NOUN: val('group') || 'company',
+    OFFICE_PLACE: val('place') || 'the break room',
+    MISSING_OBJECT: val('missing') || 'the good stapler',
+    TROUBLESOME_EQUIPMENT: val('equipment') || 'the printer',
+    CATCHPHRASE: val('catchphrase') || 'Well, that happened',
+    SNACK: val('snack') || 'cookies',
+    ACCOMPLISHMENT: val('accomplishment') || 'made it through the year together',
+    INSIDE_JOKE: val('joke'),
+    ADJECTIVE: val('adjective') || 'sparkly',
+    ANIMAL: val('animal') || 'a very confused reindeer',
+    SILLY_JOB_TITLE: val('jobtitle') || 'Chief Tinsel Inspector',
+    SANTA_ITEM: val('santaitem') || 'something completely unexplained',
+    DANCE_MOVE: val('dance') || 'an extremely committed dance',
+    FUNNY_SOUND: val('sound') || 'CRASH!',
+    GIFT: val('gift') || 'a gift'
+  };
+  return d;
+}
+
+/* ---------------- the template ---------------- */
+/* Tokens are substituted AFTER cue highlighting, so a name like
+   "Right Said Fred" or a catchphrase containing LEFT never becomes a cue. */
+
+var TEMPLATE = [
+  "It was the last celebration before Christmas at {COMPANY}, and {BOSS} wanted everything to be just RIGHT.",
+  "The decorations were on the LEFT. The refreshments were on the RIGHT. And someone had LEFT {MISSING_OBJECT} in a place nobody could remember.",
+  "\u201CWe spend all year working hard to {WORK_DESCRIPTION},\u201D announced {BOSS}. \u201CTonight, we\u2019re going to celebrate!\u201D",
+  "RIGHT then, {COMEDIAN} burst through the door wearing a {ADJECTIVE} Christmas sweater.",
+  "\u201CAm I in the RIGHT place?\u201D",
+  "\u201COnly if you brought {SNACK},\u201D said {KNOWS_EVERYTHING}, pointing LEFT.",
+  "Unfortunately, {COMEDIAN} had LEFT the refreshments at home.",
+  "Before anyone could complain, there was a knock on the door to the RIGHT.",
+  "It was Santa.",
+  "Behind him stood {ANIMAL}, wearing a badge that read: \u201C{SILLY_JOB_TITLE}.\u201D",
+  "Santa looked LEFT, then RIGHT.",
+  "\u201CWhich one of you is {BOSS}?\u201D",
+  "{COMEDIAN} pointed RIGHT.",
+  "{KNOWS_EVERYTHING} pointed LEFT.",
+  "{BOSS} raised a hand. \u201CI\u2019m RIGHT here.\u201D",
+  "Santa opened his sack and pulled out {SANTA_ITEM}.",
+  "\u201CI believe this belongs to your company.\u201D",
+  "\u201CThat can\u2019t be RIGHT,\u201D said {BOSS}. \u201CWe ordered {MISSING_OBJECT}.\u201D",
+  "Suddenly, a noise came from {OFFICE_PLACE}, over on the LEFT.",
+  "\u201C{FUNNY_SOUND}!\u201D",
+  "Everyone turned RIGHT.",
+  "\u201CThat was the wrong direction,\u201D said {KNOWS_EVERYTHING}. \u201CThe noise came from the LEFT!\u201D",
+  "Out came {LATE_PERSON}, carrying {MISSING_OBJECT}.",
+  "\u201CSorry! I LEFT something in the car.\u201D",
+  "Santa checked his watch. \u201CYou\u2019re RIGHT on time. We need someone to test our emergency Christmas dance.\u201D",
+  "{COMEDIAN} stepped LEFT.",
+  "{BOSS} stepped RIGHT.",
+  "Then {LATE_PERSON} performed {DANCE_MOVE}, nearly knocking over {TROUBLESOME_EQUIPMENT}.",
+  "\u201C{CATCHPHRASE}!\u201D shouted {KNOWS_EVERYTHING}.",
+  "That was when the lights went out.",
+  "Nobody moved LEFT.",
+  "Nobody moved RIGHT.",
+  "Somebody quietly asked whether there was any {SNACK} LEFT.",
+  "Fortunately, {SAVES_DAY} knew exactly what to do.",
+  "They went RIGHT to {OFFICE_PLACE}, reached behind {TROUBLESOME_EQUIPMENT}, and found the plug Santa\u2019s unusual assistant had stepped on.",
+  "The lights came RIGHT back on.",
+  "Santa looked at {BOSS}. \u201CYou\u2019ve got a pretty impressive team here.\u201D",
+  "\u201CYou\u2019re RIGHT,\u201D said {BOSS}. \u201CThis year, we {ACCOMPLISHMENT}. That took everyone.\u201D",
+  "__WILDCARD__",
+  "__INSIDE_JOKE__",
+  "Santa gathered his things from the LEFT side of the room.",
+  "His assistant headed RIGHT.",
+  "\u201CThe sleigh is the other way!\u201D Santa called.",
+  "Finally, they LEFT together.",
+  "{BOSS} looked around at the team and smiled.",
+  "\u201CThe best part of this {GROUP_NOUN} is RIGHT here in this room.\u201D",
+  "Everyone cheered.",
+  "And whoever is holding {GIFT} RIGHT now gets to keep it!"
+];
+
+/* Build one paragraph: literal text gets cue highlighting, tokens get escaped text. */
+function renderParagraph(line, d, cueClass){
+  if (line === '__INSIDE_JOKE__'){
+    if (!d.INSIDE_JOKE) return '';
+    return '<p>Of course, nobody was going to let the year end without mentioning this: <span class="name">' +
+      esc(d.INSIDE_JOKE) + '</span>.</p>';
+  }
+  if (line === '__WILDCARD__'){
+    if (!d.WILDCARD) return '';
+    return '<p>Somehow, <span class="name">' + esc(d.WILDCARD) + '</span> made it too, and nobody could quite explain how.</p>';
+  }
+
+  var parts = line.split(/(\{[A-Z_]+\})/);
+  var out = parts.map(function(part){
+    if (/^\{[A-Z_]+\}$/.test(part)){
+      var key = part.slice(1, -1);
+      var v = d[key] != null ? d[key] : '';
+      return '<span class="name">' + esc(v) + '</span>';
+    }
+    // literal template text — this is the only place cues are detected
+    return part
+      .replace(/\bLEFT\b/g, '<span class="cue cue-l">LEFT</span>')
+      .replace(/\bRIGHT\b/g, '<span class="cue cue-r">RIGHT</span>');
+  }).join('');
+
+  return '<p>' + out + '</p>';
+}
+
+function buildStory(d){
+  return TEMPLATE.map(function(l){ return renderParagraph(l, d, ''); }).join('');
+}
+
+function storyTitle(d){ return 'The Night Christmas Took a Wrong Turn at ' + d.COMPANY; }
+
+/* ---------------- render preview ---------------- */
+var CURRENT_REF = makeRef();
+
+function makeRef(){
+  var chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  var s = '';
+  for (var i = 0; i < 6; i++) s += chars.charAt(Math.floor(Math.random() * chars.length));
+  return 'XM-' + s;
+}
+
+function renderPreview(){
+  var d = storyData();
+  var storyHtml = buildStory(d);
+  var title = storyTitle(d);
+  var byline = (val('organizer') || 'Organizer') + ' &middot; ' + (val('company') || 'Company') +
+    ' &middot; ' + (val('players') || '40') + ' players &middot; ' +
+    (val('circles') || '1') + ' circle' + (val('circles') === '1' ? '' : 's');
+
+  document.getElementById('o-title').textContent = title;
+  document.getElementById('o-byline').innerHTML = byline;
+  document.getElementById('o-story').innerHTML = storyHtml;
+
+  document.getElementById('h-title').textContent = title;
+  document.getElementById('h-byline').innerHTML = byline;
+  document.getElementById('h-story').innerHTML = storyHtml;
+
+  document.getElementById('p-title').textContent = title;
+  document.getElementById('p-byline').innerHTML = byline;
+  document.getElementById('p-story').innerHTML = storyHtml;
+
+  document.getElementById('host-meta').innerHTML =
+    '<b>' + esc(val('players') || '40') + '</b> players &bull; <b>' +
+    esc(val('circles') || '1') + '</b> circle' + (val('circles') === '1' ? '' : 's') +
+    ' &bull; prize: <b>' + esc(val('gift') || 'a gift') + '</b>';
+
+  // cast list
+  var roles = [
+    ['Boss / team leader','boss','boss_pron'],
+    ['Knows what\u2019s happening','knows','knows_pron'],
+    ['Most likely late','late','late_pron'],
+    ['Office comedian','comedian','comedian_pron'],
+    ['Saves the day','saves','saves_pron'],
+    ['Wildcard guest','wildcard','wildcard_pron']
+  ];
+  var list = document.getElementById('cast-list');
+  list.innerHTML = '';
+  roles.forEach(function(r){
+    var name = val(r[1]);
+    if (!name) return;
+    var pron = val(r[2]);
+    var li = document.createElement('li');
+    li.innerHTML = '<span><b>' + esc(r[0]) + '</b> &mdash; ' + esc(name) + '</span>' +
+      (pron ? '<span class="say">said like ' + esc(pron) + '</span>' : '');
+    list.appendChild(li);
+  });
+  if (!list.children.length){
+    list.innerHTML = '<li><b>No optional characters cast</b> &mdash; the story uses neutral stand-ins.</li>';
+  }
+
+  document.getElementById('ref').textContent = CURRENT_REF;
+}
+
+/* ---------------- build / rebuild / submit ---------------- */
+document.getElementById('buildBtn').addEventListener('click', function(){
+  if (!validateStep1() || !validateStep2()) return;
+  renderPreview();
+  showStep('preview');
+});
+
+document.getElementById('rebuildBtn').addEventListener('click', function(){
+  renderPreview();
+  var btn = this;
+  var old = btn.textContent;
+  btn.textContent = 'Rebuilt';
+  setTimeout(function(){ btn.textContent = old; }, 1400);
+});
+
+/* tabs */
+document.querySelectorAll('.tab').forEach(function(t){
+  t.addEventListener('click', function(){
+    var id = t.dataset.tab;
+    if (id === 'print'){ window.print(); return; }
+    document.querySelectorAll('.tab').forEach(function(x){ x.classList.remove('active'); });
+    t.classList.add('active');
+    document.querySelectorAll('.panel').forEach(function(p){ p.classList.remove('on'); });
+    document.getElementById('panel-' + id).classList.add('on');
+  });
+});
+
+/* submit: compose a plain-text email — nothing is posted anywhere */
+document.getElementById('submitBtn').addEventListener('click', function(){
+  var d = storyData();
+  var lines = [
+    'Christmas Story Builder submission',
+    'Booking reference: ' + CURRENT_REF,
+    '',
+    'Company: ' + d.COMPANY,
+    'Organizer: ' + (val('organizer') || '') ,
+    'Email: ' + (val('email') || ''),
+    'Players: ' + (val('players') || '40') + '   Circles: ' + (val('circles') || '1'),
+    '',
+    'CAST',
+    '  Boss: ' + (val('boss') || '(not provided)') + (val('boss_pron') ? ' [said like ' + val('boss_pron') + ']' : ''),
+    '  Knows everything: ' + (val('knows') || '(not provided)') + (val('knows_pron') ? ' [' + val('knows_pron') + ']' : ''),
+    '  Most likely late: ' + (val('late') || '(not provided)') + (val('late_pron') ? ' [' + val('late_pron') + ']' : ''),
+    '  Office comedian: ' + (val('comedian') || '(not provided)') + (val('comedian_pron') ? ' [' + val('comedian_pron') + ']' : ''),
+    '  Saves the day: ' + (val('saves') || '(not provided)') + (val('saves_pron') ? ' [' + val('saves_pron') + ']' : ''),
+    '  Wildcard: ' + (val('wildcard') || '(none)') + (val('wildcard_pron') ? ' [' + val('wildcard_pron') + ']' : ''),
+    '',
+    'WORKPLACE',
+    '  Does: ' + (val('work') || ''),
+    '  Group: ' + (val('group') || ''),
+    '  Place: ' + (val('place') || ''),
+    '  Disappearing object: ' + (val('missing') || ''),
+    '  Troublesome equipment: ' + (val('equipment') || ''),
+    '  Catchphrase: ' + (val('catchphrase') || ''),
+    '  Snack: ' + (val('snack') || ''),
+    '  Accomplishment: ' + (val('accomplishment') || ''),
+    '  Inside joke: ' + (val('joke') || '(none)'),
+    '  Leave out: ' + (val('leaveout') || '(nothing specified)'),
+    '',
+    'RIDICULOUS BITS',
+    '  Adjective: ' + (val('adjective') || ''),
+    '  Animal: ' + (val('animal') || ''),
+    '  Job title: ' + (val('jobtitle') || ''),
+    '  Santa item: ' + (val('santaitem') || ''),
+    '  Dance move: ' + (val('dance') || ''),
+    '  Sound: ' + (val('sound') || ''),
+    '  Gift: ' + (val('gift') || ''),
+    '',
+    '--- STORY (plain text) ---',
+    storyPlainText(d),
+    '',
+    '--- end ---'
+  ];
+
+  var subject = 'Christmas story — ' + d.COMPANY + ' — ' + CURRENT_REF;
+  window.location.href = 'mailto:djbenthomas@gmail.com?subject=' +
+    encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\n'));
+
+  var msg = document.getElementById('submit-msg');
+  msg.style.display = 'block';
+  msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+});
+
+/* plain-text version for the email + print fallback */
+function storyPlainText(d){
+  return TEMPLATE.map(function(line){
+    if (line === '__INSIDE_JOKE__'){
+      return d.INSIDE_JOKE ? 'Of course, nobody was going to let the year end without mentioning this: ' + d.INSIDE_JOKE + '.' : '';
+    }
+    if (line === '__WILDCARD__'){
+      return d.WILDCARD ? 'Somehow, ' + d.WILDCARD + ' made it too, and nobody could quite explain how.' : '';
+    }
+    return line.replace(/\{([A-Z_]+)\}/g, function(_, k){ return d[k] != null ? d[k] : ''; });
+  }).filter(Boolean).join('\n\n');
+}
+
+/* keep inputs inside their limits even if pasted */
+Object.keys(F).forEach(function(id){
+  var el = F[id];
+  if (!el || !el.maxLength || el.maxLength < 0) return;
+});
+
+showStep(1);
+</script>
+</body>
+</html>
