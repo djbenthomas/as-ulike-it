@@ -311,23 +311,23 @@
   }
   .pkg-card.featured .pkg-meta { color: var(--gold-soft); }
   .pkg-price { margin-bottom: 4px; }
-  .pkg-price .from {
-    display: block; font-size: 11px; letter-spacing: 2.2px; text-transform: uppercase;
-    color: var(--ink-soft); margin-bottom: 2px;
-  }
   .pkg-price .amt {
     font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 600;
     color: var(--evergreen); line-height: 1.05;
   }
-  .pkg-card.featured .pkg-price .from { color: rgba(255,255,255,.6); }
   .pkg-card.featured .pkg-price .amt { color: var(--gold-soft); }
   .pkg-price .per { font-size: 13px; color: var(--ink-soft); }
   .pkg-card.featured .pkg-price .per { color: rgba(255,255,255,.6); }
-  .pkg-sat {
-    margin-top: 8px; font-size: 13px; color: var(--ink-soft);
-    padding-top: 8px; border-top: 1px dotted rgba(21,53,43,.2);
+  .pkg-when {
+    font-size: 11px; letter-spacing: 2.2px; text-transform: uppercase;
+    color: var(--burgundy); margin-bottom: 6px;
   }
-  .pkg-card.featured .pkg-sat { color: rgba(255,255,255,.7); border-top-color: rgba(255,255,255,.2); }
+  .pkg-card.featured .pkg-when { color: var(--gold-soft); }
+  .pkg-price .fromword {
+    display: block; font-size: 11px; letter-spacing: 2.2px; text-transform: uppercase;
+    color: var(--ink-soft); margin-bottom: 2px;
+  }
+  .pkg-card.featured .pkg-price .fromword { color: rgba(255,255,255,.62); }
   .pkg-btn {
     display: inline-block; margin-top: 22px; padding: 14px 24px; border-radius: 999px;
     background: var(--burgundy); color: #fff; text-decoration: none;
@@ -705,7 +705,15 @@
           "name": "How much does it cost?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Every party receives a personalized quote based on date, guest count, location, and add-ons. Request a personalized quote."
+            "text": "Weeknight packages start at $1,295 for DJ entertainment and games, $1,795 for our Christmas murder mystery and games, or $2,795 for the Ultimate Christmas Party. These starting prices apply Monday through Thursday. Weekend pricing varies by date and availability. Dinner, drinks, and venue are arranged separately."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are you licensed and insured?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We are fully licensed and insured, and can provide a certificate of insurance for your venue or building management on request."
           }
         },
         {
@@ -725,7 +733,7 @@
 </head>
 <body>
 
-<div class="topbar">Weeknight dates available &mdash; Saturdays book fast &bull; <a href="tel:6615330100">Call 661-533-0100</a></div>
+<div class="topbar">Monday&ndash;Thursday evening dates available &bull; Licensed &amp; insured &bull; <a href="tel:6615330100">Call 661-533-0100</a></div>
 
 <nav>
   <div class="wrap">
@@ -883,7 +891,7 @@
         <p>This is a <strong>company Christmas party for your people</strong> &mdash; an after-hours celebration to thank the team for the year they just put in. Not a team-building seminar, not a networking mixer.</p>
         <p><strong>Spouses and partners are welcome</strong> and it works better when they come. Couples get pulled into the mystery together, which is why the room loosens up fast.</p>
         <p>Our sweet spot is <strong>30 to 50 total guests &mdash; employees and their plus-ones counted together.</strong> Smaller teams can still work; just ask.</p>
-        <p><strong>Weeknights are the smart play.</strong> Tuesday, Wednesday, and Thursday evenings give you the best availability in December. Saturdays carry premium pricing.</p>
+        <p><strong>Monday through Thursday evenings are our most-booked nights</strong> and they carry our starting rates. Planning a Friday, Saturday, or Sunday celebration? Reach out for availability and pricing on your preferred date.</p>
       </div>
       <div class="pos-card">
         <h3>At a Glance</h3>
@@ -891,7 +899,7 @@
           <li><span class="k">Ideal size</span><span>30&ndash;50 total guests, partners included</span></li>
           <li><span class="k">Length</span><span>Two hours of hosted entertainment</span></li>
           <li><span class="k">Location</span><span>Your office, or a venue you choose</span></li>
-          <li><span class="k">Best nights</span><span>Weeknights &mdash; Saturdays at premium</span></li>
+          <li><span class="k">Best nights</span><span>Monday&ndash;Thursday evenings</span></li>
           <li><span class="k">Guests</span><span>Employees &amp; significant others</span></li>
           <li><span class="k">You provide</span><span>Dinner, drinks, and the venue</span></li>
         </ul>
@@ -912,6 +920,7 @@
         <p><strong>15+ years, over 900 weddings and private events.</strong> Corporate holiday parties, school events, fundraisers, wedding receptions &mdash; rooms full of people who don&rsquo;t know each other yet, and rooms full of people who know each other too well.</p>
         <p>Before this, I hosted a <strong>Santa murder mystery while managing Rose Garden Estate</strong> &mdash; which is where I learned just how well a holiday whodunit pulls a room together. Now we&rsquo;re bringing that concept back to Nashville properly.</p>
         <p>What you get is a real host: someone reading the room, keeping two hours on the rails, and stepping in when a joke needs landing or a table needs nudging. The mystery is fun. The hosting is what makes it work.</p>
+        <p>AS&middot;U&middot;LIKE&middot;IT Entertainment is <strong>fully licensed and insured</strong> &mdash; the paperwork most offices and venues ask for before they&rsquo;ll book entertainment. We&rsquo;re happy to provide a certificate of insurance for your venue or building management.</p>
         <div class="sig">&mdash; Ben Thomas</div>
       </div>
     </div>
@@ -932,11 +941,11 @@
         <p class="pkg-desc">Two hours of clues, comedy, interactive Christmas games, holiday music, and professional hosting.</p>
         <div class="pkg-rule"></div>
         <div class="pkg-meta">Two Hours</div>
+        <div class="pkg-when">Monday&ndash;Thursday evenings</div>
         <div class="pkg-price">
-          <span class="from">Weeknights from</span>
+          <span class="fromword">From</span>
           <span class="amt">$1,795</span>
         </div>
-        <div class="pkg-sat" data-saturday>Saturdays from $&mdash;</div>
         <a class="pkg-btn" href="#inquire">Check Availability</a>
       </div>
 
@@ -945,11 +954,11 @@
         <p class="pkg-desc">Want the Christmas party without the murder mystery? All the games, music, and hosting &mdash; none of the clues.</p>
         <div class="pkg-rule"></div>
         <div class="pkg-meta">Two Hours</div>
+        <div class="pkg-when">Monday&ndash;Thursday evenings</div>
         <div class="pkg-price">
-          <span class="from">Weeknights from</span>
+          <span class="fromword">From</span>
           <span class="amt">$1,295</span>
         </div>
-        <div class="pkg-sat" data-saturday>Saturdays from $&mdash;</div>
         <a class="pkg-btn" href="#inquire">Check Availability</a>
       </div>
 
@@ -959,17 +968,18 @@
         <p class="pkg-desc">The mystery. The games. The photos. The dance floor. Our Christmas murder mystery, interactive holiday games, photo booth with customized prints, and DJ entertainment &mdash; three hours of Christmas fun.</p>
         <div class="pkg-rule"></div>
         <div class="pkg-meta">Three Hours</div>
+        <div class="pkg-when">Monday&ndash;Thursday evenings</div>
         <div class="pkg-price">
-          <span class="from">Weeknights from</span>
+          <span class="fromword">From</span>
           <span class="amt">$2,795</span>
         </div>
-        <div class="pkg-sat" data-saturday>Saturdays from $&mdash;</div>
         <a class="pkg-btn" href="#inquire">Check Availability</a>
       </div>
 
     </div>
 
-    <p class="pkg-fineprint">Saturday dates carry premium pricing. <strong>Dinner, drinks, and venue are arranged separately</strong> &mdash; we provide the entertainment.</p>
+    <p class="pkg-fineprint">Planning a Friday, Saturday, or Sunday celebration? Contact us for availability and pricing for your preferred date.</p>
+    <p class="pkg-fineprint" style="margin-top:10px; font-size:13.5px;"><strong>Dinner, drinks, and venue are arranged separately</strong> &mdash; we provide the entertainment.</p>
 
     <div class="addons">
       <h3 class="addons-title">Optional Add-Ons</h3>
@@ -1028,11 +1038,11 @@
       </div>
       <div class="faq-item">
         <button class="faq-q" type="button">What nights are best in December?<span class="plus">+</span></button>
-        <div class="faq-a"><p>Weeknights &mdash; Tuesday through Thursday &mdash; have the best availability and pricing. Saturdays in December book early and carry premium pricing.</p></div>
+        <div class="faq-a"><p>Monday through Thursday evenings are our most-booked nights, and they carry the starting prices shown above. Friday, Saturday, and Sunday celebrations are quoted based on availability and pricing for your specific date &mdash; just send it over and we&rsquo;ll confirm.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" type="button">How much does it cost?<span class="plus">+</span></button>
-        <div class="faq-a"><p>Christmas Murder Mystery &amp; Games starts at $1,795 on weeknights, DJ &amp; Games Party starts at $1,295, and The Ultimate Christmas Party starts at $2,795. Saturday dates carry premium pricing. Your final quote depends on your date, guest count, location, and any add-ons &mdash; request a personalized quote and we&rsquo;ll lock it in.</p></div>
+        <div class="faq-a"><p>Weeknight packages start at $1,295 for DJ entertainment and games, $1,795 for our Christmas murder mystery and games, or $2,795 for the Ultimate Christmas Party. These starting prices apply Monday&ndash;Thursday. Weekend pricing varies by date and availability. Dinner, drinks, and venue are arranged separately.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" type="button">What do you need from our office or venue?<span class="plus">+</span></button>
@@ -1041,6 +1051,10 @@
       <div class="faq-item">
         <button class="faq-q" type="button">Do you travel outside Nashville?<span class="plus">+</span></button>
         <div class="faq-a"><p>We&rsquo;re based in Hendersonville and cover Nashville, Hendersonville, Gallatin, Goodlettsville, and the rest of Middle Tennessee. Further out is usually possible &mdash; just include the location in your inquiry.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" type="button">Are you licensed and insured?<span class="plus">+</span></button>
+        <div class="faq-a"><p>Yes &mdash; we&rsquo;re fully licensed and insured. If your building manager, HR team, or venue needs a certificate of insurance before the party, just ask and we&rsquo;ll get it to them.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" type="button">How far ahead should we book?<span class="plus">+</span></button>
