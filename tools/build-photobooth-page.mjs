@@ -139,16 +139,16 @@ ${css}
 <section class="about" id="what">
   <div class="wrap">
     <div class="eyebrow">What You Get</div>
-    <h2>Everything's <span class="gold">Included</span></h2>
+    <h2>What's <span class="gold">Included</span></h2>
     <div class="divider"></div>
-    <p class="lead">No hidden add-ons. $100 an hour with a three-hour minimum, and travel included within 30 minutes of Hendersonville.</p>
+    <p class="lead">$100 an hour with a three-hour minimum, travel included within 30 minutes of Hendersonville. The booth, the prints, the props and your photo site &mdash; one price. There are exactly two add-ons, and they're both on this page.</p>
     <div class="svc-grid">
       <div class="svc-card"><div class="svc-icon">🖨️</div><h3>Prints in Minutes</h3><p>Photo strips print on the spot &mdash; your guests walk away with one.</p></div>
-      <div class="svc-card"><div class="svc-icon">🎈</div><h3>Inflatable Backdrop</h3><p>A full enclosed backdrop booth &mdash; clean, evenly lit shots every time, in any room.</p></div>
+      <div class="svc-card"><div class="svc-icon">🎈</div><h3>Inflatable Backdrop</h3><p>A full enclosed backdrop booth &mdash; clean, evenly lit shots every time, in any room. <strong>+$50 add-on.</strong></p></div>
       <div class="svc-card"><div class="svc-icon">🎭</div><h3>Props Included</h3><p>A full prop box your guests actually dig through.</p></div>
       <div class="svc-card"><div class="svc-icon">🙌</div><h3>Self-Serve</h3><p>Nobody hovering, nobody rushing you. Your guests run it themselves &mdash; that&rsquo;s what makes it fun.</p></div>
       <div class="svc-card"><div class="svc-icon">🌐</div><h3>Your Own Photo Site</h3><p>A personalized website with every single photo from the night, in digital &mdash; yours to keep and share.</p></div>
-      <div class="svc-card"><div class="svc-icon">🚚</div><h3>Setup &amp; Teardown</h3><p>We deliver, set up, and take it down. You don't lift a finger.</p></div>
+      <div class="svc-card"><div class="svc-icon">🚚</div><h3>Drop-Off &amp; Pickup</h3><p>We set it up before your event and come back for it after. Don't want to wait around? Pick it up from us in Hendersonville and bring it back &mdash; we'll show you how.</p></div>
       <div class="svc-card"><div class="svc-icon">🎧</div><h3>DJ Combo</h3><p>Bundle the booth with your DJ package and save &mdash; one team, one timeline.</p></div>
     </div>
   </div>
@@ -166,6 +166,7 @@ ${css}
         <p>What that means for your photos: the background is <strong>clean and identical in every single shot</strong>. No cluttered wall behind it, no ceiling lights blowing out half the frame, no shadows from somebody&rsquo;s phone. The booth lights the shot the same way at 6 PM and at midnight, so the photos from the first hour and the last hour actually look like they belong together.</p>
         <p>It also sets up almost anywhere &mdash; tight banquet rooms, barns, tents, a driveway, out on the lawn &mdash; because it doesn&rsquo;t need a wall to hang anything on and there&rsquo;s no rig to trip over. And because the walls are inflated, it&rsquo;s forgiving in a crowded room.</p>
         <div class="sig">&mdash; and no attendant hovering</div>
+        <p style="margin-top:18px;"><strong>The backdrop is a $50 add-on.</strong> The booth works without it &mdash; it just doesn't look this good. Add it when you book.</p>
       </div>
     </div>
   </div>
@@ -245,20 +246,28 @@ ${gallery}
     <div class="price-card">
       <div class="amt">$300<small>Starting &bull; 3-Hour Minimum</small></div>
       <ul>
-        <li>Setup, operation &amp; teardown</li>
+        <li>$100/hour &mdash; three-hour minimum</li>
         <li>Unlimited printed strips</li>
-        <li>Inflatable backdrop booth</li>
         <li>Props included</li>
         <li>Self-serve &mdash; no attendant hovering</li>
         <li>Personalized photo website with every digital image</li>
         <li>Digital gallery after the event</li>
-        <li>Hendersonville, Gallatin, Goodlettsville &amp; Nashville area</li>
+        <li>We drop it off, set it up &amp; pick it up after</li>
+        <li>Travel included within 30 minutes of Hendersonville</li>
       </ul>
-      <p style="font-family:'Cormorant Garamond',serif; font-size:20px; font-style:italic; color:var(--ink); margin:0 0 20px;">Your party doesn&rsquo;t end at 8 &mdash; and neither does your photo booth. Ours stays through the end of your event, with nobody hovering over you.</p>
-      <p style="font-size:14px; color:var(--ink-soft); margin:0 0 22px; line-height:1.7;"><strong style="color:var(--ink);">$100/hour</strong>, three-hour minimum. Travel included within 30 minutes of Hendersonville &mdash; farther out, we add travel. Need a fourth hour? $100, no games.</p>
+      <p style="font-family:'Cormorant Garamond',serif; font-size:20px; font-style:italic; color:var(--ink); margin:0 0 22px;">Your party doesn&rsquo;t end at 8 &mdash; and neither does your photo booth. Ours stays through the end of your event, with nobody hovering over you.</p>
+
+      <div style="text-align:left; border-top:1px solid rgba(185,138,62,.2); padding-top:18px; margin-bottom:20px;">
+        <div style="font-size:10.5px; letter-spacing:.26em; text-transform:uppercase; color:var(--gold); margin-bottom:10px;">Only Two Add-Ons</div>
+        <div style="display:flex; justify-content:space-between; gap:14px; padding:10px 0; border-bottom:1px solid rgba(185,138,62,.12); font-size:15px; color:var(--ink-soft);"><span>Inflatable backdrop booth</span><strong style="color:var(--ink); white-space:nowrap;">+$50</strong></div>
+        <div style="display:flex; justify-content:space-between; gap:14px; padding:10px 0; font-size:15px; color:var(--ink-soft);"><span>Someone stays with it all night</span><strong style="color:var(--ink); white-space:nowrap;">+$200</strong></div>
+      </div>
+
+      <p style="font-size:13.5px; color:var(--ink-soft); margin:0 0 22px; line-height:1.7; text-align:left;"><strong style="color:var(--ink);">Delivery is included.</strong> We set the booth up before your event and come back for it afterward &mdash; you don't wait around, don't load anything. Prefer to handle it yourself? You're welcome to <strong style="color:var(--ink);">pick it up from us in Hendersonville</strong> and bring it back; we'll walk you through setup. Booking farther than 30 minutes out? We add travel &mdash; quoted upfront.</p>
+
       <a class="btn btn-gold" href="#contact">Book the Booth</a>
     </div>
-    <p class="note">Outside 30 minutes of Hendersonville? We still travel &mdash; we just add the drive. Booking the DJ too? Ask about the combo price; it's cheaper than both separately.</p>
+    <p class="note">Extra hours are $100 each. Booking the DJ too? Ask about the combo price; it's cheaper than both separately.</p>
   </div>
 </section>
 
@@ -326,15 +335,18 @@ ${gallery}
 
 <script>
 var faqs = [
-  ["How much does the photo booth cost?", "$100 an hour with a three-hour minimum, so $300 to start — that covers setup, the inflatable backdrop booth, props, unlimited printed strips, teardown, and your own photo website with every digital image. Travel is included within 30 minutes of Hendersonville; beyond that we add a travel fee. Extra hours are $100 each."],
+  ["How much does the photo booth cost?", "$100 an hour with a three-hour minimum, so $300 to start — that includes the booth, props, unlimited printed strips, delivery, setup and pickup, and your own photo website with every digital image. There are only two add-ons: the inflatable backdrop is $50, and an attendant who stays with it all night is $200. Travel is included within 30 minutes of Hendersonville; beyond that we add a travel fee. Extra hours are $100 each."],
+  ["What does the inflatable backdrop cost?", "$50, added to any booking. It's a full enclosed inflatable booth — the background is clean and identical in every shot, and it sets up in rooms and outdoor spaces where a booth on a frame won't work. The booth works without it; the backdrop is what makes the photos look like a magazine."],
+  ["What if we want somebody there all night?", "That's $200 and we'll staff it — someone on site from setup through the last guest, running the booth, refilling paper and props, and helping guests use it. Most events don't need it. If you want a person there, you've got one."],
+  ["How does delivery and pickup work?", "Delivery, setup and pickup are included. We bring the booth out before your event, set it up, test it, and come back for it afterward — you never load or carry anything. You can also pick the booth up from us in Hendersonville and bring it back yourself; we'll show you how it sets up. Handy for shorter events, tight venue loading windows, or grabbing it the day before."],
   ["How many hours do we get?", "The standard booking runs three hours of booth time. Need longer? Add hours when you book and we'll quote it upfront."],
   ["What kind of photos do we get?", "Printed strips in minutes at the booth — plus every single photo in digital form on your own personalized photo website afterward. You keep all of them, share the link with guests, download, and reprint anything you want."],
   ["Can we customize the strip?", "Yes. Names, wedding date, monogram, or your event logo printed on the strip — just tell us what you want and we'll design it."],
-  ["Is anyone running the booth?", "No &mdash; and that's on purpose. The booth is self-serve, so your guests walk up and use it whenever they want, however many times they want. No one standing there watching, no one telling anybody to hurry up. Guests tell us that's exactly what makes it fun &mdash; and the photos come out looser and more personal because of it. We set it up, test it, and it runs itself all night."],
+  ["Is anyone running the booth?", "Not by default &mdash; and that's on purpose. The booth is self-serve, so your guests walk up and use it whenever they want, however many times they want. No one standing there watching, no one telling anybody to hurry up. We set it up, test it, and it runs itself all night. Want someone on site anyway? An attendant for the night is $200."],
   ["How do we get our photos?", "Every photo lands on a personalized photo website built for your event &mdash; one link you can share with guests. All the images, in digital, full resolution, no watermark. Download, reprint, or post whatever you want."],
   ["Do you bring props?", "A full prop box comes with every booking. If you have a theme, we'll match it."],
   ["How much space does it need?", "About a 10x10 foot footprint with access to a standard outlet. We'll confirm the layout with your venue ahead of time."],
-  ["Do you travel outside Hendersonville?", "We serve Hendersonville, Gallatin, Goodlettsville, Nashville, and the surrounding Middle Tennessee area. Further out is doable — ask for a travel quote."],
+  ["Do you travel outside Hendersonville?", "We serve Hendersonville, Gallatin, Goodlettsville, Nashville, and the surrounding Middle Tennessee area. Within 30 minutes of Hendersonville, travel is included. Beyond that we add a travel fee, quoted upfront — no surprises."],
   ["Can we book the DJ and the booth together?", "Yes, and it's the better deal. One team, one timeline, one point of contact — ask about the combo price."],
   ["Does the booth work outdoors?", "It does. We'll plan for power, shade, and a weather backup with your venue."],
   ["How do we reserve a date?", "Text or email us the date and venue. A deposit holds it — details come with your quote."]

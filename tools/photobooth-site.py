@@ -25,7 +25,9 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", required=True)
     ap.add_argument("--palette", default="plum", choices=["plum", "green", "navy"])
-    ap.add_argument("--review-url", default="https://g.page/r/CcLgV_5vp3nnEBM/review",
+    ap.add_argument("--mode", default="full", choices=["full", "strips"],
+                    help="strips = only single strips, each with its own download button")
+    ap.add_argument("--review-url", default="https://www.google.com/maps/search/?api=1&query=AS%20U%20LIKE%20IT%20Entertainment%20Hendersonville%20TN",
                     help="Google review link shown to the couple")
     args = ap.parse_args()
 
@@ -65,14 +67,24 @@ def main():
     }
     p = palettes[args.palette]
 
-    frame_html = "".join(
+    strips_only = args.mode == "strips"
+
+    hero_sub = (f"Every strip from the night &mdash; <b>{ns}</b> keepsakes, each one yours to download."
+                if strips_only else
+                f"Every laugh, every pose &mdash; <b>{nf}</b> moments caught in the booth.")
+
+    frame_html = "" if strips_only else "".join(
         f'<a class="shot" href="photos/{esc(fr["f"])}" data-i="{i}" data-strip="{fr["strip"]}">'
         f'<img loading="lazy" decoding="async" src="photos/{esc(fr["f"])}" alt="{esc(couple)} photo booth, frame {i+1}"></a>'
         for i, fr in enumerate(frames)
     )
     strip_html = "".join(
-        f'<a class="stripcard" href="strips/{esc(s)}"><img loading="lazy" decoding="async" '
-        f'src="strips/{esc(s)}" alt="{esc(couple)} photo booth strip {i+1}"></a>'
+        f'<div class="stripcard">'
+        f'<a class="stripimg" href="strips/{esc(s)}" target="_blank" rel="noopener">'
+        f'<img loading="lazy" decoding="async" src="strips/{esc(s)}" '
+        f'alt="{esc(couple)} photo booth strip {i+1}"></a>'
+        f'<a class="stripdl" href="strips/{esc(s)}" download="{esc(s)}">&#11015; Download</a>'
+        f'</div>'
         for i, s in enumerate(strips)
     )
 
@@ -151,12 +163,17 @@ section{{padding:clamp(42px,5vw,70px) 20px}}
 .shot:hover img{{transform:scale(1.05)}}
 
 .strips{{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(148px,1fr))}}
-.stripcard{{display:block;border-radius:9px;overflow:hidden;background:#0c080a;
+.stripcard{{display:flex;flex-direction:column;border-radius:9px;overflow:hidden;background:#0c080a;
   border:1px solid rgba(247,241,232,.08);
   transition:transform .35s,box-shadow .35s,border-color .35s}}
-.stripcard:hover{{transform:translateY(-5px) rotate(-.8deg);border-color:rgba(207,165,94,.55);
+.stripcard:hover{{transform:translateY(-5px);border-color:rgba(207,165,94,.55);
   box-shadow:0 22px 44px rgba(0,0,0,.55)}}
+.stripcard .stripimg{{display:block;line-height:0}}
 .stripcard img{{width:100%}}
+.stripdl{{display:block;text-align:center;padding:11px 8px;font-size:10px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--gold);text-decoration:none;
+  border-top:1px solid rgba(247,241,232,.09);transition:.2s}}
+.stripdl:hover{{background:var(--gold);color:{p['ink']}}}
 
 .dl{{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;padding:0 20px 10px}}
 .btn{{display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border-radius:999px;
@@ -209,7 +226,7 @@ footer a{{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba
     <p class="eyebrow">The Wedding Of</p>
     <h1>{names_html}</h1>
     <div class="rule"><i></i><span class="date">{dot}</span><i></i></div>
-    <p class="sub">Every laugh, every pose &mdash; <b>{nf}</b> moments caught in the booth.
+    <p class="sub">{hero_sub}
       Thank you for letting us be part of it. Here&rsquo;s the whole night, one frame at a time.</p>
     <div class="cardwrap">
       <img class="card" src="strips/{esc(strips[min(9, ns - 1)])}" alt="{esc(couple)}, {esc(dlabel)}">
@@ -218,7 +235,7 @@ footer a{{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba
   </div>
 </header>
 
-<section id="photos">
+{'' if strips_only else f'''<section id="photos">
   <div class="wrap">
     <div class="sechead">
       <h2>The Moments</h2>
@@ -226,13 +243,13 @@ footer a{{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba
     </div>
     <div class="grid">{frame_html}</div>
   </div>
-</section>
+</section>'''}
 
 <section id="strips" style="background:{p['bg2']}">
   <div class="wrap">
     <div class="sechead">
-      <h2>The Strips</h2>
-      <p>{ns} keepsake strips &middot; the way they came out of the booth</p>
+      <h2>{'The Strips' if strips_only else 'The Strips'}</h2>
+      <p>{ns} keepsake strips &middot; tap a strip to open it, or download any one</p>
     </div>
     <div class="strips">{strip_html}</div>
   </div>
@@ -241,7 +258,7 @@ footer a{{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba
 <section>
   <div class="dl">
     <a class="btn solid" href="downloads/all-strips.zip" download>&#11015; Download All Strips</a>
-    <a class="btn" href="downloads/all-photos.zip" download>&#11015; Download All Photos</a>
+    {'' if strips_only else '<a class="btn" href="downloads/all-photos.zip" download>&#11015; Download All Photos</a>'}
   </div>
 </section>
 
