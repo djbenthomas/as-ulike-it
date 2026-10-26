@@ -244,7 +244,7 @@ function pageGraph(file, title) {
         '@type': 'Service',
         name: 'Photo Booth Rental',
         serviceType: 'Photo Booth Rental',
-        description: 'Photo booth rental with printed strips, props, and an inflatable backdrop booth. Self-serve, so guests run it themselves — no attendant hovering. $300 flat rate in the Hendersonville and Nashville area.',
+        description: 'Photo booth rental with printed strips, props, and an inflatable backdrop booth. Self-serve, so guests run it themselves — no attendant hovering. $100/hour, 3-hour minimum, so $300 to start in the Hendersonville and Nashville area. Travel included within 30 minutes of Hendersonville.',
         provider: { '@type': 'LocalBusiness', name: BRAND },
         areaServed: ALL_CITIES.map((c) => ({ '@type': 'City', name: c.name })),
         offers: { '@type': 'Offer', price: '300', priceCurrency: 'USD', availability: 'https://schema.org/InStock' },

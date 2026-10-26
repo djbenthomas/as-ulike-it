@@ -24,7 +24,7 @@ const footerLinks = ['<div style="margin: 0 0 8px;"><a href="index.html">Home</a
   ALL_CITIES.map((c) => `<a href="${c.file}">${c.name}, TN</a>`).join(' &nbsp;&bull;&nbsp; ') + '</div>'][0];
 
 const title = 'Photo Booth Rental in Hendersonville, TN | AS·U·LIKE·IT Entertainment';
-const desc = 'Photo booth rental in Hendersonville, Gallatin, and the Nashville area — $300 flat. Inflatable backdrop, props, printed strips, self-serve, plus your own photo website with every digital image.';
+const desc = 'Photo booth rental in Hendersonville, Gallatin, and the Nashville area — $100/hour with a 3-hour minimum, so $300 to start. Inflatable backdrop, props, printed strips, self-serve, plus your own photo website with every digital image.';
 
 const html = `<!DOCTYPE html>
 <html lang="en">
@@ -34,7 +34,7 @@ const html = `<!DOCTYPE html>
 <title>${title}</title>
 <meta name="description" content="${desc}">
 <meta property="og:title" content="Photo Booth Rental — AS·U·LIKE·IT Entertainment">
-<meta property="og:description" content="Inflatable backdrop booth, printed strips in minutes, self-serve, and a personal photo website with every digital image. $300 flat.">
+<meta property="og:description" content="Inflatable backdrop booth, printed strips in minutes, self-serve, and a personal photo website with every digital image. $100/hour, 3-hour minimum — starts at $300.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://djbenthomas.github.io/as-ulike-it/assets/booth/${shots[0]}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -110,7 +110,7 @@ ${css}
     <p class="tagline" style="font-size:clamp(18px,2.8vw,24px); color:#fff; max-width:760px; margin:0 auto;"><strong>Your party doesn&rsquo;t end at 8 &mdash; and neither does your photo booth.</strong></p>
     <p class="tagline" style="margin-top:10px;">Ours stays through the end of your event, with nobody hovering over you.</p>
     <div class="stats">
-      <div><div class="stat-num">$300</div><div class="stat-label">Flat Rate</div></div>
+      <div><div class="stat-num">$300</div><div class="stat-label">Starting</div></div>
       <div><div class="stat-num">3+</div><div class="stat-label">Hours</div></div>
       <div><div class="stat-num">Unlimited</div><div class="stat-label">Prints</div></div>
     </div>
@@ -141,7 +141,7 @@ ${css}
     <div class="eyebrow">What You Get</div>
     <h2>Everything's <span class="gold">Included</span></h2>
     <div class="divider"></div>
-    <p class="lead">No add-ons, no surprise line items. The price on this page is the price.</p>
+    <p class="lead">No hidden add-ons. $100 an hour with a three-hour minimum, and travel included within 30 minutes of Hendersonville.</p>
     <div class="svc-grid">
       <div class="svc-card"><div class="svc-icon">🖨️</div><h3>Prints in Minutes</h3><p>Photo strips print on the spot &mdash; your guests walk away with one.</p></div>
       <div class="svc-card"><div class="svc-icon">🎈</div><h3>Inflatable Backdrop</h3><p>A full enclosed backdrop booth &mdash; clean, evenly lit shots every time, in any room.</p></div>
@@ -183,6 +183,31 @@ ${css}
       <div class="svc-card"><div class="svc-icon">⬇️</div><h3>Download &amp; Reprint</h3><p>Full-resolution files, yours to save, print, post, or frame.</p></div>
     </div>
     <p class="note">Your site, your photos. We don&rsquo;t watermark them and we don&rsquo;t hold them hostage.</p>
+    <style>
+      .gal-links { max-width: 720px; margin: 22px auto 0; display: grid; gap: 10px; }
+      .gal-link { display: flex; align-items: center; gap: 12px; padding: 14px 20px;
+        background: #fff; border: 1px solid rgba(35,32,28,.14); border-radius: 10px;
+        color: var(--ink); text-decoration: none; font-size: 14px; letter-spacing: .2px;
+        transition: transform .2s, border-color .2s, box-shadow .2s; }
+      .gal-link:hover { transform: translateY(-2px); border-color: var(--gold);
+        box-shadow: 0 10px 24px rgba(35,32,28,.10); }
+      .gal-link .gal-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); flex: none; }
+      .gal-link .gal-arr { margin-left: auto; color: var(--gold); font-size: 17px; }
+      .gal-cap { margin: 18px auto 0; text-align: center; font-size: 12px;
+        letter-spacing: .22em; text-transform: uppercase; color: var(--ink-soft); opacity: .8; }
+    </style>
+    <p class="gal-cap">Real galleries &mdash; tap one</p>
+    <div class="gal-links">
+      <a class="gal-link" href="https://djbenthomas.github.io/bryanna-ashton-photobooth/" target="_blank" rel="noopener">
+        <span class="gal-dot"></span> Bryanna &amp; Ashton &middot; October 2026 <span class="gal-arr">&rarr;</span>
+      </a>
+      <a class="gal-link" href="https://djbenthomas.github.io/samantha-wyatt-photobooth/" target="_blank" rel="noopener">
+        <span class="gal-dot"></span> Samantha &amp; Wyatt &middot; October 2026 <span class="gal-arr">&rarr;</span>
+      </a>
+      <a class="gal-link" href="https://djbenthomas.github.io/michelle-aaron-photobooth/" target="_blank" rel="noopener">
+        <span class="gal-dot"></span> Michelle &amp; Aaron &middot; September 2026 <span class="gal-arr">&rarr;</span>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -215,10 +240,10 @@ ${gallery}
 <section class="services" id="pricing">
   <div class="wrap">
     <div class="eyebrow">Simple Pricing</div>
-    <h2>$300, <span class="gold">All In</span></h2>
+    <h2>Starts at <span class="gold">$300</span></h2>
     <div class="divider"></div>
     <div class="price-card">
-      <div class="amt">$300<small>Flat Rate &bull; Local</small></div>
+      <div class="amt">$300<small>Starting &bull; 3-Hour Minimum</small></div>
       <ul>
         <li>Setup, operation &amp; teardown</li>
         <li>Unlimited printed strips</li>
@@ -230,9 +255,10 @@ ${gallery}
         <li>Hendersonville, Gallatin, Goodlettsville &amp; Nashville area</li>
       </ul>
       <p style="font-family:'Cormorant Garamond',serif; font-size:20px; font-style:italic; color:var(--ink); margin:0 0 20px;">Your party doesn&rsquo;t end at 8 &mdash; and neither does your photo booth. Ours stays through the end of your event, with nobody hovering over you.</p>
+      <p style="font-size:14px; color:var(--ink-soft); margin:0 0 22px; line-height:1.7;"><strong style="color:var(--ink);">$100/hour</strong>, three-hour minimum. Travel included within 30 minutes of Hendersonville &mdash; farther out, we add travel. Need a fourth hour? $100, no games.</p>
       <a class="btn btn-gold" href="#contact">Book the Booth</a>
     </div>
-    <p class="note">Outside the local area? We still travel &mdash; ask for a quote. Booking the DJ too? Ask about the combo price; it's cheaper than both separately.</p>
+    <p class="note">Outside 30 minutes of Hendersonville? We still travel &mdash; we just add the drive. Booking the DJ too? Ask about the combo price; it's cheaper than both separately.</p>
   </div>
 </section>
 
@@ -300,7 +326,7 @@ ${gallery}
 
 <script>
 var faqs = [
-  ["How much does the photo booth cost?", "$300 flat for the local area — that covers setup, the inflatable backdrop booth, props, unlimited printed strips, teardown, and your own photo website with every digital image. No hidden add-ons."],
+  ["How much does the photo booth cost?", "$100 an hour with a three-hour minimum, so $300 to start — that covers setup, the inflatable backdrop booth, props, unlimited printed strips, teardown, and your own photo website with every digital image. Travel is included within 30 minutes of Hendersonville; beyond that we add a travel fee. Extra hours are $100 each."],
   ["How many hours do we get?", "The standard booking runs three hours of booth time. Need longer? Add hours when you book and we'll quote it upfront."],
   ["What kind of photos do we get?", "Printed strips in minutes at the booth — plus every single photo in digital form on your own personalized photo website afterward. You keep all of them, share the link with guests, download, and reprint anything you want."],
   ["Can we customize the strip?", "Yes. Names, wedding date, monogram, or your event logo printed on the strip — just tell us what you want and we'll design it."],
