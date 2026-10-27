@@ -24,7 +24,7 @@ const footerLinks = ['<div style="margin: 0 0 8px;"><a href="index.html">Home</a
   ALL_CITIES.map((c) => `<a href="${c.file}">${c.name}, TN</a>`).join(' &nbsp;&bull;&nbsp; ') + '</div>'][0];
 
 const title = 'Photo Booth Rental in Hendersonville, TN | AS·U·LIKE·IT Entertainment';
-const desc = 'Photo booth rental in Hendersonville, Gallatin, and the Nashville area — $100/hour with a 3-hour minimum, so $300 to start. Inflatable backdrop, props, printed strips, self-serve, plus your own photo website with every digital image.';
+const desc = 'Photo booth rental in Hendersonville, Gallatin, and the Nashville area. $100/hour with a 3-hour minimum — $300 to start. Printed strips, props, inflatable backdrop, and your own photo website.';
 
 const html = `<!DOCTYPE html>
 <html lang="en">
@@ -36,7 +36,7 @@ const html = `<!DOCTYPE html>
 <meta property="og:title" content="Photo Booth Rental — AS·U·LIKE·IT Entertainment">
 <meta property="og:description" content="Inflatable backdrop booth, printed strips in minutes, self-serve, and a personal photo website with every digital image. $100/hour, 3-hour minimum — starts at $300.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://djbenthomas.github.io/as-ulike-it/assets/booth/${shots[0]}">
+<meta property="og:image" content="https://as-ulikeit.com/assets/booth/${shots[0]}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">

@@ -9,7 +9,7 @@
  *   Open Graph (site_name/locale/url/type/title/description/image),
  *   Twitter card, JSON-LD @graph (LocalBusiness + page-specific node)
  *
- * Usage: node tools/add-seo-head.mjs [--host https://djbenthomas.github.io/as-ulike-it/]
+ * Usage: node tools/add-seo-head.mjs [--host https://as-ulikeit.com/]
  */
 import { readFileSync, writeFileSync, readdirSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
@@ -19,7 +19,7 @@ import { ALL_CITIES } from './cities.mjs';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const argHost = process.argv.indexOf('--host');
 const HOST = (argHost > -1 ? process.argv[argHost + 1]
-  : 'https://djbenthomas.github.io/as-ulike-it/').replace(/\/?$/, '/');
+  : 'https://as-ulikeit.com/').replace(/\/?$/, '/');
 
 const BRAND = 'AS·U·LIKE·IT Entertainment';
 const PHONE = '+1-661-533-0100';

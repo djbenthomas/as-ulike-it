@@ -6,7 +6,7 @@ import { fileURLToPath } from 'node:url';
 import { ALL_CITIES } from './cities.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
-const HOST = process.env.HOST || 'https://djbenthomas.github.io/as-ulike-it/';
+const HOST = process.env.HOST || 'https://as-ulikeit.com/';
 const LASTMOD = process.env.LASTMOD || new Date().toISOString().slice(0, 10);
 
 const rows = [

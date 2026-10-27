@@ -6,7 +6,7 @@
  * tools/build-city-pages.mjs. Existing hand-written pages keep their own copy.
  */
 
-export const HOST = 'https://djbenthomas.github.io/as-ulike-it/';
+export const HOST = 'https://as-ulikeit.com/';
 
 // Existing hand-written city pages (not generated).
 export const EXISTING = [
