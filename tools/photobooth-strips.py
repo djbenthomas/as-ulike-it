@@ -80,6 +80,22 @@ def frame_bands(strip: Image.Image):
     return bands
 
 
+def same_photos(a: Image.Image, b: Image.Image, threshold=0.90) -> bool:
+    """True if two strips are the same print (photo booth prints the strip twice,
+    one copy per guest). Compares downscaled grayscale content, shift-tolerant."""
+    size = (150, 450)
+    va = np.asarray(a.convert("L").resize(size, Image.LANCZOS), dtype=np.float32)
+    vb = np.asarray(b.convert("L").resize(size, Image.LANCZOS), dtype=np.float32)
+    va -= va.mean(); vb -= vb.mean()
+    best = -1.0
+    for dx in (-2, -1, 0, 1, 2):
+        aa = va[:, 4 + dx:146 + dx]
+        bb = vb[:, 4:146]
+        den = float(np.sqrt((aa * aa).sum() * (bb * bb).sum())) + 1e-9
+        best = max(best, float((aa * bb).sum()) / den)
+    return best >= threshold
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--src", required=True)
@@ -111,18 +127,28 @@ def main():
 
     manifest = []
     n = 0
+    dropped_dupes = 0
     for i, sheet in enumerate(sheets, 1):
         img = Image.open(sheet).convert("RGB")
         w, h = img.size
         cut = seam_x(img)
-        halves = [(0, cut - 1), (cut + 1, w)]
 
-        for hx0, hx1 in halves:
+        crops = []
+        for hx0, hx1 in [(0, cut - 1), (cut + 1, w)]:
+            c = img.crop((hx0, 0, hx1, min(h, STRIP_H)))
+            if c.size[0] != STRIP_W or c.size[1] != STRIP_H:
+                c = c.resize((STRIP_W, STRIP_H), Image.LANCZOS)
+            crops.append(c)
+
+        # Each print sheet carries TWO copies of the same strip (one per guest).
+        # Keep a single copy, or every strip shows up twice on the site.
+        if len(crops) == 2 and same_photos(crops[0], crops[1]):
+            crops = crops[1:]
+            dropped_dupes += 1
+
+        for strip in crops:
             n += 1
             name = f"s{n:03d}"
-            strip = img.crop((hx0, 0, hx1, min(h, STRIP_H)))
-            if strip.size[0] != STRIP_W or strip.size[1] != STRIP_H:
-                strip = strip.resize((STRIP_W, STRIP_H), Image.LANCZOS)
 
             strip_path = strips_dir / f"{name}.jpg"
             strip.save(strip_path, "JPEG", quality=STRIP_Q, optimize=True, progressive=True)
@@ -153,6 +179,8 @@ def main():
 
     (out / "manifest.json").write_text(json.dumps(manifest, indent=1) + "\n")
     log(f"  strips: {n}   frames: {sum(len(m['frames']) for m in manifest)}")
+    if dropped_dupes:
+        log(f"  duplicate copies skipped: {dropped_dupes} (each sheet prints the same strip twice)")
 
     # zips
     def zipit(zip_name, root, files):

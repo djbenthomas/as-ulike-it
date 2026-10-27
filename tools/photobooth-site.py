@@ -27,7 +27,7 @@ def main():
     ap.add_argument("--palette", default="plum", choices=["plum", "green", "navy"])
     ap.add_argument("--mode", default="full", choices=["full", "strips"],
                     help="strips = only single strips, each with its own download button")
-    ap.add_argument("--review-url", default="https://www.google.com/maps/search/?api=1&query=AS%20U%20LIKE%20IT%20Entertainment%20Hendersonville%20TN",
+    ap.add_argument("--review-url", default="https://search.google.com/local/writereview?placeid=ChIJdf0KKychtGgRwuBX_2-neec",
                     help="Google review link shown to the couple")
     args = ap.parse_args()
 
@@ -51,7 +51,7 @@ def main():
 
     frames = []
     for s in manifest:
-        for fr in s["frames"]:
+        for fr in s.get("frames", []):
             frames.append({"f": fr["file"], "strip": s["id"]})
 
     strips = [s["strip"] for s in manifest]
