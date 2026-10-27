@@ -2,5 +2,4 @@ User-agent: *
 Allow: /
 
 # AS·U·LIKE·IT Entertainment — https://as-ulikeit.com
-# to https://as-ulikeit.com/sitemap.xml
 Sitemap: https://as-ulikeit.com/sitemap.xml
