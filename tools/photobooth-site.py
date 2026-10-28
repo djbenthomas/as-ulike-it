@@ -29,6 +29,9 @@ def main():
                     help="strips = only single strips, each with its own download button")
     ap.add_argument("--review-url", default="https://search.google.com/local/writereview?placeid=ChIJdf0KKychtGgRwuBX_2-neec",
                     help="Google review link shown to the couple")
+    ap.add_argument("--video-teaser", default="",
+                    help="Optional 'coming soon' text shown in a band under the hero "
+                         "(e.g. 'the full wedding video will be posted right here in the next few weeks')")
     args = ap.parse_args()
 
     out = Path(os.path.expanduser(args.out))
@@ -78,6 +81,16 @@ def main():
         f'<img loading="lazy" decoding="async" src="photos/{esc(fr["f"])}" alt="{esc(couple)} photo booth, frame {i+1}"></a>'
         for i, fr in enumerate(frames)
     )
+    teaser_html = ("")
+    if args.video_teaser:
+        teaser_html = (
+            '<section class="teaser">\n'
+            '  <p class="tag">Coming Soon</p>\n'
+            '  <h2>The Wedding Video</h2>\n'
+            f'  <p><b>Stay tuned to this page</b> &mdash; {esc(args.video_teaser)}</p>\n'
+            '</section>'
+        )
+
     strip_html = "".join(
         f'<div class="stripcard">'
         f'<a class="stripimg" href="strips/{esc(s)}" target="_blank" rel="noopener">'
@@ -183,12 +196,31 @@ section{{padding:clamp(42px,5vw,70px) 20px}}
 .btn.solid{{background:var(--gold);border-color:var(--gold);color:{p['ink']};font-weight:600}}
 .btn.solid:hover{{background:var(--accent2);border-color:var(--accent2);color:{p['ink']}}}
 
+/* coming soon / wedding video */
+.teaser{{background:linear-gradient(135deg,rgba(207,165,94,.16),rgba(27,18,22,.92));
+  text-align:center;padding:clamp(30px,4.6vw,50px) 20px;
+  border-top:1px solid rgba(207,165,94,.34);border-bottom:1px solid rgba(207,165,94,.34)}}
+.teaser .tag{{display:inline-block;margin:0 0 14px;padding:7px 16px;border:1px solid var(--gold);
+  border-radius:999px;color:var(--gold);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase}}
+.teaser h2{{margin:0 0 10px;font-weight:400;font-size:clamp(21px,3.4vw,31px);color:var(--cream)}}
+.teaser p{{margin:0 auto;max-width:580px;color:#cfc5be;font-size:14.5px;line-height:1.7}}
+.teaser p b{{color:var(--gold);font-weight:600}}
+
 /* review ask */
-.reviewband{{background:linear-gradient(180deg,var(--ink) 0%,{p['bg2']} 100%);text-align:center;
-  padding:clamp(42px,6vw,72px) 20px;border-top:1px solid rgba(247,241,232,.07)}}
-.reviewband .eyebrow{{margin-bottom:14px}}
-.reviewband h2{{margin:0 0 14px;font-weight:400;font-size:clamp(23px,3.6vw,34px)}}
-.reviewband p{{margin:0 auto 26px;max-width:520px;color:#cfc5be;font-size:14.5px;line-height:1.7}}
+.reviewband{{background:radial-gradient(ellipse at 50% 0%,rgba(207,165,94,.17),transparent 62%),
+  linear-gradient(180deg,var(--ink) 0%,{p['bg2']} 100%);text-align:center;
+  padding:clamp(64px,9vw,112px) 20px;
+  border-top:1px solid rgba(207,165,94,.42);border-bottom:1px solid rgba(207,165,94,.2)}}
+.reviewband .eyebrow{{margin-bottom:18px;color:var(--gold);letter-spacing:.26em;font-size:12px}}
+.reviewband h2{{margin:0 0 20px;font-weight:400;font-size:clamp(29px,5vw,52px);line-height:1.16}}
+.reviewband h2 em{{font-style:normal;color:var(--gold)}}
+.reviewband p{{margin:0 auto 34px;max-width:620px;color:#ded5ce;font-size:17px;line-height:1.75}}
+.reviewband .btn.solid{{padding:19px 44px;font-size:13px;
+  box-shadow:0 0 0 6px rgba(207,165,94,.13),0 16px 40px rgba(207,165,94,.22)}}
+.reviewband .btn.solid:hover{{transform:translateY(-2px);
+  box-shadow:0 0 0 9px rgba(207,165,94,.18),0 20px 48px rgba(207,165,94,.3)}}
+@media(max-width:640px){{.reviewband p{{font-size:15.5px}}
+  .reviewband .btn.solid{{padding:16px 28px;font-size:11.5px;letter-spacing:.16em}}}}
 
 footer{{padding:60px 20px 78px;text-align:center;background:{p['bg2']};
   border-top:1px solid rgba(247,241,232,.09)}}
@@ -235,6 +267,8 @@ footer a{{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba
   </div>
 </header>
 
+{teaser_html}
+
 {'' if strips_only else f'''<section id="photos">
   <div class="wrap">
     <div class="sechead">
@@ -262,11 +296,12 @@ footer a{{color:var(--accent2);text-decoration:none;border-bottom:1px solid rgba
   </div>
 </section>
 
-<section class="reviewband">
+<section class="reviewband" id="review">
   <p class="eyebrow">One Small Favor</p>
-  <h2>Did the booth make your night?</h2>
-  <p>A 30-second Google review is the whole marketing budget around here &mdash;
-     it&rsquo;s how the next couple finds us.</p>
+  <h2>Leave a Review for<br><em>DJ Ben Thomas &amp; the Photo Booth</em></h2>
+  <p>Two minutes on Google does more for us than any ad we could buy &mdash; it&rsquo;s how the
+     next bride, groom, or birthday party finds DJ Ben Thomas and the booth. Tell them what
+     the music and the strips did for your night.</p>
   <a class="btn solid" href="{review_url}" target="_blank" rel="noopener">&#9733; Leave a Review</a>
 </section>
 
