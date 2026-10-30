@@ -369,6 +369,7 @@ faqs.forEach(function (f) {
   faqList.appendChild(item);
 });
 <\/script>
+<script src="assets/inquiry.js" defer></script>
 </body>
 </html>
 `;
