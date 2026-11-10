@@ -5,7 +5,10 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
-const pages = readdirSync(ROOT).filter((f) => f.endsWith('.html'));
+// Site-verification / ownership files (Google, Bing, etc.) are not content pages —
+// they must not be validated as pages or required in the sitemap.
+const NOT_A_PAGE = /^(google[0-9a-z]*|yandex[0-9a-z]*|BingSiteAuth|[0-9a-f]{32})\.html$/i;
+const pages = readdirSync(ROOT).filter((f) => f.endsWith('.html') && !NOT_A_PAGE.test(f));
 
 // Canonical host comes from the sitemap's first <loc>, so switching domains
 // (github.io -> as-ulikeit.com) doesn't require editing this file again.
