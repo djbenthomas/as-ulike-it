@@ -329,7 +329,12 @@ function pageGraph(file, title) {
 
 /* ---------- run ---------- */
 
-const pages = readdirSync(ROOT).filter((f) => (f === 'index.html' || f.endsWith('.html')) && f !== 'index-offline.html');
+/* Site-verification files (Google/Yandex/Bing/IndexNow) are plain text, not pages.
+   Same exclusion list as tools/validate.mjs. */
+const NOT_A_PAGE = /^(google[0-9a-z]*|yandex[0-9a-z]*|BingSiteAuth|[0-9a-f]{32})\.html$/i;
+
+const pages = readdirSync(ROOT).filter((f) =>
+  (f === 'index.html' || f.endsWith('.html')) && f !== 'index-offline.html' && !NOT_A_PAGE.test(f));
 const results = [];
 
 for (const file of pages) {
