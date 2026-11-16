@@ -53,6 +53,42 @@ const BIZ = {
   ],
 };
 
+/* Priced offers shown on the homepage. These mirror the transparent-pricing
+ * section in index.html that Benny added by hand (commit 55afd63). Kept out of
+ * BIZ on purpose so city pages are not rewritten; edit prices HERE and in the
+ * homepage copy together. */
+const HOME_OFFERS = [
+  {
+    '@type': 'Offer',
+    name: 'Wedding DJ & MC',
+    description: 'Wedding DJ and MC for events within one hour of Hendersonville, TN. Custom playlist, wireless mics, professional sound, and dance floor lighting.',
+    price: '950',
+    priceCurrency: 'USD',
+    itemOffered: {
+      '@type': 'Service',
+      name: 'Wedding DJ & MC Services',
+      serviceType: 'Wedding DJ and MC',
+      areaServed: 'Within one hour of Hendersonville, TN',
+    },
+  },
+  {
+    '@type': 'Offer',
+    name: 'Photo Booth Add-On',
+    description: 'Photo booth rental added to a DJ booking. Unlimited printed strips, props, and inflatable backdrop.',
+    price: '100',
+    priceCurrency: 'USD',
+    itemOffered: { '@type': 'Service', name: 'Photo Booth Rental Add-On' },
+  },
+  {
+    '@type': 'Offer',
+    name: 'Photo Booth Rental',
+    description: 'Standalone photo booth rental. Unlimited printed strips, props, and inflatable backdrop.',
+    price: '300',
+    priceCurrency: 'USD',
+    itemOffered: { '@type': 'Service', name: 'Photo Booth Rental' },
+  },
+];
+
 const FAQ = [
   ['What areas do you serve?', "We're based in Hendersonville, TN and serve the whole Nashville-area ring: Gallatin, Goodlettsville, White House, Millersville, Greenbrier, Cross Plains, Portland, Westmoreland, Mt. Juliet, Lebanon, Old Hickory, Madison, Hermitage, Springfield, Sumner County, and all of Middle Tennessee. Most of those are a 10–25 minute drive for us, so there's no travel markup. We're happy to travel further for the right event."],
   ['How long have you been doing this?', "15+ years and 900+ events — weddings, corporate events, private parties, and more. We've seen it all and know how to keep any crowd dancing."],
@@ -62,7 +98,7 @@ const FAQ = [
   ['Do you take song requests?', 'Always. We build custom playlists around your taste — and we read the room, mixing in requests that keep the dance floor packed.'],
   ['Do you offer photo booth rentals?', 'Yes! DJ + photo booth combo packages available. Printed photo strips, fun props, and a full inflatable backdrop. The booth is self-serve — nobody standing there watching — which people tell us makes it more fun and more personal. Ask about our current special.'],
   ['What equipment do you bring?', "Professional sound system, wireless mics, DJ lighting and uplighting — sized to your venue, set up and torn down by us. You don't lift a finger."],
-  ['How much do you charge?', 'Every event is different — venue size, hours, ceremony plus reception, photo booth add-ons. Contact us for a custom quote. We\'re upfront and work with most budgets.'],
+  ['How much do you charge?', 'Wedding DJ and MC starts at $950 for a wedding within one hour of Hendersonville. Adding the photo booth to a DJ booking is $100 more. A standalone photo booth rental starts at $300. Ceremony sound, uplighting, additional hours, video, and travel beyond one hour are quoted per event — but you\'ll get a real number up front.'],
   ['How far in advance should we book?', "Popular wedding dates go fast — 6 to 12 months out is ideal. But always ask about last-minute availability; we've saved plenty of events!"],
   ['Do you require a deposit?', 'A deposit reserves your date. Details are shared in your quote — no surprises.'],
   ['Are you insured?', "Yes, we carry liability insurance — many venues require it, and we've got you covered."],
@@ -225,7 +261,7 @@ function pageGraph(file, title) {
 
   if (file === 'index.html') {
     return [
-      biz,
+      Object.assign({}, biz, { makesOffer: HOME_OFFERS }),
       { '@type': 'WebSite', name: BRAND, url: HOST },
       {
         '@type': 'FAQPage',
