@@ -366,6 +366,25 @@ function pageGraph(file, title) {
   }
 
   const c = ALL_CITIES.find((x) => x.file === file);
+  if (!c) {
+    return [
+      biz,
+      {
+        '@type': 'WebPage',
+        name: title,
+        url,
+        isPartOf: { '@type': 'WebSite', name: BRAND, url: HOST },
+        about: { '@id': HOST + '#business' },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: HOST },
+          { '@type': 'ListItem', position: 2, name: title, item: url },
+        ],
+      },
+    ];
+  }
   const graph = [
     biz,
     serviceNode(`Wedding DJ Services in ${c.name}, TN`, 'Wedding DJ', url, c.name),
