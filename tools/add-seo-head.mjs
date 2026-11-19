@@ -339,6 +339,32 @@ function pageGraph(file, title) {
     ];
   }
 
+  if (file === 'pricing.html') {
+    return [
+      biz,
+      {
+        '@type': 'Service',
+        name: 'Wedding DJ & MC Packages',
+        serviceType: 'Wedding DJ',
+        url,
+        provider: { '@id': HOST + '#business' },
+        areaServed: ['Hendersonville TN', 'Gallatin TN', 'Goodlettsville TN', 'Nashville TN', 'Sumner County TN', 'Mt. Juliet TN', 'Lebanon TN', 'Springfield TN'],
+        offers: [
+          { '@type': 'Offer', name: 'Signature Wedding DJ — Benny Thomas', price: '950', priceCurrency: 'USD', description: 'Up to 6 hours, DJ\'d personally by Benny Thomas. Ceremony sound, MC, planning, full system.' },
+          { '@type': 'Offer', name: 'Team DJ Wedding Package', price: '600', priceCurrency: 'USD', description: 'Up to 6 hours with an AS·U·LIKE·IT team DJ. Same gear and show standard.' },
+          { '@type': 'Offer', name: 'Photo Booth Add-On', price: '200', priceCurrency: 'USD', description: 'Photo booth added to any DJ package. Printed strips, props, digital gallery.' },
+        ],
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: HOST },
+          { '@type': 'ListItem', position: 2, name: 'Wedding DJ Pricing', item: url },
+        ],
+      },
+    ];
+  }
+
   const c = ALL_CITIES.find((x) => x.file === file);
   const graph = [
     biz,
