@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Velvet Claw — Bailey Cody, Nashville DJ</title>
+<meta name="description" content="Bailey Cody performs as Velvet Claw — a Nashville DJ for Broadway restaurants, hotel lounges and private events. Laid-back dinner music to upbeat late-night favorites. Fill-in dates and recurring bookings.">
+<style>
+  :root{
+    --velvet:#2a0e12; --velvet-2:#3a1219; --cream:#f6ece0; --muted:#c9a89c;
+    --brass:#d9a441; --brass-dim:#8a6527; --pink:#e6a8a1;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--velvet);color:var(--cream);
+    font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:960px;margin:0 auto;padding:0 22px 70px}
+  a{color:var(--brass)}
+
+  header{padding:40px 0 26px;text-align:center;border-bottom:1px solid rgba(217,164,65,.25)}
+  .mark{width:186px;height:186px;object-fit:cover;border-radius:50%;border:2px solid var(--brass-dim);
+    box-shadow:0 0 60px rgba(217,164,65,.18);margin:0 auto 18px;display:block}
+  .kicker{font-size:11px;letter-spacing:.36em;text-transform:uppercase;color:var(--brass)}
+  h1{font-family:Georgia,"Times New Roman",serif;font-weight:400;font-size:50px;line-height:1.02;margin:12px 0 6px}
+  h1 span{display:block;font-style:italic;color:var(--brass);font-size:26px;margin-top:8px}
+  .sub{color:var(--muted);font-size:15px;max-width:520px;margin:0 auto}
+  .cta{display:inline-block;margin-top:22px;background:var(--brass);color:#2a0e12;text-decoration:none;
+    font-weight:700;font-size:14px;padding:13px 26px;border-radius:999px}
+  .cta.ghost{background:transparent;color:var(--cream);border:1px solid var(--brass-dim);margin-left:10px}
+
+  h2{font-family:Georgia,serif;font-weight:400;font-size:28px;margin:46px 0 10px}
+  h2 em{color:var(--brass);font-style:italic}
+  p{font-size:15.5px}
+  .lede{font-size:17.5px}
+  .muted{color:var(--muted)}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin:18px 0}
+  .card{border:1px solid rgba(217,164,65,.22);background:linear-gradient(160deg,var(--velvet-2),var(--velvet));border-radius:14px;padding:18px}
+  .card h3{margin:0 0 6px;font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--brass)}
+  .card p{margin:0;font-size:14.5px;color:var(--muted)}
+
+  .sets{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:16px}
+  .set{border:1px dashed rgba(217,164,65,.4);border-radius:14px;padding:18px;background:rgba(0,0,0,.18)}
+  .set b{display:block;font-family:Georgia,serif;font-size:19px;font-weight:400;margin-bottom:4px}
+  .set span{font-size:13.5px;color:var(--muted)}
+
+  .gear{border:1px solid rgba(217,164,65,.25);border-radius:14px;padding:18px;background:rgba(0,0,0,.18);margin-top:16px}
+  .gear dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:8px 18px;font-size:14.5px}
+  .gear dt{color:var(--brass);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;padding-top:4px}
+  .gear dd{margin:0;color:var(--cream)}
+
+  .cat{border:1px solid var(--pink);border-radius:14px;padding:18px;background:linear-gradient(160deg,#3b1318,#2a0e12);margin-top:16px}
+  .cat h3{margin:0 0 6px;font-family:Georgia,serif;font-weight:400;font-size:20px;color:var(--pink)}
+  .cat p{margin:0;font-size:14.5px;color:var(--muted)}
+
+  form{display:grid;gap:12px;margin-top:16px}
+  label{display:block;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+  input,textarea,select{width:100%;background:#1d090c;border:1px solid rgba(217,164,65,.3);color:var(--cream);
+    border-radius:9px;padding:11px 12px;font-size:15px;font-family:inherit}
+  textarea{min-height:96px;resize:vertical}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media(max-width:600px){.row{grid-template-columns:1fr}h1{font-size:38px}h1 span{font-size:22px}}
+  button{background:var(--brass);color:#2a0e12;border:0;border-radius:999px;padding:13px 26px;font-size:14px;font-weight:700;cursor:pointer;justify-self:start}
+  .fine{font-size:12.5px;color:var(--muted);margin-top:10px}
+
+  footer{margin-top:52px;padding-top:18px;border-top:1px solid rgba(217,164,65,.22);font-size:13px;color:var(--muted);
+    display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+  .note{margin-top:26px;border:1px solid var(--brass-dim);background:#31100f;border-radius:10px;padding:12px 14px;font-size:12.5px;color:#e8cba8}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <img class="mark" src="assets/velvet-claw-brand.jpg" alt="Velvet Claw">
+  <div class="kicker">Nashville, Tennessee</div>
+  <h1>Velvet Claw<span>Bailey Cody</span></h1>
+  <p class="sub">Dinner music that turns into the late-night set — without anybody noticing the handoff.</p>
+  <a class="cta" href="#book">Check a date</a>
+  <a class="cta ghost" href="#sets">What I play</a>
+</header>
+
+<h2>Hey — I'm Bailey</h2>
+<p class="lede">I'm Bailey Cody, a Nashville DJ performing as <strong>Velvet Claw</strong>. I put together sets for
+Broadway restaurants, hotel lounges, and private events — from laid-back dinner music to upbeat late-night favorites.</p>
+<p class="muted">That's the whole job, honestly. A room at 7pm and the same room at 11pm are two different rooms,
+and the set has to move with them. I build it from my own taste, not a shuffled playlist, and I stay in it the
+whole night: dancing behind the booth, smiling, and taking requests from whoever walks up.</p>
+
+<h2 id="sets">What the night sounds like</h2>
+<div class="sets">
+  <div class="set"><b>Dinner service</b><span>Low, warm, and easy to talk over. Nobody has to raise their voice to order.</span></div>
+  <div class="set"><b>The turn</b><span>When the plates stop coming — familiar songs people sing without thinking.</span></div>
+  <div class="set"><b>Late night</b><span>Upbeat favorites, requests off the crowd, and the songs that close a room down right.</span></div>
+</div>
+<p class="fine muted">Set lists are curated to the room and the night — not the same forty songs every shift.</p>
+
+<h2>The booth</h2>
+<div class="gear">
+  <dl>
+    <dt>Controller</dt><dd>Pioneer DDJ — the Pro controller, so the mix is actually mixed, not just queued</dd>
+    <dt>Computer</dt><dd>MacBook, running the set</dd>
+    <dt>Behind the booth</dt><dd>Active all night — dancing, smiling, and happy to take a request</dd>
+    <dt>Requests</dt><dd>Always welcome. If it fits the room, it goes on</dd>
+  </dl>
+</div>
+
+<h2>Bookings</h2>
+<div class="grid">
+  <div class="card"><h3>Broadway restaurants</h3><p>Dinner through late night, one continuous set that shifts with the room.</p></div>
+  <div class="card"><h3>Hotel lounges</h3><p>Background when it needs to be, a party when the room wants one.</p></div>
+  <div class="card"><h3>Private events</h3><p>Parties, celebrations, and rooms that want a DJ who reads the crowd.</p></div>
+  <div class="card"><h3>Fill-in dates</h3><p>Last-minute coverage for a room that lost its DJ — message me and I'll check the calendar.</p></div>
+</div>
+
+<div class="cat">
+  <h3>Signature cat look</h3>
+  <p>Available for themed nights. Ask about it when you book — it's the one thing people remember from the shift.</p>
+</div>
+
+<h2 id="book">Message me</h2>
+<p class="muted">Fill-in dates, recurring bookings, or a private event. Send the date and the room and I'll come back to you.</p>
+<form id="bookForm">
+  <div class="row">
+    <div><label for="fName">Your name</label><input id="fName" placeholder="First and last"></div>
+    <div><label for="fDate">Date</label><input id="fDate" type="date"></div>
+  </div>
+  <div class="row">
+    <div><label for="fType">What it is</label>
+      <select id="fType">
+        <option>Fill-in date</option><option>Recurring booking</option><option>Private event</option><option>Other</option>
+      </select></div>
+    <div><label for="fVenue">Venue or city</label><input id="fVenue" placeholder="Broadway, a hotel lounge, Franklin…"></div>
+  </div>
+  <div><label for="fMsg">Details</label><textarea id="fMsg" placeholder="Hours, room, sound system, anything I should know…"></textarea></div>
+  <button type="submit">Send it</button>
+  <div class="fine">Goes straight to me — no agency in the middle.</div>
+</form>
+
+<div class="note"><b>Draft.</b> This page is built from Bailey's intro letter. Photos, mixes, rates and the real
+contact address still need to be filled in, and nothing is published to a public URL yet.</div>
+
+<footer>
+  <div>Velvet Claw · Bailey Cody · Nashville, TN</div>
+  <div><a href="mailto:djbenthomas@gmail.com">Booking: djbenthomas@gmail.com</a></div>
+</footer>
+
+</div>
+<script>
+document.getElementById('bookForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const v = id => document.getElementById(id).value.trim();
+  const body = 'NAME: ' + v('fName') + '\nDATE: ' + v('fDate') + '\nTYPE: ' + v('fType') +
+               '\nVENUE/CITY: ' + v('fVenue') + '\n\n' + v('fMsg');
+  location.href = 'mailto:djbenthomas@gmail.com?subject=' + encodeURIComponent('Velvet Claw — booking') +
+    '&body=' + encodeURIComponent(body);
+});
+</script>
+</body>
+</html>

@@ -13,6 +13,7 @@ const rows = [
   { loc: HOST, priority: '1.0' },
   ...ALL_CITIES.map((c) => ({ loc: HOST + c.file, priority: c.priority.toFixed(2) })),
   { loc: HOST + 'photo-booth.html', priority: '0.95' },
+  { loc: HOST + 'velvet-claw.html', priority: '0.90' },
   // Seasonal / campaign pages. Extensionless to match their canonical URL.
   { loc: HOST + 'christmas-office-parties', priority: '0.95' },
   { loc: HOST + 'christmas-story-builder', priority: '0.85' },
