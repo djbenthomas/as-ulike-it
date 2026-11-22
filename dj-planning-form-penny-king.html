@@ -125,7 +125,7 @@ SCHEMA.forEach(function(sec,si){
 });
 function chip(id,o,on,type){
   return '<label class="chip'+(on?' on':'')+'"><input type="'+(type==='one'?'radio':'checkbox')+'" '+
-    (type==='one'?'name="'+id+'"':'')+' data-id="'+id+'" data-val="'+esc(o)+'"'+(on?' checked':'')+'>'+
+    (type==='one'?'name="'+id+'"':'')+' value="'+esc(o)+'" data-id="'+id+'" data-val="'+esc(o)+'"'+(on?' checked':'')+'>'+
     '<span class="bx"></span><span class="tx">'+esc(o)+'</span></label>';
 }
 $('#app').innerHTML = html;

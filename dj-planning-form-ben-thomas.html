@@ -58,7 +58,7 @@ textarea.out{min-height:240px;font-family:ui-monospace,Menlo,monospace;font-size
   <div class="brand">AS·U·LIKE·IT Entertainment</div>
   <h1>Ben Thomas</h1>
   <p class="sub">Wedding &amp;nbsp;·&amp;nbsp; Saturday, June 12, 2027</p>
-  <div class="note">Ben — this is your test copy. Fill in a handful, hit Send to Ben, and it lands in your inbox.</div>
+  <div class="note">Ben — test copy.</div>
 </div></header>
 <main class="wrap" id="app"></main>
 <div class="bar"><div class="wrap">
@@ -125,7 +125,7 @@ SCHEMA.forEach(function(sec,si){
 });
 function chip(id,o,on,type){
   return '<label class="chip'+(on?' on':'')+'"><input type="'+(type==='one'?'radio':'checkbox')+'" '+
-    (type==='one'?'name="'+id+'"':'')+' data-id="'+id+'" data-val="'+esc(o)+'"'+(on?' checked':'')+'>'+
+    (type==='one'?'name="'+id+'"':'')+' value="'+esc(o)+'" data-id="'+id+'" data-val="'+esc(o)+'"'+(on?' checked':'')+'>'+
     '<span class="bx"></span><span class="tx">'+esc(o)+'</span></label>';
 }
 $('#app').innerHTML = html;
