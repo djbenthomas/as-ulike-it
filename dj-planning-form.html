@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#141414"><title>Wedding Reception Planning Form | AS·U·LIKE·IT</title><meta name="robots" content="noindex">
+<style>
+:root{--ink:#1c1c1c;--soft:#6d6d6d;--line:#ded9d0;--bg:#faf8f4;--card:#fff;--gold:#96762f;--goldsoft:#f3ecdb;--dark:#141414;--ok:#1f7a4d}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;padding-bottom:92px}
+.wrap{max-width:700px;margin:0 auto;padding:0 15px}
+header{background:var(--dark);color:#fff;padding:24px 0 20px;border-bottom:3px solid var(--gold)}
+.brand{font-size:11px;letter-spacing:2.6px;color:#c9a227;font-weight:800;text-transform:uppercase}
+h1{margin:9px 0 5px;font-size:25px;line-height:1.15;font-weight:800;letter-spacing:-.3px}
+.sub{margin:0;font-size:14px;color:#c8c4bc}
+.note{margin-top:13px;background:rgba(201,162,39,.13);border-left:2px solid var(--gold);padding:10px 12px;font-size:14px;color:#f0e9d8;border-radius:0 6px 6px 0}
+section{background:var(--card);border:1px solid var(--line);border-radius:12px;margin:15px 0;overflow:hidden}
+.sh{display:flex;align-items:center;gap:9px;padding:12px 14px;background:#f4f1ea;border-bottom:1px solid var(--line)}
+.sh .n{width:22px;height:22px;border-radius:50%;background:var(--dark);color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.sh h2{margin:0;font-size:14px;letter-spacing:1.3px;text-transform:uppercase;font-weight:800}
+.b{padding:6px 14px 12px}
+.q{padding:12px 0;border-bottom:1px solid #f1ede6}
+.q:last-child{border-bottom:0}
+.lab{font-size:14px;font-weight:600;margin-bottom:9px;display:block}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative;display:inline-flex;align-items:center;gap:8px;border:1.5px solid #ddd8ce;background:#fdfcfa;
+      border-radius:9px;padding:9px 12px;font-size:14px;line-height:1.2;cursor:pointer;min-height:42px;user-select:none}
+.chip input{position:absolute;opacity:0;pointer-events:none}
+.chip .bx{width:17px;height:17px;border:2px solid #b9b2a4;border-radius:4px;flex:0 0 auto;position:relative;background:#fff}
+.chip input:checked ~ .bx{background:var(--gold);border-color:var(--gold)}
+.chip input:checked ~ .bx:after{content:"";position:absolute;left:4px;top:1px;width:5px;height:9px;border:2px solid #fff;border-top:0;border-left:0;transform:rotate(42deg)}
+.chip input:checked ~ .tx{font-weight:700}
+.chip.on{border-color:var(--gold);background:var(--goldsoft)}
+input[type=text],input[type=email],input[type=tel],input[type=number],textarea{width:100%;font:inherit;font-size:16px;color:var(--ink);
+  background:#fdfcfa;border:1px solid #ddd8ce;border-radius:9px;padding:11px 12px;outline:none;-webkit-appearance:none}
+input:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(150,118,47,.14)}
+input.filled,textarea.filled{border-color:#bcd8c7;background:#fbfffc}
+textarea{min-height:64px;resize:vertical;line-height:1.4}
+.bar{position:fixed;left:0;right:0;bottom:0;background:rgba(255,255,255,.97);border-top:1px solid var(--line);
+     padding:10px 0 calc(10px + env(safe-area-inset-bottom));z-index:40}
+.bar .wrap{display:flex;align-items:center;gap:12px}
+.prog{flex:1;min-width:0}.prog .t{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--soft);font-weight:800}
+.track{height:5px;background:#e8e3d9;border-radius:3px;margin-top:5px;overflow:hidden}
+.track i{display:block;height:100%;width:0;background:var(--gold);transition:width .25s}
+.btn{border:0;border-radius:9px;padding:12px 16px;font:inherit;font-size:14px;font-weight:800;letter-spacing:.4px;cursor:pointer;white-space:nowrap}
+.btn.gold{background:var(--gold);color:#fff}.btn.dark{background:var(--dark);color:#fff}
+.btn.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}.btn.wide{width:100%;display:block;text-align:center;padding:14px}
+.veil{position:fixed;inset:0;background:rgba(20,20,20,.55);display:none;z-index:60;align-items:flex-end;justify-content:center}
+.veil.on{display:flex}
+.sheet{background:#fff;width:100%;max-width:700px;border-radius:16px 16px 0 0;padding:18px 16px calc(18px + env(safe-area-inset-bottom));max-height:92vh;overflow:auto}
+.sheet h3{margin:0 0 4px;font-size:20px}.sheet p.m{margin:0 0 12px;color:var(--soft);font-size:13.5px}
+textarea.out{min-height:240px;font-family:ui-monospace,Menlo,monospace;font-size:12.5px}
+.stack>*+*{margin-top:9px}
+.pill{display:inline-block;background:var(--goldsoft);color:#6d5416;font-size:11px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;padding:4px 9px;border-radius:99px}
+.status{font-size:13.5px;font-weight:600;margin-top:8px}.status.ok{color:var(--ok)}.status.bad{color:#a4491f}
+@media print{body{background:#fff;padding:0}.bar,.veil{display:none}.chip{border:1px solid #999}}
+.closing{background:#f4f1ea;border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:16px 18px;margin:16px 0 30px}
+.closing b{display:block;font-size:15px;letter-spacing:.2px}
+.closing p{margin:3px 0 0;font-size:14px;color:var(--soft)}
+</style></head>
+<body>
+<header><div class="wrap">
+  <div class="brand">AS·U·LIKE·IT Entertainment</div>
+  <h1>Wedding Reception Planning Form</h1>
+  <p class="sub">Wedding &amp;nbsp;·&amp;nbsp; Date: ____________</p>
+  <div class="note">Fill this out whenever you have a few minutes - everything is a tap or a short blank. It saves as you go, so you can come back to it any time. Finish at the bottom and send it back to Ben.</div>
+</div></header>
+<main class="wrap" id="app"></main>
+<div class="closing"><b>Ben has a copy of this.</b><p>Thank you for filling it out.</p></div>
+<div class="bar"><div class="wrap">
+  <div class="prog"><div class="t" id="pt">0 answered</div><div class="track"><i id="pf"></i></div></div>
+  <button class="btn gold" id="fin">Finish</button>
+</div></div>
+<div class="veil" id="veil"><div class="sheet">
+  <span class="pill">Ready to send</span>
+  <h3 style="margin-top:10px">Your answers</h3>
+  <p class="m">Tap <b>Send to Ben</b> and you're done. You can also copy it or save a copy for yourself.</p>
+  <div class="stack">
+    <div class="status" id="ds" style="display:none"></div>
+    <button class="btn dark wide" id="send">Send to Ben</button>
+    <textarea class="out" id="out" readonly></textarea>
+    <button class="btn ghost wide" id="copy">Copy answers</button>
+    <button class="btn ghost wide" id="dl">Save answers as a file</button>
+    <button class="btn ghost wide" id="mail">Open email instead</button>
+    <button class="btn ghost wide" id="close">Back to the form</button>
+  </div>
+</div></div>
+<iframe name="fsink" id="fsink" title="submission" style="display:none"></iframe>
+<form id="fsform" action="https://formsubmit.co/djbenthomas@gmail.com" method="POST" target="fsink" style="display:none">
+  <input type="hidden" name="_subject" id="fs_subject" value="Planning form">
+  <input type="hidden" name="_template" value="table">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="client" id="fs_name" value="">
+  <input type="hidden" name="event" id="fs_event" value="">
+  <input type="hidden" name="answers" id="fs_answers" value="">
+  <input type="hidden" name="answers_json" id="fs_json" value="">
+  <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+</form>
+<script>
+var SCHEMA = [["The Basics", [{"id": "brideName", "q": "Bride's name", "type": "blank", "opts": [], "ph": "", "hint": ""}, {"id": "brideText", "q": "Bride's cell for texts", "type": "blank", "opts": [], "ph": "(615) 555-0123", "hint": ""}, {"id": "groomName", "q": "Groom's name", "type": "blank", "opts": [], "ph": "", "hint": ""}, {"id": "groomText", "q": "Groom's cell for texts", "type": "blank", "opts": [], "ph": "", "hint": ""}, {"id": "eventDate", "q": "Date of event", "type": "blank", "opts": [], "ph": "Month / Day / Year", "hint": ""}, {"id": "email", "q": "Email address", "type": "blank", "opts": [], "ph": "", "hint": ""}, {"id": "guestCount", "q": "Number of guests (approx.)", "type": "blank", "opts": [], "ph": "#", "hint": ""}, {"id": "venueAddress", "q": "Venue name and address", "type": "blank", "opts": [], "ph": "", "hint": ""}, {"id": "djAttire", "q": "What should your DJ wear?", "type": "one", "opts": ["Suit", "Semi-formal", "Casual"], "ph": "", "hint": ""}, {"id": "performanceStart", "q": "Music starts at", "type": "blank", "opts": [], "ph": "6:00 PM", "hint": ""}, {"id": "performanceEnd", "q": "Music ends at", "type": "blank", "opts": [], "ph": "10:00 PM", "hint": ""}, {"id": "ceremonyNeeded", "q": "Do you need DJ services for the ceremony?", "type": "yn", "opts": [], "ph": "", "hint": ""}, {"id": "ceremonyStart", "q": "Ceremony start time", "type": "blank", "opts": [], "ph": "4:30 PM", "hint": ""}, {"id": "ceremonyMic", "q": "Microphone needed for the ceremony", "type": "checks", "opts": ["Handheld", "Lapel", "Both", "None"], "ph": "", "hint": ""}]], ["Ceremony", [{"id": "officiant", "q": "Officiant's name", "type": "blank", "opts": [], "ph": "", "hint": ""}, {"id": "preCeremonyMusic", "q": "Pre-ceremony music", "type": "blank", "opts": [], "ph": "Artist \u2014 Song", "hint": ""}, {"id": "bridalPartyEntrance", "q": "Music for bridal party entrance", "type": "blank", "opts": [], "ph": "Artist \u2014 Song", "hint": ""}, {"id": "bridalPartyTrad", "q": "Is that a traditional choice?", "type": "one", "opts": ["Traditional", "Not traditional", "Not sure yet"], "ph": "", "hint": ""}, {"id": "brideEntrance", "q": "Music for bride's entrance", "type": "blank", "opts": [], "ph": "Artist \u2014 Song", "hint": ""}, {"id": "brideTrad", "q": "Is that a traditional choice?", "type": "one", "opts": ["Traditional", "Not traditional", "Not sure yet"], "ph": "", "hint": ""}, {"id": "recessional", "q": "Music for the recess after the ceremony", "type": "blank", "opts": [], "ph": "Artist \u2014 Song", "hint": ""}, {"id": "recessTrad", "q": "Is that a traditional choice?", "type": "one", "opts": ["Traditional", "Not traditional", "Not sure yet"], "ph": "", "hint": ""}, {"id": "ceremonySpecial", "q": "Any special requests during the ceremony? (sand ceremony, candle lighting, etc.)", "type": "yn", "opts": [], "ph": "", "hint": ""}, {"id": "ceremonySpecialText", "q": "If yes, tell us what", "type": "blank", "opts": [], "ph": "Sand ceremony after the vows", "hint": ""}]], ["Bridal Party", [{"id": "grandparentsBride", "q": "Grandparents of the bride", "type": "blank", "opts": [], "ph": "Names", "hint": ""}, {"id": "grandparentsBrideAct", "q": "How do we handle them?", "type": "one", "opts": ["Introduce", "Acknowledge", "Skip"], "ph": "", "hint": ""}, {"id": "grandparentsGroom", "q": "Grandparents of the groom", "type": "blank", "opts": [], "ph": "", "hint": ""}, {"id": "grandparentsGroomAct", "q": "How do we handle them?", "type": "one", "opts": ["Introduce", "Acknowledge", "Skip"], "ph": "", "hint": ""}, {"id": "parentsBride", "q": "Parents of the bride", "type": "blank", "opts": [], "ph": "Names", "hint": ""}, {"id": "parentsBrideAct", "q": "How do we handle them?", "type": "one", "opts": ["Introduce", "Acknowledge", "Skip"], "ph": "", "hint": ""}, {"id": "parentsGroom", "q": "Parents of the groom", "type": "blank", "opts": [], "ph": "Names", "hint": ""}, {"id": "parentsGroomAct", "q": "How do we handle them?", "type": "one", "opts": ["Introduce", "Acknowledge", "Skip"], "ph": "", "hint": ""}, {"id": "flowerGirls", "q": "Flower girls \u2014 names and ages", "type": "blank", "opts": [], "ph": "Livi, age 5", "hint": ""}, {"id": "ringBearers", "q": "Ring bearers \u2014 names and ages", "type": "blank", "opts": [], "ph": "Beckham, age 4", "hint": ""}, {"id": "bridesmaids", "q": "Bridesmaids (we announce them in reverse order)", "type": "blank", "opts": [], "ph": "Separate names with commas", "hint": ""}, {"id": "groomsmen", "q": "Groomsmen", "type": "blank", "opts": [], "ph": "Separate names with commas", "hint": ""}, {"id": "maidOfHonor", "q": "Maid of honor", "type": "blank", "opts": [], "ph": "", "hint": ""}, {"id": "matronOfHonor", "q": "Is she a matron (married) rather than a maid?", "type": "one", "opts": ["Maid", "Matron", "Not sure"], "ph": "", "hint": ""}, {"id": "bestMan", "q": "Best man", "type": "blank", "opts": [], "ph": "", "hint": ""}, {"id": "introduceAs", "q": "Introduce the bride and groom as", "type": "blank", "opts": [], "ph": "Mr. and Mrs. Thomas", "hint": ""}]], ["Timeline", [{"id": "setupTime", "q": "DJ setup time", "type": "blank", "opts": [], "ph": "4:00 PM", "hint": ""}, {"id": "picturesTime", "q": "Pictures time", "type": "blank", "opts": [], "ph": "5:30 PM", "hint": ""}, {"id": "photographerName", "q": "Photographer's name", "type": "blank", "opts": [], "ph": "", "hint": ""}, {"id": "backgroundMusic", "q": "Background music suggestions for dinner/cocktail hour", "type": "blank", "opts": [], "ph": "Artist \u2014 Song", "hint": ""}, {"id": "triviaWanted", "q": "Any trivia or games during dinner?", "type": "checks", "opts": ["Bride & Groom trivia", "Movie theme trivia", "Other games \u2014 Ben will walk us through", "None"], "ph": "", "hint": ""}]], ["Reception Moments", [{"id": "grandEntranceTime", "q": "Grand entrance time", "type": "blank", "opts": [], "ph": "6:30 PM", "hint": ""}, {"id": "grandEntranceSong", "q": "Grand entrance song", "type": "blank", "opts": [], "ph": "Artist \u2014 Song", "hint": ""}, {"id": "firstDanceSong", "q": "First dance song", "type": "blank", "opts": [], "ph": "Artist \u2014 Song", "hint": ""}, {"id": "dinnerBlessing", "q": "Dinner blessing \u2014 who is giving it?", "type": "blank", "opts": [], "ph": "Name, or 'none'", "hint": ""}, {"id": "dinnerStyle", "q": "Dinner style", "type": "one", "opts": ["Plated", "Buffet", "Family style", "Food truck", "Cocktail / heavy apps"], "ph": "", "hint": ""}, {"id": "dinnerSeating", "q": "Where do you sit?", "type": "one", "opts": ["Head table", "Sweetheart table", "Both"], "ph": "", "hint": ""}, {"id": "toastDrink", "q": "Toasts \u2014 champagne or drink in hand?", "type": "one", "opts": ["Champagne", "Drink in hand", "No toasts"], "ph": "", "hint": ""}, {"id": "toastOrder", "q": "Toast order (who speaks 1st, 2nd, 3rd\u2026)", "type": "blank", "opts": [], "ph": "Best man, maid of honor, father of the bride", "hint": ""}, {"id": "fatherDaughterSong", "q": "Father / daughter dance song", "type": "blank", "opts": [], "ph": "Artist \u2014 Song", "hint": ""}, {"id": "fatherName", "q": "Father of the bride's name", "type": "blank", "opts": [], "ph": "", "hint": ""}, {"id": "motherSonSong", "q": "Mother / son dance song", "type": "blank", "opts": [], "ph": "Artist \u2014 Song", "hint": ""}, {"id": "motherName", "q": "Mother of the groom's name", "type": "blank", "opts": [], "ph": "", "hint": ""}, {"id": "specialDance", "q": "Any other special dance?", "type": "blank", "opts": [], "ph": "Who and what song", "hint": ""}, {"id": "anniversaryDance", "q": "Anniversary dance?", "type": "yn", "opts": [], "ph": "", "hint": ""}, {"id": "anniversaryYears", "q": "Anniversary dance \u2014 start at how many years of marriage?", "type": "blank", "opts": [], "ph": "e.g. 5", "hint": ""}, {"id": "anniversarySongs", "q": "2\u20133 older songs for the anniversary dance", "type": "blank", "opts": [], "ph": "Artist \u2014 Song", "hint": ""}, {"id": "bouquetToss", "q": "Bouquet toss?", "type": "yn", "opts": [], "ph": "", "hint": ""}, {"id": "bouquetSong", "q": "Bouquet toss song", "type": "blank", "opts": [], "ph": "Artist \u2014 Song", "hint": ""}, {"id": "bouquetBlindfold", "q": "Blindfold / handshake bit with the groom?", "type": "yn", "opts": [], "ph": "", "hint": ""}, {"id": "garter", "q": "Garter removal and toss?", "type": "yn", "opts": [], "ph": "", "hint": ""}, {"id": "garterSong", "q": "Garter removal song", "type": "blank", "opts": [], "ph": "Artist \u2014 Song", "hint": ""}, {"id": "garterSerenade", "q": "Garter serenade?", "type": "yn", "opts": [], "ph": "", "hint": ""}, {"id": "garterTossMusic", "q": "Garter toss music", "type": "blank", "opts": [], "ph": "Artist \u2014 Song", "hint": ""}, {"id": "cakeSong", "q": "Cake cutting music", "type": "blank", "opts": [], "ph": "Artist \u2014 Song", "hint": ""}, {"id": "dancingMusic", "q": "Dancing music \u2014 songs you know you want", "type": "blank", "opts": [], "ph": "Artist \u2014 Song", "hint": ""}, {"id": "circleOfLove", "q": "Circle of love?", "type": "yn", "opts": [], "ph": "", "hint": ""}, {"id": "lastDance", "q": "Last dance song", "type": "blank", "opts": [], "ph": "Artist \u2014 Song", "hint": ""}, {"id": "sendOff", "q": "Send-off", "type": "checks", "opts": ["Sparklers", "Bubbles", "Glow sticks", "Confetti", "Ribbon wands", "None / just dance"], "ph": "", "hint": ""}]], ["Games & Activities", [{"id": "loveSongs", "q": "Love Songs", "type": "yn", "opts": [], "ph": "", "hint": "Guests write down a love song at their table and we collect them, then play the requests later in the night. Easy, no setup for you."}, {"id": "kissCopy", "q": "Kiss Copy", "type": "yn", "opts": [], "ph": "", "hint": "A quick crowd game \u2014 Ben explains it in about 30 seconds when you talk, then runs it after dinner."}, {"id": "scavengerHunt", "q": "Scavenger Hunt", "type": "yn", "opts": [], "ph": "", "hint": "A photo scavenger hunt guests play from their tables. We call out the winners before the last dance."}, {"id": "shoeGame", "q": "Shoe Game", "type": "yn", "opts": [], "ph": "", "hint": "You two sit back to back holding a shoe each and answer questions about each other. Best right after dinner."}, {"id": "triviaGames", "q": "Trivia games at dinner", "type": "checks", "opts": ["Bride & Groom trivia", "Movie theme trivia", "How well do you know the couple", "None"], "ph": "", "hint": ""}, {"id": "groupDances", "q": "Group dances you want played (check all)", "type": "checks", "opts": ["Macarena", "Electric Slide", "Soul Train", "Conga line", "Twist", "Shout", "Wobble", "Chicken Dance", "Cha Cha Slide", "Cupid Shuffle", "None \u2014 skip them"], "ph": "", "hint": ""}, {"id": "otherGames", "q": "Any other games or traditions we should know about?", "type": "yn", "opts": [], "ph": "", "hint": ""}, {"id": "otherGamesText", "q": "If yes, tell us \u2014 Ben will walk you through the details", "type": "blank", "opts": [], "ph": "", "hint": ""}]], ["Music", [{"id": "mustPlay", "q": "Must-play songs (Artist \u2014 Song, one per line)", "type": "blank", "opts": [], "ph": "", "hint": ""}, {"id": "doNotPlay", "q": "Do-not-play songs (be honest, we won't play them)", "type": "blank", "opts": [], "ph": "", "hint": ""}, {"id": "genresLove", "q": "Genres you love (check all)", "type": "checks", "opts": ["90s country", "Modern country", "Classic rock", "Hip hop", "Pop", "R&B / Motown", "Line dances", "EDM / dance", "Texas country", "Oldies", "Disco / funk"], "ph": "", "hint": ""}, {"id": "genresAvoid", "q": "Genres to avoid (check all)", "type": "checks", "opts": ["Polka", "Heavy metal", "Hard rap", "Line dances", "Slow songs", "None \u2014 play it all"], "ph": "", "hint": ""}, {"id": "lyrics", "q": "Lyrics", "type": "one", "opts": ["Clean versions only", "Explicit is fine", "Depends on the crowd"], "ph": "", "hint": ""}, {"id": "guestRequests", "q": "Take song requests from guests?", "type": "one", "opts": ["Yes, always", "Yes, but check with us first", "No requests"], "ph": "", "hint": ""}]], ["Logistics", [{"id": "hasPlanner", "q": "Do you have a planner or coordinator?", "type": "yn", "opts": [], "ph": "", "hint": ""}, {"id": "planner", "q": "If yes, name and phone", "type": "blank", "opts": [], "ph": "", "hint": ""}, {"id": "venueContact", "q": "Venue contact \u2014 name and phone", "type": "blank", "opts": [], "ph": "", "hint": ""}, {"id": "loadIn", "q": "What time can we load in?", "type": "blank", "opts": [], "ph": "3:00 PM, side door", "hint": ""}, {"id": "setupSpot", "q": "Where do we set up?", "type": "blank", "opts": [], "ph": "Corner of the barn, near the dance floor", "hint": ""}, {"id": "power", "q": "Power at the setup spot?", "type": "one", "opts": ["Yes", "No", "Not sure \u2014 please check"], "ph": "", "hint": ""}, {"id": "indoor", "q": "Indoor or outdoor?", "type": "one", "opts": ["Indoor", "Outdoor", "Both"], "ph": "", "hint": ""}, {"id": "rainPlan", "q": "Rain / weather backup plan", "type": "one", "opts": ["Yes, we have one", "No", "We need help with this"], "ph": "", "hint": ""}, {"id": "uplighting", "q": "Uplighting?", "type": "one", "opts": ["Yes", "No", "Tell me more"], "ph": "", "hint": ""}, {"id": "photoBooth", "q": "Photo booth add-on?", "type": "one", "opts": ["Yes \u2014 booked", "Yes \u2014 interested", "No"], "ph": "", "hint": ""}, {"id": "spaceNotes", "q": "Anything else about the space?", "type": "yn", "opts": [], "ph": "", "hint": ""}, {"id": "spaceNotesText", "q": "If yes, what?", "type": "blank", "opts": [], "ph": "Stairs, curfew, parking", "hint": ""}, {"id": "contactPref", "q": "Best way to reach you?", "type": "one", "opts": ["Text", "Call", "Email"], "ph": "", "hint": ""}, {"id": "anythingElse", "q": "Anything else we should know?", "type": "yn", "opts": [], "ph": "", "hint": ""}, {"id": "anythingElseText", "q": "If yes, tell us", "type": "blank", "opts": [], "ph": "", "hint": ""}]]];
+var CFG = {"name":"Wedding Reception","type":"Wedding","dateText":"Date: ____________","code":"ASULIKEIT-WEDDING"};
+var KEY = '***' + CFG.code;
+var DATA = {};
+try { DATA = JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch(e){ DATA = {}; }
+function $(s){return document.querySelector(s);}
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+
+var html='', total=0;
+SCHEMA.forEach(function(sec,si){
+  html += '<section><div class="sh"><span class="n">'+(si+1)+'</span><h2>'+esc(sec[0])+'</h2></div><div class="b">';
+  sec[1].forEach(function(f){
+    total++;
+    var v = DATA[f.id];
+    html += '<div class="q"><span class="lab">'+esc(f.q)+'</span>'+
+      (f.hint ? '<div style="font-size:13px;color:#7a7264;line-height:1.4;margin:-3px 0 9px">'+esc(f.hint)+'</div>' : '');
+    if(f.type==='blank'){
+      var long = /line|songs|list|tell us/i.test(f.q);
+      html += long
+        ? '<textarea data-id="'+f.id+'" rows="2" placeholder="'+esc(f.ph||'')+'">'+esc(v||'')+'</textarea>'
+        : '<input type="text" data-id="'+f.id+'" value="'+esc(v||'')+'" placeholder="'+esc(f.ph||'')+'">';
+    } else if(f.type==='yn'){
+      html += '<div class="opts" data-group="'+f.id+'">'+
+        ['Yes','No','Not sure'].map(function(o){ return chip(f.id,o,v===o,f.type); }).join('')+'</div>';
+    } else {
+      html += '<div class="opts" data-group="'+f.id+'">'+
+        f.opts.map(function(o){ var on = Array.isArray(v) ? v.indexOf(o)>-1 : v===o; return chip(f.id,o,on,f.type); }).join('')+'</div>';
+    }
+    html += '</div>';
+  });
+  html += '</div></section>';
+});
+function chip(id,o,on,type){
+  return '<label class="chip'+(on?' on':'')+'"><input type="'+(type==='one'?'radio':'checkbox')+'" '+
+    (type==='one'?'name="'+id+'"':'')+' value="'+esc(o)+'" data-id="'+id+'" data-val="'+esc(o)+'"'+(on?' checked':'')+'>'+
+    '<span class="bx"></span><span class="tx">'+esc(o)+'</span></label>';
+}
+$('#app').innerHTML = html;
+
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(DATA)); }catch(e){} }
+function refresh(){
+  var ids={}; SCHEMA.forEach(function(s){ s[1].forEach(function(f){ ids[f.id]=1; }); });
+  var done=0;
+  Object.keys(DATA).forEach(function(k){
+    if(!ids[k]) return;
+    var v=DATA[k];
+    if(Array.isArray(v)? v.length>0 : !!(v && String(v).trim())) done++;
+  });
+  document.querySelectorAll('textarea[data-id],input[type=text][data-id]').forEach(function(el){
+    el.classList.toggle('filled', !!(el.value && el.value.trim()));
+  });
+  var pct = Math.min(100, Math.round(done/total*100));
+  $('#pt').textContent = done+' of '+total+' answered';
+  $('#pf').style.width = pct+'%';
+}
+document.querySelectorAll('input[data-id],textarea[data-id]').forEach(function(el){
+  el.addEventListener('input', function(){
+    if(el.type==='checkbox'||el.type==='radio') return;
+    DATA[el.dataset.id]=el.value; refresh(); save();
+  });
+  el.addEventListener('change', function(){
+    var id=el.dataset.id;
+    if(el.type==='radio'){ DATA[id]=el.value; }
+    else if(el.type==='checkbox'){
+      var vals = Array.prototype.slice.call(document.querySelectorAll('input[data-id="'+id+'"]:checked')).map(function(x){return x.dataset.val;});
+      if(el.closest('[data-group]') && el.closest('[data-group]').querySelectorAll('input[type=radio]').length){
+        DATA[id]=vals[0]||'';
+      } else { DATA[id]=vals; }
+    } else { DATA[id]=el.value; }
+    document.querySelectorAll('.chip').forEach(function(c){
+      var i=c.querySelector('input'); c.classList.toggle('on', i.checked);
+    });
+    refresh(); save();
+  });
+});
+refresh();
+
+function summary(){
+  var out=['AS\u00b7U\u00b7LIKE\u00b7IT \u2014 PLANNING FORM'];
+  out.push(CFG.name+' \u00b7 '+CFG.type+' \u00b7 '+CFG.dateText);
+  out.push('Code: '+CFG.code+'   Sent: '+new Date().toLocaleString());
+  out.push('');
+  SCHEMA.forEach(function(sec){
+    var rows=[];
+    sec[1].forEach(function(f){
+      var v=DATA[f.id];
+      var val = Array.isArray(v)? v.join(', ') : (v||'');
+      if(!val) return;
+      rows.push(f.q.replace(/\s*\u2014\s*Artist.*$/,'')+': '+val);
+    });
+    if(rows.length){ out.push('\u2014 '+sec[0].toUpperCase()+' \u2014'); out.push(rows.join('\n')); out.push(''); }
+  });
+  var left = total - Object.keys(DATA).filter(function(k){var v=DATA[k];return v&&(!Array.isArray(v)||v.length);}).length;
+  if(left>0) out.push('('+left+' left unanswered)');
+  out.push(''); out.push('\u2014 end \u2014');
+  return out.join('\n');
+}
+function status(state,msg){ var el=$('#ds'); if(!el)return; el.style.display=''; el.className='status '+state; el.textContent=msg; }
+function deliver(text){
+  var ctrl = ('AbortController' in window)? new AbortController():null;
+  var t = ctrl? setTimeout(function(){ctrl.abort();},1800):null;
+  fetch('http://127.0.0.1:8787/submit',{method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({code:CFG.code,name:CFG.name,text:text}),signal:ctrl?ctrl.signal:undefined})
+  .then(function(r){ if(t)clearTimeout(t); if(r.ok) status('ok','Saved straight to Ben\u2019s Desktop \u2713'); else status('bad','Tap Copy or Save below, then text it to Ben.'); })
+  .catch(function(){ if(t)clearTimeout(t); status('bad','Tap Copy or Save below, then text it to Ben.'); });
+}
+$('#fin').addEventListener('click', function(){
+  var text=summary(); $('#out').value=text; $('#veil').classList.add('on');
+});
+$('#send').addEventListener('click', function(){
+  var text=$('#out').value || summary();
+  $('#out').value=text;
+  $('#fs_subject').value='Planning form \u2014 '+CFG.name;
+  $('#fs_name').value=CFG.name;
+  $('#fs_event').value=CFG.type+' \u00b7 '+CFG.dateText+' \u00b7 '+CFG.code;
+  $('#fs_answers').value=text;
+  try{
+    var raw={client:CFG, answers:DATA};
+    $('#fs_json').value=JSON.stringify(raw);
+  }catch(e){}
+  try{ $('#fsform').submit(); }catch(e){}
+  status('ok','Sent to Ben \u2713  You can close this page now.');
+  deliver(text);
+});
+$('#close').addEventListener('click', function(){ $('#veil').classList.remove('on'); });
+$('#veil').addEventListener('click', function(e){ if(e.target===this) this.classList.remove('on'); });
+$('#copy').addEventListener('click', function(){
+  var b=this, old='Copy answers';
+  function done(ok){ b.textContent = ok?'Copied \u2713':'Select and copy manually'; setTimeout(function(){b.textContent=old;},1600); }
+  if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText($('#out').value).then(function(){done(true);},legacy); }
+  else legacy();
+  function legacy(){ var ta=$('#out'); ta.removeAttribute('readonly'); ta.select(); var ok=false; try{ok=document.execCommand('copy');}catch(e){} ta.setAttribute('readonly',''); done(ok); }
+});
+$('#dl').addEventListener('click', function(){
+  var blob=new Blob([$('#out').value],{type:'text/plain;charset=utf-8'});
+  var a=document.createElement('a'); a.href=URL.createObjectURL(blob);
+  a.download=CFG.code+'-planning-form.txt'; document.body.appendChild(a); a.click();
+  setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},800);
+});
+$('#mail').addEventListener('click', function(){
+  location.href='mailto:djbenthomas@gmail.com?subject='+encodeURIComponent('Planning form \u2014 '+CFG.name)+
+    '&body='+encodeURIComponent($('#out').value);
+});
+</script>
+</body></html>
